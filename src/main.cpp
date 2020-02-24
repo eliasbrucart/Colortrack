@@ -3,11 +3,12 @@
 
 void main() 
 {
-	InitWindow(480, 640, "Colortrack");
+	InitWindow(640, 480, "Colortrack");
 	while (!WindowShouldClose())
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
+		DrawRectangle(200, 200, 30, 30, WHITE);
 		EndDrawing();
 	}
 
