@@ -1,6 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <Filter Include="src">
+      <UniqueIdentifier>{f3e2d01b-fa35-4044-a524-e2dc6c5d8fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="screens">
+      <UniqueIdentifier>{d472b861-f4c1-4956-83f8-08bb15117539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gameobjects">
+      <UniqueIdentifier>{1da31c86-acd0-45c9-89ba-8dfb38da0178}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screens\game_loop.cpp">
+      <Filter>screens</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\screens\game_loop.h">
+      <Filter>screens</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
