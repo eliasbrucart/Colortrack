@@ -11,8 +11,8 @@ namespace Colortrack
 	private:
 		float _x;
 		float _y;
-		float width;
-		float height;
+		float _width;
+		float _height;
 		float _speed;
 		int _lives;
 	public:
@@ -30,7 +30,7 @@ namespace Colortrack
 		Rectangle rec;
 		void SetInputs();
 		void InitRectangle();
-		void SetLives();
+		void SetLives(int lives);
 	};
 
 }
