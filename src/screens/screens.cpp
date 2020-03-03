@@ -23,4 +23,33 @@ namespace Colortrack
 		return _gamestate;
 	}
 
+	void Screens::UpdateMenu()
+	{
+
+	}
+
+	void Screens::DrawMenu() 
+	{
+
+	}
+
+	void Screens::UpdateInstructions()
+	{
+
+	}
+
+	void Screens::DrawInstructions()
+	{
+
+	}
+
+	void Screens::UpdateCredits()
+	{
+
+	}
+
+	void Screens::DrawCredits()
+	{
+		
+	}
 }

@@ -10,7 +10,7 @@ namespace Colortrack
 		enum GameState 
 		{
 			menu,
-			controls,
+			instructions,
 			gameplay,
 			credits
 		};
@@ -19,6 +19,12 @@ namespace Colortrack
 		~Screens();
 		void SetState(GameState gamestate);
 		GameState GetState();
+		void UpdateMenu();
+		void DrawMenu();
+		void UpdateInstructions();
+		void DrawInstructions();
+		void UpdateCredits();
+		void DrawCredits();
 	};
 
 }
