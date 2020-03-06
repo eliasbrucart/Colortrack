@@ -21,6 +21,8 @@ namespace Colortrack
 		GameState GetState();
 		void UpdateMenu();
 		void DrawMenu();
+		void UpdateGamePlay();
+		void DrawGamePlay();
 		void UpdateInstructions();
 		void DrawInstructions();
 		void UpdateCredits();

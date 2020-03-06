@@ -33,6 +33,16 @@ namespace Colortrack
 
 	}
 
+	void Screens::UpdateGamePlay()
+	{
+
+	}
+
+	void Screens::DrawGamePlay()
+	{
+
+	}
+
 	void Screens::UpdateInstructions()
 	{
 
