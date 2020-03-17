@@ -6,10 +6,10 @@ namespace Colortrack
 	class Rectangle
 	{
 	private:
-		int _width;
-		int _height;
 		int _x;
 		int _y;
+		int _width;
+		int _height;
 	public:
 		void InitRectangleEnemy();
 		void DrawRectangleEnemy();
