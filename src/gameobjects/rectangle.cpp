@@ -2,6 +2,16 @@
 
 namespace Colortrack
 {
+	Rectangle::Rectangle()
+	{
+
+	}
+
+	Rectangle::~Rectangle()
+	{
+
+	}
+
 	void Rectangle::InitRectangleEnemy()
 	{
 

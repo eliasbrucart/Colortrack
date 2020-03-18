@@ -11,6 +11,8 @@ namespace Colortrack
 		int _width;
 		int _height;
 	public:
+		Rectangle();
+		~Rectangle();
 		void InitRectangleEnemy();
 		void DrawRectangleEnemy();
 		void MoveRectangleEnemy();
