@@ -1,69 +1,77 @@
 #include "rectangle.h"
 
+#include "raylib.h"
+
 namespace Colortrack
 {
-	Rectangle::Rectangle()
+	RectangleEnemy::RectangleEnemy()
+	{
+		_x = 1;
+		_y = 1;
+		_width = 10;
+		_height = 10;
+	}
+
+	RectangleEnemy::~RectangleEnemy()
 	{
 
 	}
 
-	Rectangle::~Rectangle()
+	void RectangleEnemy::InitRectangleEnemy()
+	{
+		rec.x = _x;
+		rec.y = _y;
+		rec.width = _width;
+		rec.height = _height;
+	}
+
+	void RectangleEnemy::DrawRectangleEnemy()
+	{
+		DrawRectangle(rec.x, rec.y, rec.width, rec.height, WHITE);
+	}
+
+	void RectangleEnemy::MoveRectangleEnemy()
 	{
 
 	}
 
-	void Rectangle::InitRectangleEnemy()
+	void RectangleEnemy::SetX(int x)
 	{
-
+		_x = x;
 	}
 
-	void Rectangle::DrawRectangleEnemy()
+	int RectangleEnemy::GetX()
 	{
-
+		return _x;
 	}
 
-	void Rectangle::MoveRectangleEnemy()
+	void RectangleEnemy::SetY(int y)
 	{
-
+		_y = y;
 	}
 
-	void Rectangle::SetX()
+	int RectangleEnemy::GetY()
 	{
-
+		return _y;
 	}
 
-	int Rectangle::GetX(int x)
+	void RectangleEnemy::SetWidth(int width)
 	{
-
+		_width = width;
 	}
 
-	void Rectangle::SetY()
+	int RectangleEnemy::GetWidth() 
 	{
-
+		return _width;
 	}
 
-	int Rectangle::GetY(int y)
+	void RectangleEnemy::SetHeight(int height)
 	{
-
+		_height = height;
 	}
 
-	void Rectangle::SetWidth()
+	int RectangleEnemy::GetHeight()
 	{
-
-	}
-
-	int Rectangle::GetWidth(int width) 
-	{
-
-	}
-
-	void Rectangle::SetHeight()
-	{
-
-	}
-
-	int Rectangle::GetHeight(int height)
-	{
-
+		return _height;
 	}
 }
