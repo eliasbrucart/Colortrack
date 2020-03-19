@@ -1,9 +1,11 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
+#include "raylib.h"
+
 namespace Colortrack 
 {
-	class Rectangle
+	class RectangleEnemy
 	{
 	private:
 		int _x;
@@ -11,19 +13,20 @@ namespace Colortrack
 		int _width;
 		int _height;
 	public:
-		Rectangle();
-		~Rectangle();
+		RectangleEnemy();
+		~RectangleEnemy();
 		void InitRectangleEnemy();
 		void DrawRectangleEnemy();
 		void MoveRectangleEnemy();
-		void SetX();
-		int GetX(int x);
-		void SetY();
-		int GetY(int y);
-		void SetWidth();
-		int GetWidth(int width);
-		void SetHeight();
-		int GetHeight(int height);
+		void SetX(int x);
+		int GetX();
+		void SetY(int y);
+		int GetY();
+		void SetWidth(int width);
+		int GetWidth();
+		void SetHeight(int height);
+		int GetHeight();
+		Rectangle rec;
 	};
 }
 
