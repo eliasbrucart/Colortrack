@@ -1,3 +1,4 @@
+#include "raylib.h"
 #include "game_loop.h"
 
 namespace Colortrack
@@ -5,7 +6,7 @@ namespace Colortrack
 
 	void Init() 
 	{
-
+		InitWindow(640, 480, "Colortrack");
 	}
 
 	void DeleteObjects()
@@ -20,7 +21,7 @@ namespace Colortrack
 
 	void Draw()
 	{
-
+		ClearBackground(BLACK);
 	}
 
 	void Unload()
@@ -30,7 +31,16 @@ namespace Colortrack
 
 	void Loop()
 	{
-
+		Init();
+		while (!WindowShouldClose())
+		{
+			BeginDrawing();
+			Draw();
+		}
+		while (!WindowShouldClose())
+		{
+			Update();
+		}
 	}
 
 }
