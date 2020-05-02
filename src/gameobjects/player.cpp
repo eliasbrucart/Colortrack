@@ -82,7 +82,7 @@ namespace Colortrack
 		}
 	}
 
-	void Player::InitRectangle()
+	void Player::InitRectanglePlayer()
 	{
 		rec.x = _x;
 		rec.y = _y;

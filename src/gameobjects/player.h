@@ -29,7 +29,7 @@ namespace Colortrack
 		float GetHeight();
 		Rectangle rec;
 		void SetInputs();
-		void InitRectangle();
+		void InitRectanglePlayer();
 		void SetLives(int lives);
 	};
 
