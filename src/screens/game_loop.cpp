@@ -1,6 +1,7 @@
 #include "raylib.h"
 
 #include "game_loop.h"
+#include "screens.h"
 #include "gameobjects/player.h"
 
 namespace Colortrack
@@ -28,7 +29,6 @@ namespace Colortrack
 
 	void Draw()
 	{
-		ClearBackground(BLACK);
 		DrawRectangle(player->GetX(), player->GetY(), player->GetWidth(), player->GetHeight(), WHITE);
 	}
 
@@ -42,14 +42,13 @@ namespace Colortrack
 		Init();
 		while (!WindowShouldClose())
 		{
+			Update();
 			BeginDrawing();
+			ClearBackground(BLACK);
 			Draw();
 			EndDrawing();
 		}
-		while (!WindowShouldClose())
-		{
-			Update();
-		}
+		DeleteObjects();
 	}
 
 }
