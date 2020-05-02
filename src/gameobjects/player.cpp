@@ -11,7 +11,7 @@ namespace Colortrack
 		_y = 0.0f;
 		_width = 10.0f;
 		_height = 10.0f;
-		_speed = 20.0f;
+		_speed = 500.0f;
 		_lives = 1.0f;
 	}
 
@@ -74,11 +74,11 @@ namespace Colortrack
 	{
 		if (IsKeyDown(KEY_A))
 		{
-			_x -= 500.0f * GetFrameTime();
+			_x -= _speed * GetFrameTime();
 		}
 		if (IsKeyDown(KEY_D))
 		{
-			_x += 500.0f * GetFrameTime();
+			_x += _speed * GetFrameTime();
 		}
 	}
 
