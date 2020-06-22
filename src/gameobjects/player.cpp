@@ -7,8 +7,8 @@ namespace Colortrack
 
 	Player::Player()
 	{
-		_x = 0.0f;
-		_y = 0.0f;
+		_x = 320.0f;
+		_y = 240.0f;
 		_width = 10.0f;
 		_height = 10.0f;
 		_speed = 500.0f;
@@ -93,6 +93,11 @@ namespace Colortrack
 	void Player::SetLives(int lives)
 	{
 		_lives = lives;
+	}
+
+	void Player::CheckCollisions()
+	{
+
 	}
 
 }

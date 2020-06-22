@@ -31,6 +31,7 @@ namespace Colortrack
 		void SetInputs();
 		void InitRectanglePlayer();
 		void SetLives(int lives);
+		void CheckCollisions();
 	};
 
 }
