@@ -25,6 +25,7 @@ namespace Colortrack
 	void Update()
 	{
 		player->SetInputs();
+		player->CollisionWindow();
 	}
 
 	void Draw()

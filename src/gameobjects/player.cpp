@@ -2,6 +2,8 @@
 
 #include "raylib.h"
 
+#include "screens/game_loop.h"
+
 namespace Colortrack
 {
 
@@ -95,10 +97,16 @@ namespace Colortrack
 		_lives = lives;
 	}
 
-	void Player::CheckCollisions()
+	void Player::CollisionWindow()
 	{
-
+		if (_x <= minScreenWidth) 
+		{
+			_x = minScreenWidth;
+		}
+		if (_x + _width >= GetScreenWidth())
+		{
+			_x = GetScreenWidth() - _width;
+		}
 	}
-
 }
 

@@ -11,6 +11,8 @@ namespace Colortrack
 	void Unload();
 	void Loop();
 
+	static int minScreenWidth = 0;
+	static int minScreenHeight = 0;
 }
 
 #endif
