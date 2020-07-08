@@ -8,10 +8,11 @@ namespace Colortrack
 	class RectangleEnemy
 	{
 	private:
-		int _x;
-		int _y;
-		int _width;
-		int _height;
+		float _x;
+		float _y;
+		float _width;
+		float _height;
+		float _speed;
 	public:
 		RectangleEnemy();
 		~RectangleEnemy();
