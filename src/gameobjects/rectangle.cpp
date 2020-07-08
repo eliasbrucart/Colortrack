@@ -6,10 +6,11 @@ namespace Colortrack
 {
 	RectangleEnemy::RectangleEnemy()
 	{
-		_x = 1;
-		_y = 1;
-		_width = 10;
-		_height = 10;
+		_x = 1.0f;
+		_y = 1.0f;
+		_width = 10.0f;
+		_height = 10.0f;
+		_speed = 200.0f;
 	}
 
 	RectangleEnemy::~RectangleEnemy()
@@ -23,11 +24,6 @@ namespace Colortrack
 		rec.y = _y;
 		rec.width = _width;
 		rec.height = _height;
-	}
-
-	void RectangleEnemy::DrawRectangleEnemy()
-	{
-		DrawRectangle(rec.x, rec.y, rec.width, rec.height, WHITE);
 	}
 
 	void RectangleEnemy::MoveRectangleEnemy()
