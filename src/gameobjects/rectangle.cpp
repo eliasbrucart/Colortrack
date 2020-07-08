@@ -32,7 +32,7 @@ namespace Colortrack
 
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
-
+		_x += 200.0f * GetFrameTime();
 	}
 
 	void RectangleEnemy::SetX(int x)
