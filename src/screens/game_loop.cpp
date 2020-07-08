@@ -3,11 +3,13 @@
 #include "game_loop.h"
 #include "screens.h"
 #include "gameobjects/player.h"
+#include "gameobjects/rectangle.h"
 
 namespace Colortrack
 {
 
 	Player* player = new Player();
+	RectangleEnemy* enemy = new RectangleEnemy();
 
 	void Init() 
 	{
@@ -20,17 +22,23 @@ namespace Colortrack
 		{
 			delete player;
 		}
+		if (enemy != NULL)
+		{
+			delete enemy;
+		}
 	}
 
 	void Update()
 	{
 		player->SetInputs();
 		player->CollisionWindow();
+		enemy->MoveRectangleEnemy();
 	}
 
 	void Draw()
 	{
 		DrawRectangle(player->GetX(), player->GetY(), player->GetWidth(), player->GetHeight(), WHITE);
+		DrawRectangle(enemy->GetX(), enemy->GetY(), enemy->GetWidth(), enemy->GetHeight(), GREEN);
 	}
 
 	void Unload()
