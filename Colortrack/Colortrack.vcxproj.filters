@@ -4,30 +4,42 @@
     <Filter Include="src">
       <UniqueIdentifier>{f3e2d01b-fa35-4044-a524-e2dc6c5d8fce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="screens">
-      <UniqueIdentifier>{d472b861-f4c1-4956-83f8-08bb15117539}</UniqueIdentifier>
+    <Filter Include="src\gameobjects">
+      <UniqueIdentifier>{305e98ca-4d9b-49da-9cef-a3f40b098838}</UniqueIdentifier>
     </Filter>
-    <Filter Include="gameobjects">
-      <UniqueIdentifier>{1da31c86-acd0-45c9-89ba-8dfb38da0178}</UniqueIdentifier>
+    <Filter Include="src\screens">
+      <UniqueIdentifier>{7b253cf0-dc98-4156-ace8-88137a69c2e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\screens\game_loop.cpp">
-      <Filter>screens</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\gameobjects\player.cpp">
-      <Filter>gameobjects</Filter>
+      <Filter>src\gameobjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screens\game_loop.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screens\screens.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gameobjects\rectangle.cpp">
+      <Filter>src\gameobjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\screens\game_loop.h">
-      <Filter>screens</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\gameobjects\player.h">
-      <Filter>gameobjects</Filter>
+      <Filter>src\gameobjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\screens\game_loop.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\screens\screens.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\gameobjects\rectangle.h">
+      <Filter>src\gameobjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

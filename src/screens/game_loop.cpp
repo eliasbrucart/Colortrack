@@ -3,7 +3,7 @@
 #include "game_loop.h"
 #include "screens.h"
 #include "gameobjects/player.h"
-#include "gameobjects/rectangle.h"
+#include "gameobjects/rectangle_enemy.h"
 
 namespace Colortrack
 {

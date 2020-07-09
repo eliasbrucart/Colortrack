@@ -1,5 +1,5 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#ifndef RECTANGLE_ENEMY_H
+#define RECTANGLE_ENEMY_H
 
 #include "raylib.h"
 
