@@ -6,10 +6,10 @@ namespace Colortrack
 {
 	RectangleEnemy::RectangleEnemy()
 	{
-		_x = 1.0f;
-		_y = 1.0f;
-		_width = 10.0f;
-		_height = 10.0f;
+		_x = 100.0f;
+		_y = 100.0f;
+		_width = 100.0f;
+		_height = 50.0f;
 		_speed = 200.0f;
 	}
 
@@ -28,7 +28,7 @@ namespace Colortrack
 
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
-		_x += 200.0f * GetFrameTime();
+		_x += _speed * GetFrameTime();
 	}
 
 	void RectangleEnemy::SetX(int x)
@@ -69,5 +69,17 @@ namespace Colortrack
 	int RectangleEnemy::GetHeight()
 	{
 		return _height;
+	}
+
+	void RectangleEnemy::RectangleEnemyOutOfScreen()
+	{
+		if (_y + _height >= GetScreenHeight()) 
+		{
+			_y = 0;
+		}
+		if(_x + _width >= GetScreenWidth())
+		{
+			_x = 0;
+		}
 	}
 }

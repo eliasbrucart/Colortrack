@@ -33,6 +33,7 @@ namespace Colortrack
 		player->SetInputs();
 		player->CollisionWindow();
 		enemy->MoveRectangleEnemy();
+		enemy->RectangleEnemyOutOfScreen();
 	}
 
 	void Draw()

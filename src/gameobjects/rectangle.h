@@ -17,7 +17,6 @@ namespace Colortrack
 		RectangleEnemy();
 		~RectangleEnemy();
 		void InitRectangleEnemy();
-		void DrawRectangleEnemy();
 		void MoveRectangleEnemy();
 		void SetX(int x);
 		int GetX();
@@ -28,6 +27,7 @@ namespace Colortrack
 		void SetHeight(int height);
 		int GetHeight();
 		Rectangle rec;
+		void RectangleEnemyOutOfScreen();
 	};
 }
 
