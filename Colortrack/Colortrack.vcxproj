@@ -20,14 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\gameobjects\player.cpp" />
-    <ClCompile Include="..\src\gameobjects\rectangle.cpp" />
+    <ClCompile Include="..\src\gameobjects\rectangle_enemy.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\screens\gameplay.cpp" />
     <ClCompile Include="..\src\screens\game_loop.cpp" />
     <ClCompile Include="..\src\screens\screens.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\gameobjects\player.h" />
-    <ClInclude Include="..\src\gameobjects\rectangle.h" />
+    <ClInclude Include="..\src\gameobjects\rectangle_enemy.h" />
+    <ClInclude Include="..\src\screens\gameplay.h" />
     <ClInclude Include="..\src\screens\game_loop.h" />
     <ClInclude Include="..\src\screens\screens.h" />
   </ItemGroup>
