@@ -21,13 +21,13 @@
     <ClCompile Include="..\src\screens\game_loop.cpp">
       <Filter>src\screens</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\screens\screens.cpp">
-      <Filter>src\screens</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\gameobjects\rectangle_enemy.cpp">
       <Filter>src\gameobjects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\screens\gameplay.cpp">
+      <Filter>src\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screens\menu.cpp">
       <Filter>src\screens</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,13 +38,13 @@
     <ClInclude Include="..\src\screens\game_loop.h">
       <Filter>src\screens</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\screens\screens.h">
-      <Filter>src\screens</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\gameobjects\rectangle_enemy.h">
       <Filter>src\gameobjects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\screens\gameplay.h">
+      <Filter>src\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\screens\menu.h">
       <Filter>src\screens</Filter>
     </ClInclude>
   </ItemGroup>

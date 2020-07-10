@@ -24,14 +24,14 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\screens\gameplay.cpp" />
     <ClCompile Include="..\src\screens\game_loop.cpp" />
-    <ClCompile Include="..\src\screens\screens.cpp" />
+    <ClCompile Include="..\src\screens\menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\gameobjects\player.h" />
     <ClInclude Include="..\src\gameobjects\rectangle_enemy.h" />
     <ClInclude Include="..\src\screens\gameplay.h" />
     <ClInclude Include="..\src\screens\game_loop.h" />
-    <ClInclude Include="..\src\screens\screens.h" />
+    <ClInclude Include="..\src\screens\menu.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
