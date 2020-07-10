@@ -1,21 +1,24 @@
 #include "menu.h"
 
-Menu::Menu()
+namespace Colortrack
 {
+	Menu::Menu()
+	{
 
-}
+	}
 
-Menu::~Menu() 
-{
+	Menu::~Menu()
+	{
 
-}
+	}
 
-void Menu::Draw()
-{
+	void Menu::Draw()
+	{
 
-}
+	}
 
-void Menu::Input()
-{
+	void Menu::Input()
+	{
 
+	}
 }
