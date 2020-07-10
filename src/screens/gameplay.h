@@ -8,6 +8,7 @@ namespace Colortrack
 	public:
 		Gameplay();
 		~Gameplay();
+		void Init();
 		void Update();
 		void Draw();
 	};

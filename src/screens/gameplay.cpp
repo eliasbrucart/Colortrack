@@ -12,6 +12,11 @@ namespace Colortrack
 
 	}
 
+	void Gameplay::Init()
+	{
+
+	}
+
 	void Gameplay::Update()
 	{
 
