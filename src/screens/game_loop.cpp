@@ -7,39 +7,14 @@
 
 namespace Colortrack
 {
-	//Acomodar codigo
-	Player* player = new Player();
-	RectangleEnemy* enemy = new RectangleEnemy();
-
-	void Init() 
-	{
-		InitWindow(640, 480, "Colortrack");
-	}
+	Gameplay* gameplay = new Gameplay();
 
 	void DeleteObjects()
 	{
-		if (player != NULL)
+		if (gameplay != NULL)
 		{
-			delete player;
+			delete gameplay;
 		}
-		if (enemy != NULL)
-		{
-			delete enemy;
-		}
-	}
-
-	void Update()
-	{
-		player->SetInputs();
-		player->CollisionWindow();
-		enemy->MoveRectangleEnemy();
-		enemy->RectangleEnemyOutOfScreen();
-	}
-
-	void Draw()
-	{
-		DrawRectangle(player->GetX(), player->GetY(), player->GetWidth(), player->GetHeight(), WHITE);
-		DrawRectangle(enemy->GetX(), enemy->GetY(), enemy->GetWidth(), enemy->GetHeight(), GREEN);
 	}
 
 	void Unload()
@@ -49,13 +24,13 @@ namespace Colortrack
 
 	void Loop()
 	{
-		Init();
+		gameplay->Init();
 		while (!WindowShouldClose())
 		{
-			Update();
+			gameplay->Update();
 			BeginDrawing();
+			gameplay->Draw();
 			ClearBackground(BLACK);
-			Draw();
 			EndDrawing();
 		}
 		DeleteObjects();
