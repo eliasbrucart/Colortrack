@@ -11,6 +11,7 @@ namespace Colortrack
 		_width = 100.0f;
 		_height = 50.0f;
 		_speed = 200.0f;
+		_color = WHITE;
 	}
 
 	RectangleEnemy::~RectangleEnemy()
@@ -69,6 +70,16 @@ namespace Colortrack
 	int RectangleEnemy::GetHeight()
 	{
 		return _height;
+	}
+
+	void RectangleEnemy::SetColor(Color color)
+	{
+		_color = color;
+	}
+
+	Color RectangleEnemy::GetColor()
+	{
+		return _color;
 	}
 
 	void RectangleEnemy::RectangleEnemyOutOfScreen()

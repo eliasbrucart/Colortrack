@@ -27,6 +27,8 @@ namespace Colortrack
 		int GetWidth();
 		void SetHeight(int height);
 		int GetHeight();
+		void SetColor(Color color);
+		Color GetColor();
 		Rectangle rec;
 		void RectangleEnemyOutOfScreen();
 	};

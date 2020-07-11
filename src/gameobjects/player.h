@@ -18,7 +18,7 @@ namespace Colortrack
 		Color _color;
 	public:
 		Player();
-		Player(float x, float y, float width, float height, float speed, int lives);
+		Player(float x, float y, float width, float height, float speed, int lives, Color color);
 		~Player();
 		void SetX(float x);
 		float GetX();
@@ -28,6 +28,8 @@ namespace Colortrack
 		float GetWidth();
 		void SetHeight(float height);
 		float GetHeight();
+		void SetColor(Color color);
+		Color GetColor();
 		Rectangle rec;
 		void SetInputs();
 		void InitRectanglePlayer();

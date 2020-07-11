@@ -15,9 +15,10 @@ namespace Colortrack
 		_height = 10.0f;
 		_speed = 500.0f;
 		_lives = 1.0f;
+		_color = GREEN;
 	}
 
-	Player::Player(float x, float y, float width, float height, float speed, int lives)
+	Player::Player(float x, float y, float width, float height, float speed, int lives, Color color)
 	{
 		_x = x;
 		_y = y;
@@ -25,6 +26,7 @@ namespace Colortrack
 		_height = height;
 		_speed = speed;
 		_lives = lives;
+		_color = color;
 	}
 
 	Player::~Player()
@@ -72,6 +74,16 @@ namespace Colortrack
 		return _height;
 	}
 
+	void Player::SetColor(Color color)
+	{
+		_color = color;
+	}
+
+	Color Player::GetColor()
+	{
+		return _color;
+	}
+
 	void Player::SetInputs()
 	{
 		if (IsKeyDown(KEY_A))
@@ -99,7 +111,7 @@ namespace Colortrack
 
 	void Player::CollisionWindow()
 	{
-		if (_x <= minScreenWidth) 
+		if (_x <= minScreenWidth)
 		{
 			_x = minScreenWidth;
 		}
