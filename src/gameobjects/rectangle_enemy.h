@@ -16,6 +16,7 @@ namespace Colortrack
 		Color _color;
 	public:
 		RectangleEnemy();
+		RectangleEnemy(float x, float y, float width, float height, float speed, Color color);
 		~RectangleEnemy();
 		void InitRectangleEnemy();
 		void MoveRectangleEnemy();

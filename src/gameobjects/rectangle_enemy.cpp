@@ -14,6 +14,16 @@ namespace Colortrack
 		_color = WHITE;
 	}
 
+	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, float speed, Color color)
+	{
+		_x = x;
+		_y = y;
+		_width = width;
+		_height = height;
+		_speed = speed;
+		_color = color;
+	}
+
 	RectangleEnemy::~RectangleEnemy()
 	{
 
