@@ -8,6 +8,8 @@ namespace Colortrack
 	{
 		player = NULL;
 		enemy = NULL;
+		player = new Player();
+		enemy = new RectangleEnemy();
 	}
 
 	Gameplay::~Gameplay()
