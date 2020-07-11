@@ -13,6 +13,14 @@ namespace Colortrack
 
 	static int minScreenWidth = 0;
 	static int minScreenHeight = 0;
+
+	enum GameState
+	{
+		menu,
+		instructions,
+		game,
+		credits
+	};
 }
 
 #endif

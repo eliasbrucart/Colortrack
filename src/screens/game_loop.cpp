@@ -3,10 +3,11 @@
 #include "game_loop.h"
 #include "gameobjects/player.h"
 #include "gameobjects/rectangle_enemy.h"
+#include "gameplay.h"
 
 namespace Colortrack
 {
-
+	//Acomodar codigo
 	Player* player = new Player();
 	RectangleEnemy* enemy = new RectangleEnemy();
 
