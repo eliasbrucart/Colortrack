@@ -41,7 +41,9 @@ namespace Colortrack
 
 	void Menu::Draw()
 	{
-
+		DrawRectangle(_playButton.x, _playButton.y, _playButton.width, _playButton.height, GREEN);
+		DrawRectangle(_tutorialButton.x, _tutorialButton.y, _tutorialButton.width, _tutorialButton.height, GREEN);
+		DrawRectangle(_exitButton.x, _exitButton.y, _exitButton.width, _exitButton.height, GREEN);
 	}
 
 	void Menu::Input()
