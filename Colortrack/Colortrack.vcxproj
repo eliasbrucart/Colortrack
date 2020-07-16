@@ -22,6 +22,7 @@
     <ClCompile Include="..\src\gameobjects\player.cpp" />
     <ClCompile Include="..\src\gameobjects\rectangle_enemy.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\screens\credits.cpp" />
     <ClCompile Include="..\src\screens\gameplay.cpp" />
     <ClCompile Include="..\src\screens\game_loop.cpp" />
     <ClCompile Include="..\src\screens\menu.cpp" />
@@ -29,6 +30,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\gameobjects\player.h" />
     <ClInclude Include="..\src\gameobjects\rectangle_enemy.h" />
+    <ClInclude Include="..\src\screens\credits.h" />
     <ClInclude Include="..\src\screens\gameplay.h" />
     <ClInclude Include="..\src\screens\game_loop.h" />
     <ClInclude Include="..\src\screens\menu.h" />
