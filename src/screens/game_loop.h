@@ -12,7 +12,7 @@ namespace Colortrack
 
 	enum GameState
 	{
-		menu,
+		mainmenu,
 		instructions,
 		game,
 		credits
