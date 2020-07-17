@@ -1,5 +1,7 @@
 #include "menu.h"
 
+#include "game_loop.h"
+
 namespace Colortrack
 {
 	static float xPlayButton = 300.0f;
@@ -51,5 +53,13 @@ namespace Colortrack
 	void Menu::Input()
 	{
 		mouse = GetMousePosition();
+
+		if (CheckCollisionPointRec(mouse, _playButton))
+		{
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+			{
+				state = GameState::game;
+			}
+		}
 	}
 }
