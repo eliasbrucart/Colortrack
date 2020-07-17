@@ -17,6 +17,8 @@ namespace Colortrack
 		game,
 		credits
 	};
+
+	extern GameState state;
 }
 
 #endif

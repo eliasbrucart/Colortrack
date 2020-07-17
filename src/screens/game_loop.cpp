@@ -4,16 +4,24 @@
 #include "gameobjects/player.h"
 #include "gameobjects/rectangle_enemy.h"
 #include "gameplay.h"
+#include "menu.h"
 
 namespace Colortrack
 {
 	Gameplay* gameplay = new Gameplay();
+	Menu* menu = new Menu();
+
+	GameState state = GameState::mainmenu;
 
 	void DeleteObjects()
 	{
 		if (gameplay != NULL)
 		{
 			delete gameplay;
+		}
+		if (menu != NULL)
+		{
+			delete menu;
 		}
 	}
 
@@ -27,10 +35,27 @@ namespace Colortrack
 		gameplay->Init();
 		while (!WindowShouldClose())
 		{
-			gameplay->Update();
+			//Updates
+			if (state == GameState::mainmenu)
+			{
+				menu->Input();
+			}
+			if (state == GameState::game)
+			{
+				gameplay->Update();
+			}
+
+			//Drawings
 			BeginDrawing();
-			gameplay->Draw();
 			ClearBackground(BLACK);
+			if (state == GameState::mainmenu)
+			{
+				menu->Draw();
+			}
+			if (state == GameState::game)
+			{
+				gameplay->Draw();
+			}
 			EndDrawing();
 		}
 		DeleteObjects();
