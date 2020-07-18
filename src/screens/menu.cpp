@@ -61,5 +61,13 @@ namespace Colortrack
 				state = GameState::game;
 			}
 		}
+
+		if (CheckCollisionPointRec(mouse, _tutorialButton))
+		{
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+			{
+				state = GameState::tutorialscreen;
+			}
+		}
 	}
 }

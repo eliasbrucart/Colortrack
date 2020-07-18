@@ -5,11 +5,13 @@
 #include "gameobjects/rectangle_enemy.h"
 #include "gameplay.h"
 #include "menu.h"
+#include "tutorial.h"
 
 namespace Colortrack
 {
 	Gameplay* gameplay = new Gameplay();
 	Menu* menu = new Menu();
+	Tutorial* tutorial = new Tutorial();
 
 	int minScreenWidth = 0;
 	int minScreenHeight = 0;
@@ -24,6 +26,10 @@ namespace Colortrack
 		if (menu != NULL)
 		{
 			delete menu;
+		}
+		if (tutorial != NULL)
+		{
+			delete tutorial;
 		}
 	}
 
@@ -42,6 +48,10 @@ namespace Colortrack
 			{
 				menu->Input();
 			}
+			if (state == GameState::tutorialscreen)
+			{
+				tutorial->Input();
+			}
 			if (state == GameState::game)
 			{
 				gameplay->Update();
@@ -53,6 +63,10 @@ namespace Colortrack
 			if (state == GameState::mainmenu)
 			{
 				menu->Draw();
+			}
+			if (state == GameState::tutorialscreen)
+			{
+				tutorial->Draw();
 			}
 			if (state == GameState::game)
 			{
