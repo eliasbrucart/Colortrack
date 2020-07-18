@@ -11,6 +11,8 @@ namespace Colortrack
 	Gameplay* gameplay = new Gameplay();
 	Menu* menu = new Menu();
 
+	int minScreenWidth = 0;
+	int minScreenHeight = 0;
 	GameState state = GameState::mainmenu;
 
 	void DeleteObjects()

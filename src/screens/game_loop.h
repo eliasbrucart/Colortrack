@@ -7,13 +7,13 @@ namespace Colortrack
 	void Unload();
 	void Loop();
 
-	static int minScreenWidth = 0;
-	static int minScreenHeight = 0;
+	extern int minScreenWidth;
+	extern int minScreenHeight;
 
 	enum GameState
 	{
 		mainmenu,
-		tutorial,
+		tutorialscreen,
 		game,
 		credits
 	};
