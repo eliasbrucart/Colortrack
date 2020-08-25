@@ -39,7 +39,7 @@ namespace Colortrack
 
 	void Gameplay::Draw()
 	{
-		DrawRectangle(player->GetX(), player->GetY(), player->GetWidth(), player->GetHeight(), GREEN);
-		DrawRectangle(enemy->GetX(), enemy->GetY(), enemy->GetWidth(), enemy->GetHeight(), YELLOW);
+		DrawRectangle(player->GetX(), player->GetY(), player->GetWidth(), player->GetHeight(), player->GetColor());
+		DrawRectangle(enemy->GetX(), enemy->GetY(), enemy->GetWidth(), enemy->GetHeight(), enemy->GetColor());
 	}
 }

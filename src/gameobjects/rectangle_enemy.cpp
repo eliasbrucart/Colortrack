@@ -37,11 +37,6 @@ namespace Colortrack
 		rec.height = _height;
 	}
 
-	void RectangleEnemy::MoveRectangleEnemy()
-	{
-		_x += _speed * GetFrameTime();
-	}
-
 	void RectangleEnemy::SetX(int x)
 	{
 		_x = x;
@@ -90,6 +85,11 @@ namespace Colortrack
 	Color RectangleEnemy::GetColor()
 	{
 		return _color;
+	}
+
+	void RectangleEnemy::MoveRectangleEnemy()
+	{
+		_y += _speed * GetFrameTime();
 	}
 
 	void RectangleEnemy::RectangleEnemyOutOfScreen()
