@@ -28,13 +28,24 @@ namespace Colortrack
 		float GetWidth();
 		void SetHeight(float height);
 		float GetHeight();
-		void SetColor(Color color);
 		Color GetColor();
 		Rectangle rec;
 		void SetInputs();
 		void InitRectanglePlayer();
 		void SetLives(int lives);
 		void CollisionWindow();
+		enum PlayerColors
+		{
+			playerGreen,
+			playerRed,
+			playerYellow,
+			playerBlue,
+			playerOrange
+		};
+		PlayerColors playerColors;
+		void SetColor(PlayerColors color);
+		//PlayerColors GetColor();
+		void SetPlayerColors(PlayerColors color);
 	};
 
 }

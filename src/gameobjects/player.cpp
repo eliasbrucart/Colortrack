@@ -14,8 +14,9 @@ namespace Colortrack
 		_width = 10.0f;
 		_height = 10.0f;
 		_speed = 500.0f;
-		_lives = 1.0f;
-		_color = GREEN;
+		_lives = 1;
+		_color = WHITE;
+		playerColors = PlayerColors::playerGreen;
 	}
 
 	Player::Player(float x, float y, float width, float height, float speed, int lives, Color color)
@@ -74,15 +75,21 @@ namespace Colortrack
 		return _height;
 	}
 
-	void Player::SetColor(Color color)
+	void Player::SetColor(PlayerColors color)
 	{
-		_color = color;
+		playerColors = color;
+		SetPlayerColors(color);
 	}
 
 	Color Player::GetColor()
 	{
 		return _color;
 	}
+
+	/*PlayerColors Player::GetColor()
+	{
+		return playerColors;
+	}*/
 
 	void Player::SetInputs()
 	{
@@ -113,11 +120,33 @@ namespace Colortrack
 	{
 		if (_x <= minScreenWidth)
 		{
-			_x = minScreenWidth;
+			_x = static_cast<float>(minScreenWidth);
 		}
 		if (_x + _width >= GetScreenWidth())
 		{
-			_x = GetScreenWidth() - _width;
+			_x = static_cast<float>(GetScreenWidth()) - _width;
+		}
+	}
+
+	void Player::SetPlayerColors(PlayerColors color)
+	{
+		switch (color)
+		{
+		case playerGreen:
+			_color = GREEN;
+			break;
+		case playerRed:
+			_color = RED;
+			break;
+		case playerYellow:
+			_color = YELLOW;
+			break;
+		case playerBlue:
+			_color = BLUE;
+			break;
+		case playerOrange:
+			_color = ORANGE;
+			break;
 		}
 	}
 }

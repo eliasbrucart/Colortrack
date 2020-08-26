@@ -1,6 +1,9 @@
+#include<iostream>
 #include "raylib.h"
 
 #include "gameplay.h"
+
+using namespace std;
 
 namespace Colortrack
 {
@@ -35,11 +38,28 @@ namespace Colortrack
 		player->CollisionWindow();
 		enemy->MoveRectangleEnemy();
 		enemy->RectangleEnemyOutOfScreen();
+		CollisionsGame();
+	}
+
+	void Gameplay::CollisionsGame()
+	{
+		player->InitRectanglePlayer();
+		enemy->InitRectangleEnemy();
+		player->SetPlayerColors(player->playerGreen);
+		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyGreen);
+		if (player->playerColors == player->playerGreen && enemy->rectangleEnemyColors == enemy->rectangleEnemyGreen)
+		{
+			cout << "Coco" << endl;
+			if (CheckCollisionRecs(player->rec, enemy->rec))
+			{
+				player->SetX(-1000);
+			}
+		}
 	}
 
 	void Gameplay::Draw()
-	{
-		DrawRectangle(player->GetX(), player->GetY(), player->GetWidth(), player->GetHeight(), player->GetColor());
-		DrawRectangle(enemy->GetX(), enemy->GetY(), enemy->GetWidth(), enemy->GetHeight(), enemy->GetColor());
+	{		
+		DrawRectangleRec(player->rec, WHITE);
+		DrawRectangleRec(enemy->rec, WHITE);
 	}
 }

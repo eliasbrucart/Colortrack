@@ -18,7 +18,6 @@ namespace Colortrack
 		RectangleEnemy();
 		RectangleEnemy(float x, float y, float width, float height, float speed, Color color);
 		~RectangleEnemy();
-		void InitRectangleEnemy();
 		void MoveRectangleEnemy();
 		void SetX(int x);
 		int GetX();
@@ -28,10 +27,23 @@ namespace Colortrack
 		int GetWidth();
 		void SetHeight(int height);
 		int GetHeight();
-		void SetColor(Color color);
+		//void SetColor(Color color);
 		Color GetColor();
 		Rectangle rec;
+		void InitRectangleEnemy();
 		void RectangleEnemyOutOfScreen();
+		enum RectangleEnemyColors
+		{
+			rectangleEnemyGreen,
+			rectangleEnemyRed,
+			rectangleEnemyYellow,
+			rectangleEnemyBlue,
+			rectangleEnemyOrange
+		};
+		RectangleEnemyColors rectangleEnemyColors;
+		void SetColor(RectangleEnemyColors color);
+		//PlayerColors GetColor();
+		void SetRectangleEnemyColors(RectangleEnemyColors color);
 	};
 }
 

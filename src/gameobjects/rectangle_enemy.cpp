@@ -8,10 +8,11 @@ namespace Colortrack
 	{
 		_x = 100.0f;
 		_y = 100.0f;
-		_width = 100.0f;
+		_width = 50.0f;
 		_height = 50.0f;
 		_speed = 200.0f;
 		_color = WHITE;
+		rectangleEnemyColors = RectangleEnemyColors::rectangleEnemyGreen;
 	}
 
 	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, float speed, Color color)
@@ -77,15 +78,21 @@ namespace Colortrack
 		return _height;
 	}
 
-	void RectangleEnemy::SetColor(Color color)
+	void RectangleEnemy::SetColor(RectangleEnemyColors color)
 	{
-		_color = color;
+		rectangleEnemyColors = color;
+		SetRectangleEnemyColors(color);
 	}
 
 	Color RectangleEnemy::GetColor()
 	{
 		return _color;
 	}
+
+	/*Color RectangleEnemy::GetColor()
+	{
+		return _color;
+	}*/
 
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
@@ -101,6 +108,28 @@ namespace Colortrack
 		if(_x + _width >= GetScreenWidth())
 		{
 			_x = 0;
+		}
+	}
+
+	void RectangleEnemy::SetRectangleEnemyColors(RectangleEnemyColors color)
+	{
+		switch (color)
+		{
+		case rectangleEnemyGreen:
+			_color = GREEN;
+			break;
+		case rectangleEnemyRed:
+			_color = RED;
+			break;
+		case rectangleEnemyYellow:
+			_color = YELLOW;
+			break;
+		case rectangleEnemyBlue:
+			_color = BLUE;
+			break;
+		case rectangleEnemyOrange:
+			_color = ORANGE;
+			break;
 		}
 	}
 }

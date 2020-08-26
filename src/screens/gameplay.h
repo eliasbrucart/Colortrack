@@ -16,6 +16,7 @@ namespace Colortrack
 		~Gameplay();
 		void Init();
 		void Update();
+		void CollisionsGame();
 		void Draw();
 	};
 }
