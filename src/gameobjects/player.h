@@ -44,7 +44,6 @@ namespace Colortrack
 		};
 		PlayerColors playerColors;
 		void SetColor(PlayerColors color);
-		//PlayerColors GetColor();
 		void SetPlayerColors(PlayerColors color);
 	};
 

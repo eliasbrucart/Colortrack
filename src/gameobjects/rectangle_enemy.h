@@ -42,7 +42,6 @@ namespace Colortrack
 		};
 		RectangleEnemyColors rectangleEnemyColors;
 		void SetColor(RectangleEnemyColors color);
-		//PlayerColors GetColor();
 		void SetRectangleEnemyColors(RectangleEnemyColors color);
 	};
 }

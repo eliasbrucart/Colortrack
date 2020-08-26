@@ -49,17 +49,16 @@ namespace Colortrack
 		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyGreen);
 		if (player->playerColors == player->playerGreen && enemy->rectangleEnemyColors == enemy->rectangleEnemyGreen)
 		{
-			cout << "Coco" << endl;
 			if (CheckCollisionRecs(player->rec, enemy->rec))
 			{
-				player->SetX(-1000);
+				player->SetPlayerColors(player->playerBlue);
 			}
 		}
 	}
 
 	void Gameplay::Draw()
 	{		
-		DrawRectangleRec(player->rec, WHITE);
-		DrawRectangleRec(enemy->rec, WHITE);
+		DrawRectangleRec(player->rec, player->GetColor());
+		DrawRectangleRec(enemy->rec, enemy->GetColor());
 	}
 }
