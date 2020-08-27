@@ -4,12 +4,20 @@ namespace Colortrack
 {
 	CircleEnemy::CircleEnemy()
 	{
-
+		_x = 1.0f;
+		_y = 1.0f;
+		_radius = 10.0f;
+		_center = {1.0f, 1.0f};
+		_color = WHITE;
 	}
 
 	CircleEnemy::CircleEnemy(float x, float y, float radius, Vector2 center, Color color)
 	{
-
+		_x = x;
+		_y = y;
+		_radius = radius;
+		_center = center;
+		_color = color;
 	}
 
 	CircleEnemy::~CircleEnemy()
@@ -19,42 +27,42 @@ namespace Colortrack
 
 	void CircleEnemy::SetX(float x)
 	{
-
+		_x = x;
 	}
 
 	float CircleEnemy::GetX()
 	{
-
+		return _x;
 	}
 
 	void CircleEnemy::SetY(float y)
 	{
-
+		_y = y;
 	}
 
 	float CircleEnemy::GetY()
 	{
-
+		return _y;
 	}
 
 	void CircleEnemy::SetRadius(float radius)
 	{
-
+		_radius = radius;
 	}
 
 	float CircleEnemy::GetRadius()
 	{
-
+		return _radius;
 	}
 
 	void CircleEnemy::SetColor(Color color)
 	{
-
+		_color = color;
 	}
 
 	Color CircleEnemy::GetColor()
 	{
-
+		return _color;
 	}
 
 	void CircleEnemy::MoveCircleEnemy()
