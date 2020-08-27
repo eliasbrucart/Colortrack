@@ -5,7 +5,6 @@
 
 namespace Colortrack
 {
-
 	class Player
 	{
 	private:
@@ -48,7 +47,4 @@ namespace Colortrack
 	};
 
 }
-
-
-
 #endif
