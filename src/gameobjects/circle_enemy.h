@@ -11,11 +11,10 @@ namespace Colortrack
 		float _x;
 		float _y;
 		float _radius;
-		Vector2 _center;
 		Color _color;
 	public:
 		CircleEnemy();
-		CircleEnemy(float x, float y, float radius, Vector2 center, Color color);
+		CircleEnemy(float x, float y, float radius, Color color);
 		~CircleEnemy();
 		void SetX(float x);
 		float GetX();
@@ -23,8 +22,7 @@ namespace Colortrack
 		float GetY();
 		void SetRadius(float radius);
 		float GetRadius();
-		void SetCenter(Vector2 center);
-		Vector2 GetCenter();
+		Vector2 GetPosition();
 		void SetColor(Color color);
 		Color GetColor();
 		void MoveCircleEnemy();

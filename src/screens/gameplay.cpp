@@ -14,7 +14,7 @@ namespace Colortrack
 		circleEnemy = NULL;
 		player = new Player();
 		enemy = new RectangleEnemy();
-		circleEnemy = new CircleEnemy(300.0f, 200.0f, 20.0f, { 1.0f, 1.0f }, GREEN);
+		circleEnemy = new CircleEnemy(300.0f, 200.0f, 20.0f, GREEN);
 	}
 
 	Gameplay::~Gameplay()
@@ -62,7 +62,7 @@ namespace Colortrack
 				player->SetPlayerColors(player->playerBlue);
 			}
 		}
-		if (CheckCollisionCircleRec(circleEnemy->GetCenter(), circleEnemy->GetRadius(), player->rec))
+		if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
 		{
 			player->SetPlayerColors(player->playerBlue);
 		}
@@ -72,6 +72,6 @@ namespace Colortrack
 	{		
 		DrawRectangleRec(player->rec, player->GetColor());
 		DrawRectangleRec(enemy->rec, enemy->GetColor());
-		DrawCircle(circleEnemy->GetX(), circleEnemy->GetY(), circleEnemy->GetRadius(), circleEnemy->GetColor());
+		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
 	}
 }

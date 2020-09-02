@@ -7,16 +7,14 @@ namespace Colortrack
 		_x = 1.0f;
 		_y = 1.0f;
 		_radius = 10.0f;
-		_center = {1.0f, 1.0f};
 		_color = WHITE;
 	}
 
-	CircleEnemy::CircleEnemy(float x, float y, float radius, Vector2 center, Color color)
+	CircleEnemy::CircleEnemy(float x, float y, float radius,Color color)
 	{
 		_x = x;
 		_y = y;
 		_radius = radius;
-		_center = center;
 		_color = color;
 	}
 
@@ -55,14 +53,9 @@ namespace Colortrack
 		return _radius;
 	}
 
-	void CircleEnemy::SetCenter(Vector2 center)
+	Vector2 CircleEnemy::GetPosition() 
 	{
-		_center = center;
-	}
-
-	Vector2 CircleEnemy::GetCenter() 
-	{
-		return _center;
+		return Vector2{_x, _y};
 	}
 
 	void CircleEnemy::SetColor(Color color)
