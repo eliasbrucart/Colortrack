@@ -2,6 +2,7 @@
 #define GAMEPLAY_H
 
 #include "gameobjects/player.h"
+#include "gameobjects/circle_enemy.h"
 #include "gameobjects/rectangle_enemy.h"
 
 namespace Colortrack
@@ -11,6 +12,7 @@ namespace Colortrack
 	private:
 		Player* player;
 		RectangleEnemy* enemy;
+		CircleEnemy* circleEnemy;
 	public:
 		Gameplay();
 		~Gameplay();

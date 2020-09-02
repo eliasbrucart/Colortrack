@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\gameobjects\circle_enemy.cpp" />
     <ClCompile Include="..\src\gameobjects\player.cpp" />
     <ClCompile Include="..\src\gameobjects\rectangle_enemy.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="..\src\screens\tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\gameobjects\circle_enemy.h" />
     <ClInclude Include="..\src\gameobjects\player.h" />
     <ClInclude Include="..\src\gameobjects\rectangle_enemy.h" />
     <ClInclude Include="..\src\screens\credits.h" />

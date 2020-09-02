@@ -23,6 +23,8 @@ namespace Colortrack
 		float GetY();
 		void SetRadius(float radius);
 		float GetRadius();
+		void SetCenter(Vector2 center);
+		Vector2 GetCenter();
 		void SetColor(Color color);
 		Color GetColor();
 		void MoveCircleEnemy();

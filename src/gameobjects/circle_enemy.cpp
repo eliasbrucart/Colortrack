@@ -55,6 +55,16 @@ namespace Colortrack
 		return _radius;
 	}
 
+	void CircleEnemy::SetCenter(Vector2 center)
+	{
+		_center = center;
+	}
+
+	Vector2 CircleEnemy::GetCenter() 
+	{
+		return _center;
+	}
+
 	void CircleEnemy::SetColor(Color color)
 	{
 		_color = color;
