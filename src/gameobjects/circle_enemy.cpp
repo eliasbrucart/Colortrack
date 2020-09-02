@@ -77,7 +77,7 @@ namespace Colortrack
 
 	void CircleEnemy::MoveCircleEnemy()
 	{
-
+		_y += 200.0f * GetFrameTime();
 	}
 
 	void CircleEnemy::InitCircleEnemy()
@@ -87,6 +87,9 @@ namespace Colortrack
 
 	void CircleEnemy::CircleEnemyOutOfScreen()
 	{
-
+		if (_y + _radius >= GetScreenHeight()) 
+		{
+			_y = 0.0f;
+		}
 	}
 }

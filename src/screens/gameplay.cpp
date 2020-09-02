@@ -44,6 +44,8 @@ namespace Colortrack
 		player->CollisionWindow();
 		enemy->MoveRectangleEnemy();
 		enemy->RectangleEnemyOutOfScreen();
+		circleEnemy->MoveCircleEnemy();
+		circleEnemy->CircleEnemyOutOfScreen();
 		CollisionsGame();
 	}
 
@@ -59,6 +61,10 @@ namespace Colortrack
 			{
 				player->SetPlayerColors(player->playerBlue);
 			}
+		}
+		if (CheckCollisionCircleRec(circleEnemy->GetCenter(), circleEnemy->GetRadius(), player->rec))
+		{
+			player->SetPlayerColors(player->playerBlue);
 		}
 	}
 
