@@ -89,11 +89,6 @@ namespace Colortrack
 		return _color;
 	}
 
-	/*Color RectangleEnemy::GetColor()
-	{
-		return _color;
-	}*/
-
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
 		_y += _speed * GetFrameTime();

@@ -10,7 +10,7 @@ namespace Colortrack
 		_color = WHITE;
 	}
 
-	CircleEnemy::CircleEnemy(float x, float y, float radius,Color color)
+	CircleEnemy::CircleEnemy(float x, float y, float radius, Color color)
 	{
 		_x = x;
 		_y = y;
