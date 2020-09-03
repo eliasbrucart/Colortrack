@@ -10,7 +10,7 @@ namespace Colortrack
 		_y = 100.0f;
 		_width = 50.0f;
 		_height = 50.0f;
-		_speed = 200.0f;
+		_speed = 100.0f;
 		_color = WHITE;
 		rectangleEnemyColors = RectangleEnemyColors::rectangleEnemyGreen;
 	}

@@ -70,7 +70,7 @@ namespace Colortrack
 
 	void CircleEnemy::MoveCircleEnemy()
 	{
-		_y += 200.0f * GetFrameTime();
+		_y += 100.0f * GetFrameTime();
 	}
 
 	void CircleEnemy::InitCircleEnemy()

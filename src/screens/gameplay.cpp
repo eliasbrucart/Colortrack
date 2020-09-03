@@ -12,7 +12,7 @@ namespace Colortrack
 		player = NULL;
 		enemy = NULL;
 		circleEnemy = NULL;
-		player = new Player();
+		player = new Player(320.0f, 340.0f, 10.0f, 10.0f, 300.0f, 1, GREEN);
 		enemy = new RectangleEnemy();
 		circleEnemy = new CircleEnemy(300.0f, 200.0f, 20.0f, GREEN);
 	}
@@ -47,6 +47,7 @@ namespace Colortrack
 		circleEnemy->MoveCircleEnemy();
 		circleEnemy->CircleEnemyOutOfScreen();
 		CollisionsGame();
+		_time += GetFrameTime();
 	}
 
 	void Gameplay::CollisionsGame()
@@ -71,7 +72,10 @@ namespace Colortrack
 	void Gameplay::Draw()
 	{		
 		DrawRectangleRec(player->rec, player->GetColor());
-		DrawRectangleRec(enemy->rec, enemy->GetColor());
-		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
+		if (_time > 2.0f) 
+		{
+			DrawRectangleRec(enemy->rec, enemy->GetColor());
+			DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
+		}
 	}
 }

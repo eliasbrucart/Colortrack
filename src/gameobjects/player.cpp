@@ -9,11 +9,11 @@ namespace Colortrack
 
 	Player::Player()
 	{
-		_x = 320.0f;
-		_y = 240.0f;
+		_x = 1.0f;
+		_y = 1.0f;
 		_width = 10.0f;
 		_height = 10.0f;
-		_speed = 500.0f;
+		_speed = 100.0f;
 		_lives = 1;
 		_color = WHITE;
 		playerColors = PlayerColors::playerGreen;

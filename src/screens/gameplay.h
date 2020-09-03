@@ -13,6 +13,7 @@ namespace Colortrack
 		Player* player;
 		RectangleEnemy* enemy;
 		CircleEnemy* circleEnemy;
+		float _time;
 	public:
 		Gameplay();
 		~Gameplay();
