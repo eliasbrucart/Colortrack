@@ -45,6 +45,5 @@ namespace Colortrack
 		void SetColor(PlayerColors color);
 		void SetPlayerColors(PlayerColors color);
 	};
-
 }
 #endif

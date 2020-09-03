@@ -80,7 +80,7 @@ namespace Colortrack
 
 	void CircleEnemy::CircleEnemyOutOfScreen()
 	{
-		if (_y + _radius >= GetScreenHeight()) 
+		if (_y + _radius >= GetScreenHeight())
 		{
 			_y = 0.0f;
 		}
