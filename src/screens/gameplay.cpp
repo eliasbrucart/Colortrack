@@ -12,8 +12,8 @@ namespace Colortrack
 		player = NULL;
 		enemy = NULL;
 		circleEnemy = NULL;
-		player = new Player(320.0f, 340.0f, 10.0f, 10.0f, 300.0f, 1, GREEN);
-		enemy = new RectangleEnemy();
+		player = new Player(320.0f, 340.0f, 10.0f, 10.0f, 300.0f, 1);
+		enemy = new RectangleEnemy(100.0f, 100.0f, 50.0f, 50.0f, 100.0f);
 		circleEnemy = new CircleEnemy(300.0f, 200.0f, 20.0f, GREEN);
 	}
 
@@ -36,6 +36,8 @@ namespace Colortrack
 	void Gameplay::Init()
 	{
 		InitWindow(640, 480, "Colortrack");
+		player->SetPlayerColors(player->playerGreen);
+		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyGreen);
 	}
 
 	void Gameplay::Update()
@@ -47,15 +49,12 @@ namespace Colortrack
 		circleEnemy->MoveCircleEnemy();
 		circleEnemy->CircleEnemyOutOfScreen();
 		CollisionsGame();
-		_time += GetFrameTime();
 	}
 
 	void Gameplay::CollisionsGame()
 	{
 		player->InitRectanglePlayer();
 		enemy->InitRectangleEnemy();
-		player->SetPlayerColors(player->playerGreen);
-		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyGreen);
 		if (player->playerColors == player->playerGreen && enemy->rectangleEnemyColors == enemy->rectangleEnemyGreen)
 		{
 			if (CheckCollisionRecs(player->rec, enemy->rec))
@@ -72,10 +71,7 @@ namespace Colortrack
 	void Gameplay::Draw()
 	{		
 		DrawRectangleRec(player->rec, player->GetColor());
-		if (_time > 2.0f) 
-		{
-			DrawRectangleRec(enemy->rec, enemy->GetColor());
-			DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
-		}
+		DrawRectangleRec(enemy->rec, enemy->GetColor());
+		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
 	}
 }

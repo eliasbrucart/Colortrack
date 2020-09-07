@@ -15,14 +15,14 @@ namespace Colortrack
 		rectangleEnemyColors = RectangleEnemyColors::rectangleEnemyGreen;
 	}
 
-	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, float speed, Color color)
+	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, float speed)
 	{
 		_x = x;
 		_y = y;
 		_width = width;
 		_height = height;
 		_speed = speed;
-		_color = color;
+		rectangleEnemyColors = RectangleEnemyColors::rectangleEnemyGreen;
 	}
 
 	RectangleEnemy::~RectangleEnemy()

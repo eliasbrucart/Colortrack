@@ -19,7 +19,7 @@ namespace Colortrack
 		playerColors = PlayerColors::playerGreen;
 	}
 
-	Player::Player(float x, float y, float width, float height, float speed, int lives, Color color)
+	Player::Player(float x, float y, float width, float height, float speed, int lives)
 	{
 		_x = x;
 		_y = y;
@@ -27,7 +27,7 @@ namespace Colortrack
 		_height = height;
 		_speed = speed;
 		_lives = lives;
-		_color = color;
+		playerColors = PlayerColors::playerGreen;
 	}
 
 	Player::~Player()
