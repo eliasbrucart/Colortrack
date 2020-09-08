@@ -43,7 +43,7 @@ namespace Colortrack
 		_x = x;
 	}
 
-	int RectangleEnemy::GetX()
+	float RectangleEnemy::GetX()
 	{
 		return _x;
 	}
@@ -53,7 +53,7 @@ namespace Colortrack
 		_y = y;
 	}
 
-	int RectangleEnemy::GetY()
+	float RectangleEnemy::GetY()
 	{
 		return _y;
 	}
@@ -63,7 +63,7 @@ namespace Colortrack
 		_width = width;
 	}
 
-	int RectangleEnemy::GetWidth() 
+	float RectangleEnemy::GetWidth() 
 	{
 		return _width;
 	}
@@ -73,7 +73,7 @@ namespace Colortrack
 		_height = height;
 	}
 
-	int RectangleEnemy::GetHeight()
+	float RectangleEnemy::GetHeight()
 	{
 		return _height;
 	}
