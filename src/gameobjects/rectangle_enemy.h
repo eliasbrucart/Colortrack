@@ -20,13 +20,13 @@ namespace Colortrack
 		~RectangleEnemy();
 		void MoveRectangleEnemy();
 		void SetX(int x);
-		int GetX();
+		float GetX();
 		void SetY(int y);
-		int GetY();
+		float GetY();
 		void SetWidth(int width);
-		int GetWidth();
+		float GetWidth();
 		void SetHeight(int height);
-		int GetHeight();
+		float GetHeight();
 		Color GetColor();
 		Rectangle rec;
 		void InitRectangleEnemy();
