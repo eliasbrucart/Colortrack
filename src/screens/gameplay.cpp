@@ -12,9 +12,9 @@ namespace Colortrack
 		player = NULL;
 		enemy = NULL;
 		circleEnemy = NULL;
-		player = new Player(320.0f, 340.0f, 10.0f, 10.0f, 300.0f, 1);
-		enemy = new RectangleEnemy(100.0f, 100.0f, 50.0f, 50.0f, 100.0f);
-		circleEnemy = new CircleEnemy(300.0f, 200.0f, 20.0f, GREEN);
+		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1);
+		enemy = new RectangleEnemy(100.0f, -100.0f, 50.0f, 50.0f, 100.0f);
+		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
 	}
 
 	Gameplay::~Gameplay()
@@ -49,6 +49,7 @@ namespace Colortrack
 		circleEnemy->MoveCircleEnemy();
 		circleEnemy->CircleEnemyOutOfScreen();
 		CollisionsGame();
+		_time += GetFrameTime();
 	}
 
 	void Gameplay::CollisionsGame()
