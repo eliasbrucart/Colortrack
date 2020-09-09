@@ -2,6 +2,7 @@
 #define RECTANGLE_ENEMY_H
 
 #include "raylib.h"
+#include "colors.h"
 
 namespace Colortrack 
 {
@@ -31,17 +32,9 @@ namespace Colortrack
 		Rectangle rec;
 		void InitRectangleEnemy();
 		void RectangleEnemyOutOfScreen();
-		enum RectangleEnemyColors
-		{
-			rectangleEnemyGreen,
-			rectangleEnemyRed,
-			rectangleEnemyYellow,
-			rectangleEnemyBlue,
-			rectangleEnemyOrange
-		};
-		RectangleEnemyColors rectangleEnemyColors;
-		void SetColor(RectangleEnemyColors color);
-		void SetRectangleEnemyColors(RectangleEnemyColors color);
+		Colors rectangleEnemyColors;
+		void SetColor(Colors color);
+		void SetRectangleEnemyColors(Colors color);
 	};
 }
 

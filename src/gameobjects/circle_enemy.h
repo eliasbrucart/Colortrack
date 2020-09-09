@@ -2,6 +2,7 @@
 #define CIRCLE_ENEMY_H
 
 #include "raylib.h"
+#include "colors.h"
 
 namespace Colortrack 
 {
@@ -23,11 +24,13 @@ namespace Colortrack
 		void SetRadius(float radius);
 		float GetRadius();
 		Vector2 GetPosition();
-		void SetColor(Color color);
+		void SetColor(Colors color);
 		Color GetColor();
 		void MoveCircleEnemy();
 		void InitCircleEnemy();
 		void CircleEnemyOutOfScreen();
+		Colors circleEnemyColors;
+		void SetCircleEnemyColors(Colors color);
 	};
 }
 

@@ -10,6 +10,4 @@ enum Colors
 	colorOrange
 };
 
-Colors colors;
-
 #endif

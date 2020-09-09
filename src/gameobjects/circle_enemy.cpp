@@ -58,9 +58,10 @@ namespace Colortrack
 		return Vector2{_x, _y};
 	}
 
-	void CircleEnemy::SetColor(Color color)
+	void CircleEnemy::SetColor(Colors color)
 	{
-		_color = color;
+		circleEnemyColors = color;
+		SetCircleEnemyColors(color);
 	}
 
 	Color CircleEnemy::GetColor()
@@ -83,6 +84,30 @@ namespace Colortrack
 		if (_y + _radius >= GetScreenHeight())
 		{
 			_y = 0.0f;
+		}
+	}
+
+	void CircleEnemy::SetCircleEnemyColors(Colors color) 
+	{
+		switch (color)
+		{
+		case colorGreen:
+			_color = GREEN;
+			break;
+		case colorRed:
+			_color = RED;
+			break;
+		case colorYellow:
+			_color = YELLOW;
+			break;
+		case colorBlue:
+			_color = BLUE;
+			break;
+		case colorOrange:
+			_color = ORANGE;
+			break;
+		default:
+			break;
 		}
 	}
 }

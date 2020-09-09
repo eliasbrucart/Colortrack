@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\gameobjects\circle_enemy.h" />
+    <ClInclude Include="..\src\gameobjects\colors.h" />
     <ClInclude Include="..\src\gameobjects\player.h" />
     <ClInclude Include="..\src\gameobjects\rectangle_enemy.h" />
     <ClInclude Include="..\src\screens\credits.h" />

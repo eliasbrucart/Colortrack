@@ -2,6 +2,7 @@
 #include "raylib.h"
 
 #include "gameplay.h"
+#include "gameobjects/colors.h"
 
 using namespace std;
 
@@ -36,8 +37,8 @@ namespace Colortrack
 	void Gameplay::Init()
 	{
 		InitWindow(640, 480, "Colortrack");
-		player->SetPlayerColors(player->playerGreen);
-		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyGreen);
+		player->SetPlayerColors(player->playerColors);
+		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors);
 	}
 
 	void Gameplay::Update()
@@ -56,16 +57,16 @@ namespace Colortrack
 	{
 		player->InitRectanglePlayer();
 		enemy->InitRectangleEnemy();
-		if (player->playerColors == player->playerGreen && enemy->rectangleEnemyColors == enemy->rectangleEnemyGreen)
+		if (player->playerColors == Colors::colorGreen && enemy->rectangleEnemyColors == Colors::colorGreen)
 		{
 			if (CheckCollisionRecs(player->rec, enemy->rec))
 			{
-				player->SetPlayerColors(player->playerBlue);
+				player->SetPlayerColors(player->playerColors = Colors::colorBlue);
 			}
 		}
 		if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
 		{
-			player->SetPlayerColors(player->playerBlue);
+			player->SetPlayerColors(player->playerColors = Colors::colorBlue);
 		}
 	}
 

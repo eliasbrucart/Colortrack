@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "raylib.h"
+#include "colors.h"
 
 namespace Colortrack
 {
@@ -33,17 +34,9 @@ namespace Colortrack
 		void InitRectanglePlayer();
 		void SetLives(int lives);
 		void CollisionWindow();
-		enum PlayerColors
-		{
-			playerGreen,
-			playerRed,
-			playerYellow,
-			playerBlue,
-			playerOrange
-		};
-		PlayerColors playerColors;
-		void SetColor(PlayerColors color);
-		void SetPlayerColors(PlayerColors color);
+		Colors playerColors;
+		void SetColor(Colors color);
+		void SetPlayerColors(Colors color);
 	};
 }
 #endif

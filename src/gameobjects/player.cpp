@@ -16,7 +16,7 @@ namespace Colortrack
 		_speed = 100.0f;
 		_lives = 1;
 		_color = WHITE;
-		playerColors = PlayerColors::playerGreen;
+		playerColors = Colors::colorGreen;
 	}
 
 	Player::Player(float x, float y, float width, float height, float speed, int lives)
@@ -27,7 +27,7 @@ namespace Colortrack
 		_height = height;
 		_speed = speed;
 		_lives = lives;
-		playerColors = PlayerColors::playerGreen;
+		playerColors = Colors::colorGreen;
 	}
 
 	Player::~Player()
@@ -75,7 +75,7 @@ namespace Colortrack
 		return _height;
 	}
 
-	void Player::SetColor(PlayerColors color)
+	void Player::SetColor(Colors color)
 	{
 		playerColors = color;
 		SetPlayerColors(color);
@@ -123,23 +123,23 @@ namespace Colortrack
 		}
 	}
 
-	void Player::SetPlayerColors(PlayerColors color)
+	void Player::SetPlayerColors(Colors color)
 	{
 		switch (color)
 		{
-		case playerGreen:
+		case colorGreen:
 			_color = GREEN;
 			break;
-		case playerRed:
+		case colorRed:
 			_color = RED;
 			break;
-		case playerYellow:
+		case colorYellow:
 			_color = YELLOW;
 			break;
-		case playerBlue:
+		case colorBlue:
 			_color = BLUE;
 			break;
-		case playerOrange:
+		case colorOrange:
 			_color = ORANGE;
 			break;
 		}
