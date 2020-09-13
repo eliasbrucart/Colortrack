@@ -58,7 +58,8 @@ namespace Colortrack
 		default:
 			break;
 		}
-		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors);
+		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorGreen);
+		circleEnemy->SetCircleEnemyColors(circleEnemy->circleEnemyColors = Colors::colorGreen);
 	}
 
 	void Gameplay::Update()
@@ -76,20 +77,20 @@ namespace Colortrack
 
 	void Gameplay::CollisionsGame()
 	{
-		if (player->playerColors == Colors::colorBlue && enemy->rectangleEnemyColors == Colors::colorGreen) 
+		if (CheckCollisionRecs(player->rec, enemy->rec))
 		{
-			if (CheckCollisionRecs(player->rec, enemy->rec))
+			if (player->playerColors != enemy->rectangleEnemyColors)
 			{
 				player->SetLives(0);
-				DrawText(TextFormat("Lives: %i", player->GetLives()), player->GetX() + 50.0f, player->GetY(), 20, WHITE);
+				player->SetX(-1000.0f);
 			}
 		}
-		if (player->playerColors == Colors::colorGreen && enemy->rectangleEnemyColors == Colors::colorBlue) 
+		if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
 		{
-			if (CheckCollisionRecs(player->rec, enemy->rec))
+			if (player->playerColors != circleEnemy->circleEnemyColors)
 			{
 				player->SetLives(0);
-				DrawText(TextFormat("Lives: %i", player->GetLives()), player->GetX() + 50.0f, player->GetY(), 20, WHITE);
+				player->SetX(-1000.0f);
 			}
 		}
 	}
