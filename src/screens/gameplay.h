@@ -14,6 +14,7 @@ namespace Colortrack
 		RectangleEnemy* rectangleEnemy;
 		CircleEnemy* circleEnemy;
 		float _time;
+		int _points;
 	public:
 		Gameplay();
 		~Gameplay();

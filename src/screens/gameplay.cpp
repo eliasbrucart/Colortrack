@@ -16,6 +16,8 @@ namespace Colortrack
 		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1);
 		rectangleEnemy = new RectangleEnemy(100.0f, -100.0f, 50.0f, 50.0f, 100.0f);
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
+		_time = 0.0f;
+		_points = 0;
 	}
 
 	Gameplay::~Gameplay()
@@ -102,8 +104,6 @@ namespace Colortrack
 		default:
 			break;
 		}
-
-		circleEnemy->SetCircleEnemyColors(circleEnemy->circleEnemyColors = Colors::colorGreen);
 	}
 
 	void Gameplay::Update()
@@ -128,6 +128,10 @@ namespace Colortrack
 				player->SetLives(0);
 				player->SetX(-1000.0f);
 			}
+			else
+			{
+				_points += 100;
+			}
 		}
 		if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
 		{
@@ -144,5 +148,6 @@ namespace Colortrack
 		DrawRectangleRec(player->rec, player->GetColor());
 		DrawRectangleRec(rectangleEnemy->rec, rectangleEnemy->GetColor());
 		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
+		DrawText(TextFormat("Points: %i", _points),2,2,20,WHITE);
 	}
 }
