@@ -37,8 +37,10 @@ namespace Colortrack
 	void Gameplay::Init()
 	{
 		InitWindow(640, 480, "Colortrack");
-		static int randomColor = GetRandomValue(1, 5);
-		switch (randomColor)
+		static int randomColorPlayer = GetRandomValue(1, 5);
+		static int randomColorRectangleEnemy = GetRandomValue(1, 5);
+		static int randomColorCircleEnemy = GetRandomValue(1, 5);
+		switch (randomColorPlayer)
 		{
 		case 1:
 			player->SetPlayerColors(player->playerColors = Colors::colorGreen);
@@ -58,7 +60,49 @@ namespace Colortrack
 		default:
 			break;
 		}
-		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorGreen);
+
+		switch (randomColorRectangleEnemy)
+		{
+		case 1:
+			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorGreen);
+			break;
+		case 2:
+			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorRed);
+			break;
+		case 3:
+			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorYellow);
+			break;
+		case 4:
+			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorBlue);
+			break;
+		case 5:
+			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorOrange);
+			break;
+		default:
+			break;
+		}
+		
+		switch (randomColorCircleEnemy)
+		{
+		case 1:
+			circleEnemy->SetCircleEnemyColors(circleEnemy->circleEnemyColors = Colors::colorGreen);
+			break;
+		case 2:
+			circleEnemy->SetCircleEnemyColors(circleEnemy->circleEnemyColors = Colors::colorRed);
+			break;
+		case 3:
+			circleEnemy->SetCircleEnemyColors(circleEnemy->circleEnemyColors = Colors::colorYellow);
+			break;
+		case 4:
+			circleEnemy->SetCircleEnemyColors(circleEnemy->circleEnemyColors = Colors::colorBlue);
+			break;
+		case 5:
+			circleEnemy->SetCircleEnemyColors(circleEnemy->circleEnemyColors = Colors::colorOrange);
+			break;
+		default:
+			break;
+		}
+
 		circleEnemy->SetCircleEnemyColors(circleEnemy->circleEnemyColors = Colors::colorGreen);
 	}
 
