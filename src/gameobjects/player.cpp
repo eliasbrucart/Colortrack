@@ -111,6 +111,11 @@ namespace Colortrack
 		_lives = lives;
 	}
 
+	int Player::GetLives() 
+	{
+		return _lives;
+	}
+
 	void Player::CollisionWindow()
 	{
 		if (_x <= minScreenWidth)
