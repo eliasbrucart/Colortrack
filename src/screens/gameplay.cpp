@@ -8,6 +8,7 @@ using namespace std;
 
 namespace Colortrack
 {
+	static int flag = 1;
 	Gameplay::Gameplay()
 	{
 		player = NULL;
@@ -83,7 +84,7 @@ namespace Colortrack
 		default:
 			break;
 		}
-		
+
 		switch (randomColorCircleEnemy)
 		{
 		case 1:
@@ -128,26 +129,36 @@ namespace Colortrack
 				player->SetLives(0);
 				player->SetX(-1000.0f);
 			}
-			else
+			else if (flag != 0)
 			{
 				_points += 100;
+				flag = 0;
 			}
 		}
-		if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
+		else if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
 		{
 			if (player->playerColors != circleEnemy->circleEnemyColors)
 			{
 				player->SetLives(0);
 				player->SetX(-1000.0f);
 			}
+			else if (flag != 0)
+			{
+				_points += 100;
+				flag = 0;
+			}
+		}
+		else
+		{
+			flag = 1;
 		}
 	}
 
 	void Gameplay::Draw()
-	{		
+	{
 		DrawRectangleRec(player->rec, player->GetColor());
 		DrawRectangleRec(rectangleEnemy->rec, rectangleEnemy->GetColor());
 		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
-		DrawText(TextFormat("Points: %i", _points),2,2,20,WHITE);
+		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
 	}
 }
