@@ -11,10 +11,10 @@ namespace Colortrack
 	Gameplay::Gameplay()
 	{
 		player = NULL;
-		enemy = NULL;
+		rectangleEnemy = NULL;
 		circleEnemy = NULL;
 		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1);
-		enemy = new RectangleEnemy(100.0f, -100.0f, 50.0f, 50.0f, 100.0f);
+		rectangleEnemy = new RectangleEnemy(100.0f, -100.0f, 50.0f, 50.0f, 100.0f);
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
 	}
 
@@ -24,9 +24,9 @@ namespace Colortrack
 		{
 			delete player;
 		}
-		if (enemy != NULL)
+		if (rectangleEnemy != NULL)
 		{
-			delete enemy;
+			delete rectangleEnemy;
 		}
 		if (circleEnemy != NULL)
 		{
@@ -64,19 +64,19 @@ namespace Colortrack
 		switch (randomColorRectangleEnemy)
 		{
 		case 1:
-			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorGreen);
+			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorGreen);
 			break;
 		case 2:
-			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorRed);
+			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorRed);
 			break;
 		case 3:
-			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorYellow);
+			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorYellow);
 			break;
 		case 4:
-			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorBlue);
+			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorBlue);
 			break;
 		case 5:
-			enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorOrange);
+			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorOrange);
 			break;
 		default:
 			break;
@@ -109,11 +109,11 @@ namespace Colortrack
 	void Gameplay::Update()
 	{
 		player->InitRectanglePlayer();
-		enemy->InitRectangleEnemy();
+		rectangleEnemy->InitRectangleEnemy();
 		player->SetInputs();
 		player->CollisionWindow();
-		enemy->MoveRectangleEnemy();
-		enemy->RectangleEnemyOutOfScreen();
+		rectangleEnemy->MoveRectangleEnemy();
+		rectangleEnemy->RectangleEnemyOutOfScreen();
 		circleEnemy->MoveCircleEnemy();
 		circleEnemy->CircleEnemyOutOfScreen();
 		CollisionsGame();
@@ -121,9 +121,9 @@ namespace Colortrack
 
 	void Gameplay::CollisionsGame()
 	{
-		if (CheckCollisionRecs(player->rec, enemy->rec))
+		if (CheckCollisionRecs(player->rec, rectangleEnemy->rec))
 		{
-			if (player->playerColors != enemy->rectangleEnemyColors)
+			if (player->playerColors != rectangleEnemy->rectangleEnemyColors)
 			{
 				player->SetLives(0);
 				player->SetX(-1000.0f);
@@ -142,7 +142,7 @@ namespace Colortrack
 	void Gameplay::Draw()
 	{		
 		DrawRectangleRec(player->rec, player->GetColor());
-		DrawRectangleRec(enemy->rec, enemy->GetColor());
+		DrawRectangleRec(rectangleEnemy->rec, rectangleEnemy->GetColor());
 		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
 	}
 }

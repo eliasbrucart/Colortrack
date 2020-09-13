@@ -11,7 +11,7 @@ namespace Colortrack
 	{
 	private:
 		Player* player;
-		RectangleEnemy* enemy;
+		RectangleEnemy* rectangleEnemy;
 		CircleEnemy* circleEnemy;
 		float _time;
 	public:
