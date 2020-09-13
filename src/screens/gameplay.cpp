@@ -37,12 +37,34 @@ namespace Colortrack
 	void Gameplay::Init()
 	{
 		InitWindow(640, 480, "Colortrack");
-		player->SetPlayerColors(player->playerColors);
+		static int randomColor = GetRandomValue(1, 5);
+		switch (randomColor)
+		{
+		case 1:
+			player->SetPlayerColors(player->playerColors = Colors::colorGreen);
+			break;
+		case 2:
+			player->SetPlayerColors(player->playerColors = Colors::colorRed);
+			break;
+		case 3:
+			player->SetPlayerColors(player->playerColors = Colors::colorYellow);
+			break;
+		case 4:
+			player->SetPlayerColors(player->playerColors = Colors::colorBlue);
+			break;
+		case 5:
+			player->SetPlayerColors(player->playerColors = Colors::colorOrange);
+			break;
+		default:
+			break;
+		}
 		enemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors);
 	}
 
 	void Gameplay::Update()
 	{
+		player->InitRectanglePlayer();
+		enemy->InitRectangleEnemy();
 		player->SetInputs();
 		player->CollisionWindow();
 		enemy->MoveRectangleEnemy();
@@ -50,23 +72,25 @@ namespace Colortrack
 		circleEnemy->MoveCircleEnemy();
 		circleEnemy->CircleEnemyOutOfScreen();
 		CollisionsGame();
-		_time += GetFrameTime();
 	}
 
 	void Gameplay::CollisionsGame()
 	{
-		player->InitRectanglePlayer();
-		enemy->InitRectangleEnemy();
-		if (player->playerColors == Colors::colorGreen && enemy->rectangleEnemyColors == Colors::colorGreen)
+		if (player->playerColors == Colors::colorBlue && enemy->rectangleEnemyColors == Colors::colorGreen) 
 		{
 			if (CheckCollisionRecs(player->rec, enemy->rec))
 			{
-				player->SetPlayerColors(player->playerColors = Colors::colorBlue);
+				player->SetLives(0);
+				DrawText(TextFormat("Lives: %i", player->GetLives()), player->GetX() + 50.0f, player->GetY(), 20, WHITE);
 			}
 		}
-		if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
+		if (player->playerColors == Colors::colorGreen && enemy->rectangleEnemyColors == Colors::colorBlue) 
 		{
-			player->SetPlayerColors(player->playerColors = Colors::colorBlue);
+			if (CheckCollisionRecs(player->rec, enemy->rec))
+			{
+				player->SetLives(0);
+				DrawText(TextFormat("Lives: %i", player->GetLives()), player->GetX() + 50.0f, player->GetY(), 20, WHITE);
+			}
 		}
 	}
 

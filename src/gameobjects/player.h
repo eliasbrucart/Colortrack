@@ -33,6 +33,7 @@ namespace Colortrack
 		void SetInputs();
 		void InitRectanglePlayer();
 		void SetLives(int lives);
+		int GetLives();
 		void CollisionWindow();
 		Colors playerColors;
 		void SetColor(Colors color);
