@@ -64,19 +64,19 @@ namespace Colortrack
 		switch (randomColorRectangleEnemy)
 		{
 		case 1:
-			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorGreen);
+			rectangleEnemy->SetRectangleEnemyColors(rectangleEnemy->rectangleEnemyColors = Colors::colorGreen);
 			break;
 		case 2:
-			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorRed);
+			rectangleEnemy->SetRectangleEnemyColors(rectangleEnemy->rectangleEnemyColors = Colors::colorRed);
 			break;
 		case 3:
-			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorYellow);
+			rectangleEnemy->SetRectangleEnemyColors(rectangleEnemy->rectangleEnemyColors = Colors::colorYellow);
 			break;
 		case 4:
-			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorBlue);
+			rectangleEnemy->SetRectangleEnemyColors(rectangleEnemy->rectangleEnemyColors = Colors::colorBlue);
 			break;
 		case 5:
-			rectangleEnemy->SetRectangleEnemyColors(enemy->rectangleEnemyColors = Colors::colorOrange);
+			rectangleEnemy->SetRectangleEnemyColors(rectangleEnemy->rectangleEnemyColors = Colors::colorOrange);
 			break;
 		default:
 			break;
