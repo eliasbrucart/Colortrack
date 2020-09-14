@@ -13,9 +13,11 @@ namespace Colortrack
 	{
 		player = NULL;
 		rectangleEnemy = NULL;
+		rectangleEnemy2 = NULL;
 		circleEnemy = NULL;
 		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1);
-		rectangleEnemy = new RectangleEnemy(100.0f, -100.0f, 50.0f, 50.0f, 100.0f);
+		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, GetScreenWidth()/2, 50.0f, 100.0f);
+		rectangleEnemy2 = new RectangleEnemy(GetScreenWidth() / 2, -100.0f, GetScreenWidth() / 2 - 0.5f, 50.0f, 100.0f);
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
 		_time = 0.0f;
 		_points = 0;
@@ -31,6 +33,10 @@ namespace Colortrack
 		{
 			delete rectangleEnemy;
 		}
+		if (rectangleEnemy2 != NULL)
+		{
+			delete rectangleEnemy2;
+		}
 		if (circleEnemy != NULL)
 		{
 			delete circleEnemy;
@@ -39,7 +45,6 @@ namespace Colortrack
 
 	void Gameplay::Init()
 	{
-		InitWindow(640, 480, "Colortrack");
 		static int randomColorPlayer = GetRandomValue(1, 5);
 		static int randomColorRectangleEnemy = GetRandomValue(1, 5);
 		static int randomColorCircleEnemy = GetRandomValue(1, 5);
@@ -105,21 +110,25 @@ namespace Colortrack
 		default:
 			break;
 		}
+		rectangleEnemy2->SetRectangleEnemyColors(rectangleEnemy2->rectangleEnemyColors = Colors::colorOrange);
 	}
 
 	void Gameplay::Update()
 	{
 		player->InitRectanglePlayer();
 		rectangleEnemy->InitRectangleEnemy();
+		rectangleEnemy2->InitRectangleEnemy();
 		player->SetInputs();
 		player->CollisionWindow();
 		rectangleEnemy->MoveRectangleEnemy();
 		rectangleEnemy->RectangleEnemyOutOfScreen();
+		rectangleEnemy2->MoveRectangleEnemy();
+		rectangleEnemy2->RectangleEnemyOutOfScreen();
 		circleEnemy->MoveCircleEnemy();
 		circleEnemy->CircleEnemyOutOfScreen();
 		CollisionsGame();
 	}
-
+	
 	void Gameplay::CollisionsGame()
 	{
 		if (CheckCollisionRecs(player->rec, rectangleEnemy->rec))
@@ -158,6 +167,7 @@ namespace Colortrack
 	{
 		DrawRectangleRec(player->rec, player->GetColor());
 		DrawRectangleRec(rectangleEnemy->rec, rectangleEnemy->GetColor());
+		DrawRectangleRec(rectangleEnemy2->rec, rectangleEnemy2->GetColor());
 		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
 		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
 	}

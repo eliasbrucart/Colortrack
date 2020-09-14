@@ -96,7 +96,7 @@ namespace Colortrack
 
 	void RectangleEnemy::RectangleEnemyOutOfScreen()
 	{
-		if (_y + _height >= GetScreenHeight()) 
+		if (_y + _height >= GetScreenHeight())
 		{
 			_y = 0;
 		}

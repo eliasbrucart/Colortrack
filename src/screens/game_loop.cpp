@@ -9,9 +9,9 @@
 
 namespace Colortrack
 {
-	Gameplay* gameplay = new Gameplay();
-	Menu* menu = new Menu();
-	Tutorial* tutorial = new Tutorial();
+	Gameplay* gameplay;
+	Menu* menu;
+	Tutorial* tutorial;
 
 	int minScreenWidth = 0;
 	int minScreenHeight = 0;
@@ -40,6 +40,10 @@ namespace Colortrack
 
 	void Loop()
 	{
+		InitWindow(640, 480, "Colortrack");
+		gameplay = new Gameplay();
+		menu = new Menu();
+		tutorial = new Tutorial();
 		gameplay->Init();
 		while (!WindowShouldClose())
 		{

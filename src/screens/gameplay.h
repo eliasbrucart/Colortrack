@@ -12,6 +12,7 @@ namespace Colortrack
 	private:
 		Player* player;
 		RectangleEnemy* rectangleEnemy;
+		RectangleEnemy* rectangleEnemy2;
 		CircleEnemy* circleEnemy;
 		float _time;
 		int _points;
