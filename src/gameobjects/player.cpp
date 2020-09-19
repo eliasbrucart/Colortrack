@@ -86,6 +86,11 @@ namespace Colortrack
 		return _color;
 	}
 
+	Colors Player::GetColors()
+	{
+		return playerColors;
+	}
+
 	void Player::SetInputs()
 	{
 		if (IsKeyDown(KEY_A))

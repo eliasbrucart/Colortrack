@@ -69,6 +69,11 @@ namespace Colortrack
 		return _color;
 	}
 
+	Colors CircleEnemy::GetColors()
+	{
+		return circleEnemyColors;
+	}
+
 	void CircleEnemy::MoveCircleEnemy()
 	{
 		_y += 100.0f * GetFrameTime();

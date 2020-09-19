@@ -26,6 +26,7 @@ namespace Colortrack
 		Vector2 GetPosition();
 		void SetColor(Colors color);
 		Color GetColor();
+		Colors GetColors();
 		void MoveCircleEnemy();
 		void InitCircleEnemy();
 		void CircleEnemyOutOfScreen();

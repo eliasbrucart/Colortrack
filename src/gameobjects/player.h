@@ -29,6 +29,7 @@ namespace Colortrack
 		void SetHeight(float height);
 		float GetHeight();
 		Color GetColor();
+		Colors GetColors();
 		Rectangle rec;
 		void SetInputs();
 		void InitRectanglePlayer();

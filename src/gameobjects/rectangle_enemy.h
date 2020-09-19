@@ -29,6 +29,7 @@ namespace Colortrack
 		void SetHeight(int height);
 		float GetHeight();
 		Color GetColor();
+		Colors GetColors();
 		Rectangle rec;
 		void InitRectangleEnemy();
 		void RectangleEnemyOutOfScreen();

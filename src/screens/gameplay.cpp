@@ -111,6 +111,20 @@ namespace Colortrack
 			break;
 		}
 		rectangleEnemy2->SetRectangleEnemyColors(rectangleEnemy2->rectangleEnemyColors = Colors::colorOrange);
+		Colors rectangleEnemyColor = rectangleEnemy->GetColors();
+		Colors rectangleEnemyColor2 = rectangleEnemy2->GetColors();
+		Colors circleEnemyColor = circleEnemy->GetColors();
+		static int rand = GetRandomValue(1, 2);
+		switch (rand) 
+		{
+		case 1:
+			player->SetPlayerColors(player->playerColors = rectangleEnemyColor);
+			break;
+		case 2:
+			player->SetPlayerColors(player->playerColors = rectangleEnemyColor2);
+			break;
+		}
+
 	}
 
 	void Gameplay::Update()
