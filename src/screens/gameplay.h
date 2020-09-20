@@ -19,6 +19,8 @@ namespace Colortrack
 	public:
 		Gameplay();
 		~Gameplay();
+		void SetEnemiesColors();
+		void SetPlayerColors();
 		void Init();
 		void Update();
 		void CollisionsGame();

@@ -44,10 +44,11 @@ namespace Colortrack
 		}
 	}
 
-	void Gameplay::Init()
+	void Gameplay::SetEnemiesColors()
 	{
 		static int randomColorPlayer = GetRandomValue(1, 5);
 		static int randomColorRectangleEnemy = GetRandomValue(1, 5);
+		static int randomColorRectangleEnemy2 = GetRandomValue(1, 5);
 		static int randomColorCircleEnemy = GetRandomValue(1, 5);
 		switch (randomColorPlayer)
 		{
@@ -111,12 +112,36 @@ namespace Colortrack
 		default:
 			break;
 		}
-		rectangleEnemy2->SetRectangleEnemyColors(rectangleEnemy2->rectangleEnemyColors = Colors::colorOrange);
+
+		switch (randomColorRectangleEnemy2)
+		{
+		case 1:
+			rectangleEnemy2->SetRectangleEnemyColors(rectangleEnemy2->rectangleEnemyColors = Colors::colorGreen);
+			break;
+		case 2:
+			rectangleEnemy2->SetRectangleEnemyColors(rectangleEnemy2->rectangleEnemyColors = Colors::colorRed);
+			break;
+		case 3:
+			rectangleEnemy2->SetRectangleEnemyColors(rectangleEnemy2->rectangleEnemyColors = Colors::colorYellow);
+			break;
+		case 4:
+			rectangleEnemy2->SetRectangleEnemyColors(rectangleEnemy2->rectangleEnemyColors = Colors::colorBlue);
+			break;
+		case 5:
+			rectangleEnemy2->SetRectangleEnemyColors(rectangleEnemy2->rectangleEnemyColors = Colors::colorOrange);
+			break;
+		default:
+			break;
+		}
+	}
+
+	void Gameplay::SetPlayerColors()
+	{
 		Colors rectangleEnemyColor = rectangleEnemy->GetColors();
 		Colors rectangleEnemyColor2 = rectangleEnemy2->GetColors();
 		Colors circleEnemyColor = circleEnemy->GetColors();
 		static int rand = GetRandomValue(1, 2);
-		switch (rand) 
+		switch (rand)
 		{
 		case 1:
 			player->SetPlayerColors(player->playerColors = rectangleEnemyColor);
@@ -125,7 +150,18 @@ namespace Colortrack
 			player->SetPlayerColors(player->playerColors = rectangleEnemyColor2);
 			break;
 		}
+	}
 
+	void Gameplay::Init()
+	{
+		SetEnemiesColors();
+		SetPlayerColors();
+		
+		if(rectangleEnemy->GetColors() == rectangleEnemy2->GetColors() && rectangleEnemy->GetColors() == circleEnemy->GetColors() && rectangleEnemy2->GetColors() == circleEnemy->GetColors() && player->GetColors() != rectangleEnemy->GetColors() && player->GetColors() != rectangleEnemy2->GetColors() && player->GetColors() != circleEnemy->GetColors())
+		{
+			SetEnemiesColors();
+			SetPlayerColors();
+		}
 	}
 
 	void Gameplay::Update()
@@ -152,7 +188,6 @@ namespace Colortrack
 			if (player->playerColors != rectangleEnemy->rectangleEnemyColors)
 			{
 				player->SetLives(0);
-				player->SetX(-1000.0f);
 			}
 			else if (flag != 0)
 			{
@@ -165,7 +200,6 @@ namespace Colortrack
 			if (player->playerColors != rectangleEnemy2->rectangleEnemyColors)
 			{
 				player->SetLives(0);
-				player->SetX(-1000.0f);
 			}
 			else if (flag != 0)
 			{
@@ -178,7 +212,6 @@ namespace Colortrack
 			if (player->playerColors != circleEnemy->circleEnemyColors)
 			{
 				player->SetLives(0);
-				player->SetX(-1000.0f);
 			}
 			else if (flag != 0)
 			{
