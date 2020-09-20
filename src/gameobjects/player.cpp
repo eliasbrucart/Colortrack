@@ -19,7 +19,7 @@ namespace Colortrack
 		playerColors = Colors::colorGreen;
 	}
 
-	Player::Player(float x, float y, float width, float height, float speed, int lives)
+	Player::Player(float x, float y, float width, float height, float speed, int lives, bool dead)
 	{
 		_x = x;
 		_y = y;
@@ -27,6 +27,7 @@ namespace Colortrack
 		_height = height;
 		_speed = speed;
 		_lives = lives;
+		_dead = dead;
 		playerColors = Colors::colorGreen;
 	}
 
@@ -119,6 +120,15 @@ namespace Colortrack
 	int Player::GetLives() 
 	{
 		return _lives;
+	}
+
+	bool Player::IsDead()
+	{
+		if (_lives == 0)
+		{
+			return _dead = true;
+		}
+		return _dead = false;
 	}
 
 	void Player::CollisionWindow()

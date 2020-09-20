@@ -22,6 +22,7 @@ namespace Colortrack
 		void Init();
 		void Update();
 		void CollisionsGame();
+		void CheckPlayerAlive();
 		void Draw();
 	};
 }

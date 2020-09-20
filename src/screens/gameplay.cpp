@@ -2,6 +2,7 @@
 #include "raylib.h"
 
 #include "gameplay.h"
+#include "game_loop.h"
 #include "gameobjects/colors.h"
 
 using namespace std;
@@ -15,7 +16,7 @@ namespace Colortrack
 		rectangleEnemy = NULL;
 		rectangleEnemy2 = NULL;
 		circleEnemy = NULL;
-		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1);
+		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
 		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, GetScreenWidth()/2, 50.0f, 100.0f);
 		rectangleEnemy2 = new RectangleEnemy(GetScreenWidth() / 2, -100.0f, GetScreenWidth() / 2 - 0.5f, 50.0f, 100.0f);
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
@@ -141,6 +142,7 @@ namespace Colortrack
 		circleEnemy->MoveCircleEnemy();
 		circleEnemy->CircleEnemyOutOfScreen();
 		CollisionsGame();
+		CheckPlayerAlive();
 	}
 	
 	void Gameplay::CollisionsGame()
@@ -187,6 +189,15 @@ namespace Colortrack
 		else
 		{
 			flag = 1;
+		}
+	}
+
+	void Gameplay::CheckPlayerAlive()
+	{
+		if (player->IsDead())
+		{
+			DrawText("You Lose!", GetScreenWidth() / 2 - 50, GetScreenHeight() / 2, 50, WHITE);
+			state = GameState::credits;
 		}
 	}
 

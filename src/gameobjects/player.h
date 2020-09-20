@@ -15,10 +15,11 @@ namespace Colortrack
 		float _height;
 		float _speed;
 		int _lives;
+		bool _dead;
 		Color _color;
 	public:
 		Player();
-		Player(float x, float y, float width, float height, float speed, int lives);
+		Player(float x, float y, float width, float height, float speed, int lives, bool dead);
 		~Player();
 		void SetX(float x);
 		float GetX();
@@ -35,6 +36,7 @@ namespace Colortrack
 		void InitRectanglePlayer();
 		void SetLives(int lives);
 		int GetLives();
+		bool IsDead();
 		void CollisionWindow();
 		Colors playerColors;
 		void SetColor(Colors color);
