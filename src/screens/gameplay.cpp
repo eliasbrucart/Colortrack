@@ -158,6 +158,19 @@ namespace Colortrack
 				flag = 0;
 			}
 		}
+		else if (CheckCollisionRecs(player->rec, rectangleEnemy2->rec))
+		{
+			if (player->playerColors != rectangleEnemy2->rectangleEnemyColors)
+			{
+				player->SetLives(0);
+				player->SetX(-1000.0f);
+			}
+			else if (flag != 0)
+			{
+				_points += 100;
+				flag = 0;
+			}
+		}
 		else if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
 		{
 			if (player->playerColors != circleEnemy->circleEnemyColors)
