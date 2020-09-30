@@ -229,7 +229,6 @@ namespace Colortrack
 	{
 		if (player->IsDead())
 		{
-			DrawText("You Lose!", GetScreenWidth() / 2 - 50, GetScreenHeight() / 2, 50, WHITE);
 			state = GameState::credits;
 		}
 	}
@@ -241,5 +240,9 @@ namespace Colortrack
 		DrawRectangleRec(rectangleEnemy2->rec, rectangleEnemy2->GetColor());
 		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
 		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
+		if (player->IsDead()) 
+		{
+			DrawText("You Lose!", GetScreenWidth() / 2 - 50, GetScreenHeight() / 2, 50, WHITE);
+		}
 	}
 }

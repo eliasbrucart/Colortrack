@@ -126,9 +126,11 @@ namespace Colortrack
 	{
 		if (_lives == 0)
 		{
-			return _dead = true;
+			return true;
+			_dead = true;
 		}
-		return _dead = false;
+		return false;
+		_dead = false;
 	}
 
 	void Player::CollisionWindow()
