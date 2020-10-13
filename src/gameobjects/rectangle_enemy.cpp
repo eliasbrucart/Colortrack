@@ -2,6 +2,9 @@
 
 #include "raylib.h"
 
+#include<iostream>
+using namespace std;
+
 namespace Colortrack
 {
 	RectangleEnemy::RectangleEnemy()
@@ -38,7 +41,7 @@ namespace Colortrack
 		rec.height = _height;
 	}
 
-	void RectangleEnemy::SetX(int x)
+	void RectangleEnemy::SetX(float x)
 	{
 		_x = x;
 	}
@@ -48,7 +51,7 @@ namespace Colortrack
 		return _x;
 	}
 
-	void RectangleEnemy::SetY(int y)
+	void RectangleEnemy::SetY(float y)
 	{
 		_y = y;
 	}
@@ -58,7 +61,7 @@ namespace Colortrack
 		return _y;
 	}
 
-	void RectangleEnemy::SetWidth(int width)
+	void RectangleEnemy::SetWidth(float width)
 	{
 		_width = width;
 	}
@@ -68,7 +71,7 @@ namespace Colortrack
 		return _width;
 	}
 
-	void RectangleEnemy::SetHeight(int height)
+	void RectangleEnemy::SetHeight(float height)
 	{
 		_height = height;
 	}
@@ -76,6 +79,36 @@ namespace Colortrack
 	float RectangleEnemy::GetHeight()
 	{
 		return _height;
+	}
+
+	float RectangleEnemy::GetSpeed()
+	{
+		return _speed;
+	}
+
+	void RectangleEnemy::SetSpeed(float speed)
+	{
+		_speed = speed;
+	}
+
+	int RectangleEnemy::GetOutOfScreen()
+	{
+		return _outOfScreen;
+	}
+
+	void RectangleEnemy::SetOutOfScreen(int outOfScreen) 
+	{
+		_outOfScreen = outOfScreen;
+	}
+
+	bool RectangleEnemy::GetChangedShape()
+	{
+		return _changedShape;
+	}
+
+	void RectangleEnemy::SetChangedShape(bool changedShape)
+	{
+		_changedShape = changedShape;
 	}
 
 	void RectangleEnemy::SetColor(Colors color)
@@ -103,11 +136,32 @@ namespace Colortrack
 	{
 		if (_y + _height >= GetScreenHeight())
 		{
-			_y = 0;
+			_y = -200.0f;
+			_changedShape = false;
 		}
-		if(_x + _width >= GetScreenWidth())
+		else if (_y < 0.0f || _y > GetScreenHeight())
 		{
-			_x = 0;
+			_outOfScreen = 1;
+			cout << "Esta afuera" << endl;
+		}
+		else if(_y + _height >= 0.0f && _y <= GetScreenHeight())
+		{
+			_outOfScreen = 0;
+			cout << "Esta adentro" << endl;
+		}
+		else if(_x + _width >= GetScreenWidth())
+		{
+			_x = -200.0f;
+		}
+		else if (_x < 0.0f || _x > GetScreenWidth())
+		{
+			_outOfScreen = 1;
+			cout << "Esta afuera" << endl;
+		}
+		else if (_x >= 0.0f && _x <= GetScreenWidth())
+		{
+			_outOfScreen = 0;
+			cout << "Esta adentro" << endl;
 		}
 	}
 

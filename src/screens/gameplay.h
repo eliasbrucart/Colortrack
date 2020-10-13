@@ -22,9 +22,10 @@ namespace Colortrack
 		void SetEnemiesColors();
 		void SetPlayerColors();
 		void Init();
-		void Update();
 		void CollisionsGame();
 		void CheckPlayerAlive();
+		void GenerateShapes();
+		void Update();
 		void Draw();
 	};
 }

@@ -17,8 +17,8 @@ namespace Colortrack
 		rectangleEnemy2 = NULL;
 		circleEnemy = NULL;
 		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, GetScreenWidth()/2, 50.0f, 100.0f);
-		rectangleEnemy2 = new RectangleEnemy(GetScreenWidth() / 2, -100.0f, GetScreenWidth() / 2 - 0.5f, 50.0f, 100.0f);
+		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 100.0f);
+		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 100.0f);
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
 		_time = 0.0f;
 		_points = 0;
@@ -156,31 +156,14 @@ namespace Colortrack
 	{
 		SetEnemiesColors();
 		SetPlayerColors();
-		
-		if(rectangleEnemy->GetColors() == rectangleEnemy2->GetColors() && rectangleEnemy->GetColors() == circleEnemy->GetColors() && rectangleEnemy2->GetColors() == circleEnemy->GetColors() && player->GetColors() != rectangleEnemy->GetColors() && player->GetColors() != rectangleEnemy2->GetColors() && player->GetColors() != circleEnemy->GetColors())
+
+		if (rectangleEnemy->GetColors() == rectangleEnemy2->GetColors() && rectangleEnemy->GetColors() == circleEnemy->GetColors() && rectangleEnemy2->GetColors() == circleEnemy->GetColors() && player->GetColors() != rectangleEnemy->GetColors() && player->GetColors() != rectangleEnemy2->GetColors() && player->GetColors() != circleEnemy->GetColors())
 		{
 			SetEnemiesColors();
 			SetPlayerColors();
 		}
 	}
 
-	void Gameplay::Update()
-	{
-		player->InitRectanglePlayer();
-		rectangleEnemy->InitRectangleEnemy();
-		rectangleEnemy2->InitRectangleEnemy();
-		player->SetInputs();
-		player->CollisionWindow();
-		rectangleEnemy->MoveRectangleEnemy();
-		rectangleEnemy->RectangleEnemyOutOfScreen();
-		rectangleEnemy2->MoveRectangleEnemy();
-		rectangleEnemy2->RectangleEnemyOutOfScreen();
-		circleEnemy->MoveCircleEnemy();
-		circleEnemy->CircleEnemyOutOfScreen();
-		CollisionsGame();
-		CheckPlayerAlive();
-	}
-	
 	void Gameplay::CollisionsGame()
 	{
 		if (CheckCollisionRecs(player->rec, rectangleEnemy->rec))
@@ -233,6 +216,63 @@ namespace Colortrack
 		}
 	}
 
+	void Gameplay::GenerateShapes()
+	{
+		int randomShape = GetRandomValue(1, 5);
+		switch (randomShape)
+		{
+		case 1:
+			rectangleEnemy->SetWidth(320.0f);
+			rectangleEnemy->SetHeight(30.0f);
+			rectangleEnemy->SetChangedShape(true);
+			break;
+		case 2:
+			rectangleEnemy->SetWidth(150.0f);
+			rectangleEnemy->SetHeight(20.0f);
+			rectangleEnemy->SetChangedShape(true);
+			break;
+		case 3:
+			rectangleEnemy->SetWidth(200.0f);
+			rectangleEnemy->SetHeight(50.0f);
+			rectangleEnemy->SetChangedShape(true);
+			break;
+		case 4:
+			rectangleEnemy->SetWidth(500.0f);
+			rectangleEnemy->SetHeight(70.0f);
+			rectangleEnemy->SetChangedShape(true);
+			break;
+		case 5:
+			rectangleEnemy->SetWidth(90.0f);
+			rectangleEnemy->SetHeight(45.0f);
+			rectangleEnemy->SetChangedShape(true);
+			break;
+		default:
+			break;
+		}
+	}
+
+	void Gameplay::Update()
+	{
+		player->InitRectanglePlayer();
+		rectangleEnemy->InitRectangleEnemy();
+		rectangleEnemy2->InitRectangleEnemy();
+		player->SetInputs();
+		player->CollisionWindow();
+		rectangleEnemy->MoveRectangleEnemy();
+		rectangleEnemy->RectangleEnemyOutOfScreen();
+		rectangleEnemy2->MoveRectangleEnemy();
+		rectangleEnemy2->RectangleEnemyOutOfScreen();
+		circleEnemy->MoveCircleEnemy();
+		circleEnemy->CircleEnemyOutOfScreen();
+		CollisionsGame();
+		CheckPlayerAlive();
+		if (rectangleEnemy->GetOutOfScreen() == 1)
+		{
+			if(!rectangleEnemy->GetChangedShape())
+				GenerateShapes();
+		}
+	}
+
 	void Gameplay::Draw()
 	{
 		DrawRectangleRec(player->rec, player->GetColor());
@@ -240,7 +280,7 @@ namespace Colortrack
 		DrawRectangleRec(rectangleEnemy2->rec, rectangleEnemy2->GetColor());
 		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
 		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
-		if (player->IsDead()) 
+		if (player->IsDead())
 		{
 			DrawText("You Lose!", GetScreenWidth() / 2 - 50, GetScreenHeight() / 2, 50, WHITE);
 		}
