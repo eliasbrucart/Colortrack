@@ -15,7 +15,7 @@ namespace Colortrack
 		mainmenu,
 		tutorialscreen,
 		game,
-		credits
+		creditsScreen
 	};
 
 	extern GameState state;
