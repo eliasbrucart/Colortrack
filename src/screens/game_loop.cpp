@@ -13,10 +13,14 @@ namespace Colortrack
 	GameState state = GameState::mainmenu;
 	GameLoop::GameLoop() 
 	{
-		_menu = new Menu();
+		_menu = NULL;
+		_tutorial = NULL;
+		_gameplay = NULL;
+		_credits = NULL;
+		/*_menu = new Menu();
 		_tutorial = new Tutorial();
 		_gameplay = new Gameplay();
-		_credits = new Credits(_gameplay);
+		_credits = new Credits(_gameplay);*/
 
 	}
 
@@ -49,28 +53,78 @@ namespace Colortrack
 	void GameLoop::Loop()
 	{
 		InitWindow(640, 480, "Colortrack");
-		//Las screens se estan creando al iniciar y no cuando se los pide, crearlas cuando se las pide.
-		_gameplay->Init();
 		while (!WindowShouldClose())
 		{
 			//Updates
 			if (state == GameState::mainmenu)
 			{
+				if (_tutorial != NULL) {
+					delete _tutorial;
+					_tutorial = NULL;
+				}
+				if (_gameplay != NULL) {
+					delete _gameplay;
+					_gameplay = NULL;
+				}
+				if (_credits != NULL) {
+					delete _credits;
+					_credits = NULL;
+				}
+				if (_menu == NULL)
+					_menu = new Menu();
 				if(_menu != NULL)
 					_menu->Input();
 			}
 			if (state == GameState::tutorialscreen)
 			{
+				if (_menu != NULL) {
+					delete _menu;
+					_menu = NULL;
+				}
+				if (_gameplay != NULL) {
+					delete _gameplay;
+					_gameplay = NULL;
+				}
+				if (_credits != NULL) {
+					delete _credits;
+					_credits = NULL;
+				}
+				if (_tutorial == NULL)
+					_tutorial = new Tutorial();
 				if(_tutorial != NULL)
 					_tutorial->Input();
 			}
 			if (state == GameState::game)
 			{
+				if (_tutorial != NULL) {
+					delete _tutorial;
+					_tutorial = NULL;
+				}
+				if (_menu != NULL) {
+					delete _menu;
+					_menu = NULL;
+				}
+				if (_credits != NULL) {
+					delete _credits;
+					_credits = NULL;
+				}
+				if (_gameplay == NULL)
+					_gameplay = new Gameplay();
 				if(_gameplay != NULL)
 					_gameplay->Update();
 			}
 			if (state == GameState::creditsScreen)
 			{
+				if (_tutorial != NULL) {
+					delete _tutorial;
+					_tutorial = NULL;
+				}
+				if (_credits != NULL) {
+					delete _credits;
+					_credits = NULL;
+				}
+				if (_credits == NULL)
+					_credits = new Credits(_gameplay);
 				if(_credits != NULL)
 					_credits->Input();
 			}
