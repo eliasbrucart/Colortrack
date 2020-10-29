@@ -1,80 +1,78 @@
 #include "raylib.h"
 
 #include "game_loop.h"
-#include "gameobjects/player.h"
-#include "gameobjects/rectangle_enemy.h"
-#include "gameplay.h"
 #include "menu.h"
 #include "tutorial.h"
+#include "gameplay.h"
 #include "credits.h"
 
 namespace Colortrack
 {
-	Gameplay* gameplay;
-	Menu* menu;
-	Tutorial* tutorial;
-	Credits* credits;
-
 	int minScreenWidth = 0;
 	int minScreenHeight = 0;
 	GameState state = GameState::mainmenu;
-
-	void DeleteObjects()
+	GameLoop::GameLoop() 
 	{
-		if (gameplay != NULL)
-		{
-			delete gameplay;
-			gameplay = NULL;
-		}
-		if (menu != NULL)
-		{
-			delete menu;
-			menu = NULL;
-		}
-		if (tutorial != NULL)
-		{
-			delete tutorial;
-			tutorial = NULL;
-		}
-		if (credits != NULL)
-		{
-			delete credits;
-			credits = NULL;
-		}
-	}
-
-	void Unload()
-	{
+		_menu = new Menu();
+		_tutorial = new Tutorial();
+		_gameplay = new Gameplay();
+		_credits = new Credits(_gameplay);
 
 	}
 
-	void Loop()
+	GameLoop::~GameLoop() 
+	{
+		if (_gameplay != NULL)
+		{
+			delete _gameplay;
+			_gameplay = NULL;
+		}
+		if (_menu != NULL)
+		{
+			delete _menu;
+			_menu = NULL;
+		}
+		if (_tutorial != NULL)
+		{
+			delete _tutorial;
+			_tutorial = NULL;
+		}
+		if (_credits != NULL)
+		{
+			delete _credits;
+			_credits = NULL;
+		}
+	}
+
+
+	void GameLoop::Unload()
+	{
+		CloseWindow();
+	}
+
+	void GameLoop::Loop()
 	{
 		InitWindow(640, 480, "Colortrack");
 		//Las screens se estan creando al iniciar y no cuando se los pide, crearlas cuando se las pide.
-		gameplay = new Gameplay();
-		menu = new Menu();
-		tutorial = new Tutorial();
-		credits = new Credits(gameplay);
-		gameplay->Init();
+		_gameplay->Init();
 		while (!WindowShouldClose())
 		{
 			//Updates
 			if (state == GameState::mainmenu)
 			{
-				menu->Input();
+				_menu->Input();
 			}
 			if (state == GameState::tutorialscreen)
 			{
-				tutorial->Input();
+				_tutorial->Input();
 			}
 			if (state == GameState::game)
 			{
-				gameplay->Update();
+				_gameplay->Update();
 			}
 			if (state == GameState::creditsScreen)
 			{
-				credits->Input();
+				_credits->Input();
 			}
 
 			//Drawings
@@ -82,23 +80,23 @@ namespace Colortrack
 			ClearBackground(BLACK);
 			if (state == GameState::mainmenu)
 			{
-				menu->Draw();
+				_menu->Draw();
 			}
 			if (state == GameState::tutorialscreen)
 			{
-				tutorial->Draw();
+				_tutorial->Draw();
 			}
 			if (state == GameState::game)
 			{
-				gameplay->Draw();
+				_gameplay->Draw();
 			}
 			if (state == GameState::creditsScreen)
 			{
-				credits->Draw();
+				_credits->Draw();
 			}
 			EndDrawing();
 		}
-		DeleteObjects();
+		//DeleteObjects();
 	}
 
 }

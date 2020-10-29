@@ -1,9 +1,13 @@
 #include "screens/game_loop.h"
 using namespace Colortrack;
 
-int main() 
+int main(void) 
 {
-	Loop();
-
-	return 0;
+	GameLoop* gl = new GameLoop();
+	if (gl != NULL)
+		gl->Loop();
+	if (gl != NULL) {
+		delete gl;
+		gl = NULL;
+	}
 }
