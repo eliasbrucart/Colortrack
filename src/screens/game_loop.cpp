@@ -42,11 +42,7 @@ namespace Colortrack
 			delete _credits;
 			_credits = NULL;
 		}
-	}
 
-
-	void GameLoop::Unload()
-	{
 		CloseWindow();
 	}
 
@@ -60,19 +56,23 @@ namespace Colortrack
 			//Updates
 			if (state == GameState::mainmenu)
 			{
-				_menu->Input();
+				if(_menu != NULL)
+					_menu->Input();
 			}
 			if (state == GameState::tutorialscreen)
 			{
-				_tutorial->Input();
+				if(_tutorial != NULL)
+					_tutorial->Input();
 			}
 			if (state == GameState::game)
 			{
-				_gameplay->Update();
+				if(_gameplay != NULL)
+					_gameplay->Update();
 			}
 			if (state == GameState::creditsScreen)
 			{
-				_credits->Input();
+				if(_credits != NULL)
+					_credits->Input();
 			}
 
 			//Drawings
@@ -80,23 +80,26 @@ namespace Colortrack
 			ClearBackground(BLACK);
 			if (state == GameState::mainmenu)
 			{
-				_menu->Draw();
+				if(_menu != NULL)
+					_menu->Draw();
 			}
 			if (state == GameState::tutorialscreen)
 			{
-				_tutorial->Draw();
+				if(_tutorial != NULL)
+					_tutorial->Draw();
 			}
 			if (state == GameState::game)
 			{
-				_gameplay->Draw();
+				if(_gameplay != NULL)
+					_gameplay->Draw();
 			}
 			if (state == GameState::creditsScreen)
 			{
-				_credits->Draw();
+				if(_credits != NULL)
+					_credits->Draw();
 			}
 			EndDrawing();
 		}
-		//DeleteObjects();
 	}
 
 }

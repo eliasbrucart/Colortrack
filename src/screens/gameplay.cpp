@@ -4,6 +4,11 @@
 #include "gameplay.h"
 #include "game_loop.h"
 #include "gameobjects/colors.h"
+#include "credits.h"
+
+#include "gameobjects/player.h"
+#include "gameobjects/circle_enemy.h"
+#include "gameobjects/rectangle_enemy.h"
 
 using namespace std;
 
@@ -29,18 +34,22 @@ namespace Colortrack
 		if (player != NULL)
 		{
 			delete player;
+			player = NULL;
 		}
 		if (rectangleEnemy != NULL)
 		{
 			delete rectangleEnemy;
+			rectangleEnemy = NULL;
 		}
 		if (rectangleEnemy2 != NULL)
 		{
 			delete rectangleEnemy2;
+			rectangleEnemy2 = NULL;
 		}
 		if (circleEnemy != NULL)
 		{
 			delete circleEnemy;
+			circleEnemy = NULL;
 		}
 	}
 
@@ -154,6 +163,18 @@ namespace Colortrack
 
 	void Gameplay::Init()
 	{
+
+		player = NULL;
+		rectangleEnemy = NULL;
+		rectangleEnemy2 = NULL;
+		circleEnemy = NULL;
+		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
+		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 100.0f);
+		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 100.0f);
+		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
+		_time = 0.0f;
+		_points = 0;
+
 		SetEnemiesColors();
 		SetPlayerColors();
 
@@ -212,7 +233,8 @@ namespace Colortrack
 	{
 		if (player->IsDead())
 		{
-			state = GameState::credits;
+			state = GameState::creditsScreen;
+			//primero unload de todo, despues destruir en el loop.
 		}
 	}
 
@@ -225,26 +247,46 @@ namespace Colortrack
 			rectangleEnemy->SetWidth(320.0f);
 			rectangleEnemy->SetHeight(30.0f);
 			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy2->SetWidth(320.0f);
+			rectangleEnemy2->SetX(321.0f);
+			rectangleEnemy2->SetHeight(30.0f);
+			rectangleEnemy2->SetChangedShape(true);
 			break;
 		case 2:
 			rectangleEnemy->SetWidth(150.0f);
 			rectangleEnemy->SetHeight(20.0f);
 			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy2->SetWidth(150.0f);
+			rectangleEnemy2->SetX(151.0f);
+			rectangleEnemy2->SetHeight(20.0f);
+			rectangleEnemy2->SetChangedShape(true);
 			break;
 		case 3:
 			rectangleEnemy->SetWidth(200.0f);
 			rectangleEnemy->SetHeight(50.0f);
 			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy2->SetWidth(200.0f);
+			rectangleEnemy2->SetX(201.0f);
+			rectangleEnemy2->SetHeight(50.0f);
+			rectangleEnemy2->SetChangedShape(true);
 			break;
 		case 4:
 			rectangleEnemy->SetWidth(500.0f);
 			rectangleEnemy->SetHeight(70.0f);
 			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy2->SetWidth(500.0f);
+			rectangleEnemy2->SetX(501.0f);
+			rectangleEnemy2->SetHeight(70.0f);
+			rectangleEnemy2->SetChangedShape(true);
 			break;
 		case 5:
 			rectangleEnemy->SetWidth(90.0f);
 			rectangleEnemy->SetHeight(45.0f);
 			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy2->SetWidth(90.0f);
+			rectangleEnemy2->SetX(91.0f);
+			rectangleEnemy2->SetHeight(45.0f);
+			rectangleEnemy2->SetChangedShape(true);
 			break;
 		default:
 			break;
@@ -271,10 +313,21 @@ namespace Colortrack
 			if(!rectangleEnemy->GetChangedShape())
 				GenerateShapes();
 		}
+		else if (rectangleEnemy2->GetOutOfScreen() == 1) 
+		{
+			if (!rectangleEnemy2->GetChangedShape())
+				GenerateShapes();
+		}
+	}
+
+	int Gameplay::GetPoints()
+	{
+		return _points;
 	}
 
 	void Gameplay::Draw()
 	{
+		ClearBackground(BLACK);
 		DrawRectangleRec(player->rec, player->GetColor());
 		DrawRectangleRec(rectangleEnemy->rec, rectangleEnemy->GetColor());
 		DrawRectangleRec(rectangleEnemy2->rec, rectangleEnemy2->GetColor());
@@ -284,5 +337,11 @@ namespace Colortrack
 		{
 			DrawText("You Lose!", GetScreenWidth() / 2 - 50, GetScreenHeight() / 2, 50, WHITE);
 		}
+	}
+
+	void Gameplay::Unload() 
+	{
+		_time = 0.0f;
+		_points = 0;
 	}
 }

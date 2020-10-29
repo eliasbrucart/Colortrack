@@ -33,6 +33,7 @@ namespace Colortrack
 		{
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 			{
+				_gameplay->Init();
 				state = GameState::game;
 			}
 		}

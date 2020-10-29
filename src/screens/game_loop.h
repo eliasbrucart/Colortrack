@@ -16,7 +16,6 @@ namespace Colortrack
 	public:
 		GameLoop();
 		~GameLoop();
-		void Unload();
 		void Loop();
 	};
 
