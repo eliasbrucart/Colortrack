@@ -141,26 +141,27 @@ namespace Colortrack
 		}
 		else if (_y < 0.0f || _y > GetScreenHeight())
 		{
-			_outOfScreen = 1;
+			_outOfScreen = true;
 			cout << "Esta afuera" << endl;
 		}
 		else if(_y + _height >= 0.0f && _y <= GetScreenHeight())
 		{
-			_outOfScreen = 0;
+			_outOfScreen = false;
 			cout << "Esta adentro" << endl;
 		}
 		else if(_x + _width >= GetScreenWidth())
 		{
 			_x = -200.0f;
+			_changedShape = false;
 		}
 		else if (_x < 0.0f || _x > GetScreenWidth())
 		{
-			_outOfScreen = 1;
+			_outOfScreen = true;
 			cout << "Esta afuera" << endl;
 		}
 		else if (_x >= 0.0f && _x <= GetScreenWidth())
 		{
-			_outOfScreen = 0;
+			_outOfScreen = false;
 			cout << "Esta adentro" << endl;
 		}
 	}

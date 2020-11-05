@@ -16,15 +16,19 @@ namespace Colortrack
 		CircleEnemy* circleEnemy;
 		float _time;
 		int _points;
+		bool _pause;
 	public:
 		Gameplay();
 		~Gameplay();
+		void Init();
 		void SetEnemiesColors();
 		void SetPlayerColors();
-		void Init();
+		bool CheckEnemiesColors();
+		bool CheckEnemiesPlayerColors();
 		void CollisionsGame();
 		void CheckPlayerAlive();
 		void GenerateShapes();
+		void SetPause();
 		void Update();
 		int GetPoints();
 		void Draw();

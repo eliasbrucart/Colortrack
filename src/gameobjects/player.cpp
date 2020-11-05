@@ -16,6 +16,7 @@ namespace Colortrack
 		_speed = 100.0f;
 		_lives = 1;
 		_color = WHITE;
+		_dead = false;
 		playerColors = Colors::colorGreen;
 	}
 
@@ -126,11 +127,11 @@ namespace Colortrack
 	{
 		if (_lives == 0)
 		{
-			return true;
 			_dead = true;
+			return true;
 		}
-		return false;
 		_dead = false;
+		return false;
 	}
 
 	void Player::CollisionWindow()

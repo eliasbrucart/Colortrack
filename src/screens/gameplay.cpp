@@ -17,16 +17,7 @@ namespace Colortrack
 	static int flag = 1;
 	Gameplay::Gameplay()
 	{
-		player = NULL;
-		rectangleEnemy = NULL;
-		rectangleEnemy2 = NULL;
-		circleEnemy = NULL;
-		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 100.0f);
-		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 100.0f);
-		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
-		_time = 0.0f;
-		_points = 0;
+		Init();
 	}
 
 	Gameplay::~Gameplay()
@@ -50,6 +41,30 @@ namespace Colortrack
 		{
 			delete circleEnemy;
 			circleEnemy = NULL;
+		}
+	}
+
+	void Gameplay::Init()
+	{
+		player = NULL;
+		rectangleEnemy = NULL;
+		rectangleEnemy2 = NULL;
+		circleEnemy = NULL;
+		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
+		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 100.0f);
+		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 100.0f);
+		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
+		_time = 0.0f;
+		_points = 0;
+		_pause = false;
+
+		SetEnemiesColors();
+		SetPlayerColors();
+
+		if (CheckEnemiesColors() && CheckEnemiesPlayerColors())
+		{
+			SetEnemiesColors();
+			SetPlayerColors();
 		}
 	}
 
@@ -161,28 +176,18 @@ namespace Colortrack
 		}
 	}
 
-	void Gameplay::Init()
+	bool Gameplay::CheckEnemiesColors() 
 	{
+		if (rectangleEnemy->GetColors() == rectangleEnemy2->GetColors() && rectangleEnemy->GetColors() == circleEnemy->GetColors() && rectangleEnemy2->GetColors() == circleEnemy->GetColors())
+			return true;
+		return false;
+	}
 
-		player = NULL;
-		rectangleEnemy = NULL;
-		rectangleEnemy2 = NULL;
-		circleEnemy = NULL;
-		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 100.0f);
-		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 100.0f);
-		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
-		_time = 0.0f;
-		_points = 0;
-
-		SetEnemiesColors();
-		SetPlayerColors();
-
-		if (rectangleEnemy->GetColors() == rectangleEnemy2->GetColors() && rectangleEnemy->GetColors() == circleEnemy->GetColors() && rectangleEnemy2->GetColors() == circleEnemy->GetColors() && player->GetColors() != rectangleEnemy->GetColors() && player->GetColors() != rectangleEnemy2->GetColors() && player->GetColors() != circleEnemy->GetColors())
-		{
-			SetEnemiesColors();
-			SetPlayerColors();
-		}
+	bool Gameplay::CheckEnemiesPlayerColors()
+	{
+		if (player->GetColors() != rectangleEnemy->GetColors() && player->GetColors() != rectangleEnemy2->GetColors() && player->GetColors() != circleEnemy->GetColors())
+			return true;
+		return false;
 	}
 
 	void Gameplay::CollisionsGame()
@@ -293,30 +298,49 @@ namespace Colortrack
 		}
 	}
 
+	void Gameplay::SetPause() 
+	{
+		if(IsKeyPressed(KEY_P)) 
+		{
+			_pause = true;
+		}
+	}
+
 	void Gameplay::Update()
 	{
-		player->InitRectanglePlayer();
-		rectangleEnemy->InitRectangleEnemy();
-		rectangleEnemy2->InitRectangleEnemy();
-		player->SetInputs();
-		player->CollisionWindow();
-		rectangleEnemy->MoveRectangleEnemy();
-		rectangleEnemy->RectangleEnemyOutOfScreen();
-		rectangleEnemy2->MoveRectangleEnemy();
-		rectangleEnemy2->RectangleEnemyOutOfScreen();
-		circleEnemy->MoveCircleEnemy();
-		circleEnemy->CircleEnemyOutOfScreen();
-		CollisionsGame();
-		CheckPlayerAlive();
-		if (rectangleEnemy->GetOutOfScreen() == 1)
+		if (_pause == false) 
 		{
-			if(!rectangleEnemy->GetChangedShape())
-				GenerateShapes();
-		}
-		else if (rectangleEnemy2->GetOutOfScreen() == 1) 
+			player->InitRectanglePlayer();
+			rectangleEnemy->InitRectangleEnemy();
+			rectangleEnemy2->InitRectangleEnemy();
+			player->SetInputs();
+			player->CollisionWindow();
+			rectangleEnemy->MoveRectangleEnemy();
+			rectangleEnemy->RectangleEnemyOutOfScreen();
+			rectangleEnemy2->MoveRectangleEnemy();
+			rectangleEnemy2->RectangleEnemyOutOfScreen();
+			circleEnemy->MoveCircleEnemy();
+			circleEnemy->CircleEnemyOutOfScreen();
+			CollisionsGame();
+			CheckPlayerAlive();
+			SetPause();
+			if (rectangleEnemy->GetOutOfScreen() == true)
+			{
+				if (!rectangleEnemy->GetChangedShape())
+					GenerateShapes();
+			}
+			else if (rectangleEnemy2->GetOutOfScreen() == true)
+			{
+				if (!rectangleEnemy2->GetChangedShape())
+					GenerateShapes();
+			}
+		} else 
 		{
-			if (!rectangleEnemy2->GetChangedShape())
-				GenerateShapes();
+			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
+			if(IsKeyPressed(KEY_P))
+			{
+				_pause = false;
+			}
 		}
 	}
 

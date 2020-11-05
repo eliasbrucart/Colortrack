@@ -15,7 +15,7 @@ namespace Colortrack
 		float _height;
 		float _speed;
 		Color _color;
-		int _outOfScreen;
+		bool _outOfScreen;
 		bool _changedShape;
 	public:
 		RectangleEnemy();
