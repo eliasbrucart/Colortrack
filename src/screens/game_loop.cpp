@@ -17,11 +17,6 @@ namespace Colortrack
 		_tutorial = NULL;
 		_gameplay = NULL;
 		_credits = NULL;
-		/*_menu = new Menu();
-		_tutorial = new Tutorial();
-		_gameplay = new Gameplay();
-		_credits = new Credits(_gameplay);*/
-
 	}
 
 	GameLoop::~GameLoop() 
@@ -155,5 +150,4 @@ namespace Colortrack
 			EndDrawing();
 		}
 	}
-
 }

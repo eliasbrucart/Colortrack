@@ -9,10 +9,7 @@ namespace Colortrack
 	class Player
 	{
 	private:
-		float _x;
-		float _y;
-		float _width;
-		float _height;
+		Rectangle _rec;
 		float _speed;
 		int _lives;
 		bool _dead;
@@ -25,15 +22,14 @@ namespace Colortrack
 		float GetX();
 		void SetY(float y);
 		float GetY();
+		Rectangle GetPlayerRec();
 		void SetWidth(float width);
 		float GetWidth();
 		void SetHeight(float height);
 		float GetHeight();
 		Color GetColor();
 		Colors GetColors();
-		Rectangle rec;
 		void SetInputs();
-		void InitRectanglePlayer();
 		void SetLives(int lives);
 		int GetLives();
 		bool IsDead();

@@ -60,7 +60,7 @@ namespace Colortrack
 
 		SetEnemiesColors();
 		SetPlayerColors();
-									//Se llama asi por que comprueba colores de enemigos con jugadores
+
 		if (CheckEnemiesColors() && CheckEnemiesPlayerColors())
 		{
 			SetEnemiesColors();
@@ -70,30 +70,9 @@ namespace Colortrack
 
 	void Gameplay::SetEnemiesColors()
 	{
-		// int randomColorPlayer = GetRandomValue(1, 5);
 		int randomColorRectangleEnemy = GetRandomValue(1, 5);
 		int randomColorRectangleEnemy2 = GetRandomValue(1, 5);
 		int randomColorCircleEnemy = GetRandomValue(1, 5);
-		/*switch (randomColorPlayer)
-		{
-		case 1:
-			player->SetPlayerColors(player->playerColors = Colors::colorGreen);
-			break;
-		case 2:
-			player->SetPlayerColors(player->playerColors = Colors::colorRed);
-			break;
-		case 3:
-			player->SetPlayerColors(player->playerColors = Colors::colorYellow);
-			break;
-		case 4:
-			player->SetPlayerColors(player->playerColors = Colors::colorBlue);
-			break;
-		case 5:
-			player->SetPlayerColors(player->playerColors = Colors::colorOrange);
-			break;
-		default:
-			break;
-		}*/
 
 		switch (randomColorRectangleEnemy)
 		{
@@ -164,7 +143,7 @@ namespace Colortrack
 		Colors rectangleEnemyColor = rectangleEnemy->GetColors();
 		Colors rectangleEnemyColor2 = rectangleEnemy2->GetColors();
 		Colors circleEnemyColor = circleEnemy->GetColors();
-		static int rand = GetRandomValue(1, 2);
+		int rand = GetRandomValue(1, 2);
 		switch (rand)
 		{
 		case 1:
@@ -192,7 +171,7 @@ namespace Colortrack
 
 	void Gameplay::CollisionsGame()
 	{
-		if (CheckCollisionRecs(player->rec, rectangleEnemy->rec))
+		if (CheckCollisionRecs(player->GetPlayerRec(), rectangleEnemy->GetRectangleEnemyRec()))
 		{
 			if (player->playerColors != rectangleEnemy->rectangleEnemyColors)
 			{
@@ -204,7 +183,7 @@ namespace Colortrack
 				flag = 0;
 			}
 		}
-		else if (CheckCollisionRecs(player->rec, rectangleEnemy2->rec))
+		else if (CheckCollisionRecs(player->GetPlayerRec(), rectangleEnemy2->GetRectangleEnemyRec()))
 		{
 			if (player->playerColors != rectangleEnemy2->rectangleEnemyColors)
 			{
@@ -216,7 +195,7 @@ namespace Colortrack
 				flag = 0;
 			}
 		}
-		else if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->rec))
+		else if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->GetPlayerRec()))
 		{
 			if (player->playerColors != circleEnemy->circleEnemyColors)
 			{
@@ -239,7 +218,6 @@ namespace Colortrack
 		if (player->IsDead())
 		{
 			state = GameState::creditsScreen;
-			//primero unload de todo, despues destruir en el loop.
 		}
 	}
 
@@ -310,9 +288,6 @@ namespace Colortrack
 	{
 		if (_pause == false) 
 		{
-			player->InitRectanglePlayer();
-			rectangleEnemy->InitRectangleEnemy();
-			rectangleEnemy2->InitRectangleEnemy();
 			player->SetInputs();
 			player->CollisionWindow();
 			rectangleEnemy->MoveRectangleEnemy();
@@ -356,9 +331,9 @@ namespace Colortrack
 	void Gameplay::Draw()
 	{
 		ClearBackground(BLACK);
-		DrawRectangleRec(player->rec, player->GetColor());
-		DrawRectangleRec(rectangleEnemy->rec, rectangleEnemy->GetColor());
-		DrawRectangleRec(rectangleEnemy2->rec, rectangleEnemy2->GetColor());
+		DrawRectangleRec(player->GetPlayerRec(), player->GetColor());
+		DrawRectangleRec(rectangleEnemy->GetRectangleEnemyRec(), rectangleEnemy->GetColor());
+		DrawRectangleRec(rectangleEnemy2->GetRectangleEnemyRec(), rectangleEnemy2->GetColor());
 		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
 		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
 		if (player->IsDead())

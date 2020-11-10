@@ -9,10 +9,7 @@ namespace Colortrack
 	class RectangleEnemy
 	{
 	private:
-		float _x;
-		float _y;
-		float _width;
-		float _height;
+		Rectangle _rec;
 		float _speed;
 		Color _color;
 		bool _outOfScreen;
@@ -26,6 +23,7 @@ namespace Colortrack
 		float GetX();
 		void SetY(float y);
 		float GetY();
+		Rectangle GetRectangleEnemyRec();
 		void SetWidth(float width);
 		float GetWidth();
 		void SetHeight(float height);
@@ -38,8 +36,6 @@ namespace Colortrack
 		void SetChangedShape(bool changedShape);
 		Color GetColor();
 		Colors GetColors();
-		Rectangle rec;
-		void InitRectangleEnemy();
 		void RectangleEnemyOutOfScreen();
 		Colors rectangleEnemyColors;
 		void SetColor(Colors color);

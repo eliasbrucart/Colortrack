@@ -9,10 +9,10 @@ namespace Colortrack
 {
 	RectangleEnemy::RectangleEnemy()
 	{
-		_x = 100.0f;
-		_y = 100.0f;
-		_width = 50.0f;
-		_height = 50.0f;
+		_rec.x = 100.0f;
+		_rec.y = 100.0f;
+		_rec.width = 50.0f;
+		_rec.height = 50.0f;
 		_speed = 100.0f;
 		_color = WHITE;
 		rectangleEnemyColors = Colors::colorGreen;
@@ -20,10 +20,10 @@ namespace Colortrack
 
 	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, float speed)
 	{
-		_x = x;
-		_y = y;
-		_width = width;
-		_height = height;
+		_rec.x = x;
+		_rec.y = y;
+		_rec.width = width;
+		_rec.height = height;
 		_speed = speed;
 		rectangleEnemyColors = Colors::colorGreen;
 	}
@@ -33,52 +33,49 @@ namespace Colortrack
 
 	}
 
-	void RectangleEnemy::InitRectangleEnemy()
-	{
-		rec.x = _x;
-		rec.y = _y;
-		rec.width = _width;
-		rec.height = _height;
-	}
-
 	void RectangleEnemy::SetX(float x)
 	{
-		_x = x;
+		_rec.x = x;
 	}
 
 	float RectangleEnemy::GetX()
 	{
-		return _x;
+		return _rec.x;
 	}
 
 	void RectangleEnemy::SetY(float y)
 	{
-		_y = y;
+		_rec.y = y;
 	}
 
 	float RectangleEnemy::GetY()
 	{
-		return _y;
+		return _rec.y;
+	}
+
+	Rectangle RectangleEnemy::GetRectangleEnemyRec()
+	{
+		return _rec;
 	}
 
 	void RectangleEnemy::SetWidth(float width)
 	{
-		_width = width;
+		_rec.width = width;
 	}
 
 	float RectangleEnemy::GetWidth() 
 	{
-		return _width;
+		return _rec.width;
 	}
 
 	void RectangleEnemy::SetHeight(float height)
 	{
-		_height = height;
+		_rec.height = height;
 	}
 
 	float RectangleEnemy::GetHeight()
 	{
-		return _height;
+		return _rec.height;
 	}
 
 	float RectangleEnemy::GetSpeed()
@@ -129,37 +126,37 @@ namespace Colortrack
 
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
-		_y += _speed * GetFrameTime();
+		_rec.y += _speed * GetFrameTime();
 	}
 
 	void RectangleEnemy::RectangleEnemyOutOfScreen()
 	{
-		if (_y + _height >= GetScreenHeight())
+		if (_rec.y + _rec.height >= GetScreenHeight())
 		{
-			_y = -200.0f;
+			_rec.y = -200.0f;
 			_changedShape = false;
 		}
-		else if (_y < 0.0f || _y > GetScreenHeight())
+		else if (_rec.y < 0.0f || _rec.y > GetScreenHeight())
 		{
 			_outOfScreen = true;
 			cout << "Esta afuera" << endl;
 		}
-		else if(_y + _height >= 0.0f && _y <= GetScreenHeight())
+		else if(_rec.y + _rec.height >= 0.0f && _rec.y <= GetScreenHeight())
 		{
 			_outOfScreen = false;
 			cout << "Esta adentro" << endl;
 		}
-		else if(_x + _width >= GetScreenWidth())
+		else if(_rec.x + _rec.width >= GetScreenWidth())
 		{
-			_x = -200.0f;
+			_rec.x = -200.0f;
 			_changedShape = false;
 		}
-		else if (_x < 0.0f || _x > GetScreenWidth())
+		else if (_rec.x < 0.0f || _rec.x > GetScreenWidth())
 		{
 			_outOfScreen = true;
 			cout << "Esta afuera" << endl;
 		}
-		else if (_x >= 0.0f && _x <= GetScreenWidth())
+		else if (_rec.x >= 0.0f && _rec.x <= GetScreenWidth())
 		{
 			_outOfScreen = false;
 			cout << "Esta adentro" << endl;
