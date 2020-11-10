@@ -60,7 +60,7 @@ namespace Colortrack
 
 		SetEnemiesColors();
 		SetPlayerColors();
-
+									//Se llama asi por que comprueba colores de enemigos con jugadores
 		if (CheckEnemiesColors() && CheckEnemiesPlayerColors())
 		{
 			SetEnemiesColors();
@@ -70,11 +70,11 @@ namespace Colortrack
 
 	void Gameplay::SetEnemiesColors()
 	{
-		static int randomColorPlayer = GetRandomValue(1, 5);
-		static int randomColorRectangleEnemy = GetRandomValue(1, 5);
-		static int randomColorRectangleEnemy2 = GetRandomValue(1, 5);
-		static int randomColorCircleEnemy = GetRandomValue(1, 5);
-		switch (randomColorPlayer)
+		// int randomColorPlayer = GetRandomValue(1, 5);
+		int randomColorRectangleEnemy = GetRandomValue(1, 5);
+		int randomColorRectangleEnemy2 = GetRandomValue(1, 5);
+		int randomColorCircleEnemy = GetRandomValue(1, 5);
+		/*switch (randomColorPlayer)
 		{
 		case 1:
 			player->SetPlayerColors(player->playerColors = Colors::colorGreen);
@@ -93,7 +93,7 @@ namespace Colortrack
 			break;
 		default:
 			break;
-		}
+		}*/
 
 		switch (randomColorRectangleEnemy)
 		{
@@ -324,15 +324,19 @@ namespace Colortrack
 			CollisionsGame();
 			CheckPlayerAlive();
 			SetPause();
-			if (rectangleEnemy->GetOutOfScreen() == true)
+			if (rectangleEnemy->GetOutOfScreen() == true && rectangleEnemy2->GetOutOfScreen() == true)
 			{
-				if (!rectangleEnemy->GetChangedShape())
+				if (!rectangleEnemy->GetChangedShape() && !rectangleEnemy2->GetChangedShape())
+				{
 					GenerateShapes();
-			}
-			else if (rectangleEnemy2->GetOutOfScreen() == true)
-			{
-				if (!rectangleEnemy2->GetChangedShape())
-					GenerateShapes();
+					SetEnemiesColors();
+					SetPlayerColors();
+					if (CheckEnemiesColors() && CheckEnemiesPlayerColors())
+					{
+						SetEnemiesColors();
+						SetPlayerColors();
+					}
+				}
 			}
 		} else 
 		{
