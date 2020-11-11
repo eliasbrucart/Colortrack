@@ -51,8 +51,8 @@ namespace Colortrack
 		rectangleEnemy2 = NULL;
 		circleEnemy = NULL;
 		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 100.0f);
-		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 100.0f);
+		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 150.0f);
+		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 150.0f);
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
 		_time = 0.0f;
 		_points = 0;
@@ -66,6 +66,8 @@ namespace Colortrack
 			SetEnemiesColors();
 			SetPlayerColors();
 		}
+
+		SetTargetFPS(60);
 	}
 
 	void Gameplay::SetEnemiesColors()
@@ -142,7 +144,7 @@ namespace Colortrack
 	{
 		Colors rectangleEnemyColor = rectangleEnemy->GetColors();
 		Colors rectangleEnemyColor2 = rectangleEnemy2->GetColors();
-		Colors circleEnemyColor = circleEnemy->GetColors();
+		//Colors circleEnemyColor = circleEnemy->GetColors();
 		int rand = GetRandomValue(1, 2);
 		switch (rand)
 		{
@@ -223,7 +225,7 @@ namespace Colortrack
 
 	void Gameplay::GenerateShapes()
 	{
-		int randomShape = GetRandomValue(1, 5);
+		int randomShape = GetRandomValue(1, 6);
 		switch (randomShape)
 		{
 		case 1:
@@ -271,6 +273,16 @@ namespace Colortrack
 			rectangleEnemy2->SetHeight(45.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			break;
+		case 6:
+			rectangleEnemy->SetY(-400.0f);
+			rectangleEnemy->SetWidth(200.0f);
+			rectangleEnemy->SetHeight(300.0f);
+			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy2->SetY(-400.0f);
+			rectangleEnemy2->SetX(440.0f);
+			rectangleEnemy2->SetWidth(200.0f);
+			rectangleEnemy2->SetHeight(300.0f);
+			rectangleEnemy2->SetChangedShape(true);
 		default:
 			break;
 		}
@@ -330,7 +342,6 @@ namespace Colortrack
 
 	void Gameplay::Draw()
 	{
-		ClearBackground(BLACK);
 		DrawRectangleRec(player->GetPlayerRec(), player->GetColor());
 		DrawRectangleRec(rectangleEnemy->GetRectangleEnemyRec(), rectangleEnemy->GetColor());
 		DrawRectangleRec(rectangleEnemy2->GetRectangleEnemyRec(), rectangleEnemy2->GetColor());

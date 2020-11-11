@@ -30,7 +30,7 @@ namespace Colortrack
 		float GetHeight();
 		float GetSpeed();
 		void SetSpeed(float speed);
-		int GetOutOfScreen();
+		bool GetOutOfScreen();
 		void SetOutOfScreen(int outOfScreen);
 		bool GetChangedShape();
 		void SetChangedShape(bool changedShape);

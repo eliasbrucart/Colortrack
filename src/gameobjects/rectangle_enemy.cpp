@@ -88,7 +88,7 @@ namespace Colortrack
 		_speed = speed;
 	}
 
-	int RectangleEnemy::GetOutOfScreen()
+	bool RectangleEnemy::GetOutOfScreen()
 	{
 		return _outOfScreen;
 	}
@@ -131,7 +131,15 @@ namespace Colortrack
 
 	void RectangleEnemy::RectangleEnemyOutOfScreen()
 	{
-		if (_rec.y + _rec.height >= GetScreenHeight())
+		if (_rec.height >= 250.0f)
+		{
+			if (_rec.y >= GetScreenHeight())
+			{
+				_rec.y = -200.0f;
+				_changedShape = false;
+			}
+		}
+		else if (_rec.y + _rec.height >= GetScreenHeight())
 		{
 			_rec.y = -200.0f;
 			_changedShape = false;
