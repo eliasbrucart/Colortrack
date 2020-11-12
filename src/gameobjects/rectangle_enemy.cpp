@@ -15,16 +15,20 @@ namespace Colortrack
 		_rec.height = 50.0f;
 		_speed = 100.0f;
 		_color = WHITE;
+		_speed1.x = 100.0f;
+		_speed1.y = 100.0f;
 		rectangleEnemyColors = Colors::colorGreen;
 	}
 
-	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, float speed)
+	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, float speed, Vector2 speed1)
 	{
 		_rec.x = x;
 		_rec.y = y;
 		_rec.width = width;
 		_rec.height = height;
 		_speed = speed;
+		_speed1.x = speed1.x;
+		_speed1.y = speed1.y;
 		rectangleEnemyColors = Colors::colorGreen;
 	}
 
@@ -126,7 +130,22 @@ namespace Colortrack
 
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
-		_rec.y += _speed * GetFrameTime();
+		_rec.y += _speed1.y * GetFrameTime();
+		if (_activeMovement == true)
+		{
+			if (_rec.x > 0 && _rec.x < 640 || _rec.x + _rec.height > 0 && _rec.x + _rec.height < 640)
+			{
+				_rec.x += _speed1.x * GetFrameTime();
+			}
+			if (_rec.x + _rec.width >= GetScreenWidth())
+			{
+				_speed1.x *= -1.0f;
+			}
+			if (_rec.x <= 0)
+			{
+				_speed1.x *= -1.0f;
+			}
+		}
 	}
 
 	void RectangleEnemy::RectangleEnemyOutOfScreen()
@@ -169,6 +188,16 @@ namespace Colortrack
 			_outOfScreen = false;
 			cout << "Esta adentro" << endl;
 		}
+	}
+
+	void RectangleEnemy::SetActiveMovement(bool activeMovement)
+	{
+		_activeMovement = activeMovement;
+	}
+
+	bool RectangleEnemy::GetActiveMovement()
+	{
+		return _activeMovement;
 	}
 
 	void RectangleEnemy::SetRectangleEnemyColors(Colors color)

@@ -51,8 +51,8 @@ namespace Colortrack
 		rectangleEnemy2 = NULL;
 		circleEnemy = NULL;
 		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 150.0f);
-		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 150.0f);
+		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 150.0f, {150.0f, 150.0f});
+		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 150.0f, { 150.0f, 150.0f });
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
 		_time = 0.0f;
 		_points = 0;
@@ -225,64 +225,106 @@ namespace Colortrack
 
 	void Gameplay::GenerateShapes()
 	{
-		int randomShape = GetRandomValue(1, 6);
+		int randomShape = GetRandomValue(1, 7);
 		switch (randomShape)
 		{
 		case 1:
+			rectangleEnemy->SetX(0.0f);
+			rectangleEnemy->SetY(-200.0f);
 			rectangleEnemy->SetWidth(320.0f);
 			rectangleEnemy->SetHeight(30.0f);
 			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy->SetActiveMovement(false);
 			rectangleEnemy2->SetWidth(320.0f);
 			rectangleEnemy2->SetX(321.0f);
+			rectangleEnemy2->SetY(-200.0f);
 			rectangleEnemy2->SetHeight(30.0f);
 			rectangleEnemy2->SetChangedShape(true);
+			rectangleEnemy2->SetActiveMovement(false);
 			break;
 		case 2:
+			rectangleEnemy->SetX(0.0f);
+			rectangleEnemy->SetY(-200.0f);
 			rectangleEnemy->SetWidth(150.0f);
 			rectangleEnemy->SetHeight(20.0f);
 			rectangleEnemy->SetChangedShape(true);
-			rectangleEnemy2->SetWidth(150.0f);
+			rectangleEnemy->SetActiveMovement(false);
 			rectangleEnemy2->SetX(151.0f);
+			rectangleEnemy2->SetY(-200.0f);
+			rectangleEnemy2->SetWidth(490.0f);
 			rectangleEnemy2->SetHeight(20.0f);
 			rectangleEnemy2->SetChangedShape(true);
+			rectangleEnemy2->SetActiveMovement(false);
 			break;
 		case 3:
+			rectangleEnemy->SetX(0.0f);
+			rectangleEnemy->SetY(-200.0f);
 			rectangleEnemy->SetWidth(200.0f);
 			rectangleEnemy->SetHeight(50.0f);
 			rectangleEnemy->SetChangedShape(true);
-			rectangleEnemy2->SetWidth(200.0f);
+			rectangleEnemy->SetActiveMovement(false);
 			rectangleEnemy2->SetX(201.0f);
+			rectangleEnemy2->SetY(-200.0f);
+			rectangleEnemy2->SetWidth(440.0f);
 			rectangleEnemy2->SetHeight(50.0f);
 			rectangleEnemy2->SetChangedShape(true);
+			rectangleEnemy2->SetActiveMovement(false);
 			break;
 		case 4:
+			rectangleEnemy->SetX(0.0f);
+			rectangleEnemy->SetY(-200.0f);
 			rectangleEnemy->SetWidth(500.0f);
 			rectangleEnemy->SetHeight(70.0f);
 			rectangleEnemy->SetChangedShape(true);
-			rectangleEnemy2->SetWidth(500.0f);
+			rectangleEnemy->SetActiveMovement(false);
 			rectangleEnemy2->SetX(501.0f);
+			rectangleEnemy2->SetY(-200.0f);
+			rectangleEnemy2->SetWidth(140.0f);
 			rectangleEnemy2->SetHeight(70.0f);
 			rectangleEnemy2->SetChangedShape(true);
+			rectangleEnemy2->SetActiveMovement(false);
 			break;
 		case 5:
+			rectangleEnemy->SetX(0.0f);
+			rectangleEnemy->SetY(-200.0f);
 			rectangleEnemy->SetWidth(90.0f);
 			rectangleEnemy->SetHeight(45.0f);
 			rectangleEnemy->SetChangedShape(true);
-			rectangleEnemy2->SetWidth(90.0f);
+			rectangleEnemy->SetActiveMovement(false);
 			rectangleEnemy2->SetX(91.0f);
+			rectangleEnemy2->SetY(-200.0f);
+			rectangleEnemy2->SetWidth(550.0f);
 			rectangleEnemy2->SetHeight(45.0f);
 			rectangleEnemy2->SetChangedShape(true);
+			rectangleEnemy2->SetActiveMovement(false);
 			break;
 		case 6:
+			rectangleEnemy->SetX(0.0f);
 			rectangleEnemy->SetY(-400.0f);
 			rectangleEnemy->SetWidth(200.0f);
 			rectangleEnemy->SetHeight(300.0f);
 			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy->SetActiveMovement(false);
 			rectangleEnemy2->SetY(-400.0f);
 			rectangleEnemy2->SetX(440.0f);
 			rectangleEnemy2->SetWidth(200.0f);
 			rectangleEnemy2->SetHeight(300.0f);
 			rectangleEnemy2->SetChangedShape(true);
+			rectangleEnemy2->SetActiveMovement(false);
+		case 7:
+			rectangleEnemy->SetX(50.0f);
+			rectangleEnemy->SetY(-200.0f);
+			rectangleEnemy->SetWidth(200.0f);
+			rectangleEnemy->SetHeight(50.0f);
+			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy->SetActiveMovement(true);
+			rectangleEnemy2->SetX(100.0f);
+			rectangleEnemy2->SetY(-100.0f);
+			rectangleEnemy2->SetWidth(200.0f);
+			rectangleEnemy2->SetHeight(50.0f);
+			rectangleEnemy2->SetChangedShape(true);
+			rectangleEnemy2->SetActiveMovement(true);
+			break;
 		default:
 			break;
 		}
