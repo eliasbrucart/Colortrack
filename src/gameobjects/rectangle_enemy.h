@@ -10,15 +10,14 @@ namespace Colortrack
 	{
 	private:
 		Rectangle _rec;
-		float _speed;
-		Vector2 _speed1;
+		Vector2 _speed;
 		Color _color;
 		bool _outOfScreen;
 		bool _changedShape;
 		bool _activeMovement;
 	public:
 		RectangleEnemy();
-		RectangleEnemy(float x, float y, float width, float height, float speed, Vector2 speed1);
+		RectangleEnemy(float x, float y, float width, float height, Vector2 speed);
 		~RectangleEnemy();
 		void MoveRectangleEnemy();
 		void SetX(float x);
@@ -30,8 +29,10 @@ namespace Colortrack
 		float GetWidth();
 		void SetHeight(float height);
 		float GetHeight();
-		float GetSpeed();
-		void SetSpeed(float speed);
+		float GetSpeedX();
+		float GetSpeedY();
+		void SetSpeedX(float speed);
+		void SetSpeedY(float speed);
 		bool GetOutOfScreen();
 		void SetOutOfScreen(int outOfScreen);
 		bool GetChangedShape();

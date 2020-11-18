@@ -13,22 +13,20 @@ namespace Colortrack
 		_rec.y = 100.0f;
 		_rec.width = 50.0f;
 		_rec.height = 50.0f;
-		_speed = 100.0f;
 		_color = WHITE;
-		_speed1.x = 100.0f;
-		_speed1.y = 100.0f;
+		_speed.x = 100.0f;
+		_speed.y = 100.0f;
 		rectangleEnemyColors = Colors::colorGreen;
 	}
 
-	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, float speed, Vector2 speed1)
+	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, Vector2 speed)
 	{
 		_rec.x = x;
 		_rec.y = y;
 		_rec.width = width;
 		_rec.height = height;
-		_speed = speed;
-		_speed1.x = speed1.x;
-		_speed1.y = speed1.y;
+		_speed.x = speed.x;
+		_speed.y = speed.y;
 		rectangleEnemyColors = Colors::colorGreen;
 	}
 
@@ -82,14 +80,24 @@ namespace Colortrack
 		return _rec.height;
 	}
 
-	float RectangleEnemy::GetSpeed()
+	float RectangleEnemy::GetSpeedX()
 	{
-		return _speed;
+		return _speed.x;
 	}
 
-	void RectangleEnemy::SetSpeed(float speed)
+	float RectangleEnemy::GetSpeedY()
 	{
-		_speed = speed;
+		return _speed.y;
+	}
+
+	void RectangleEnemy::SetSpeedX(float speed)
+	{
+		_speed.x = speed;
+	}
+
+	void RectangleEnemy::SetSpeedY(float speed)
+	{
+		_speed.y = speed;
 	}
 
 	bool RectangleEnemy::GetOutOfScreen()
@@ -130,20 +138,20 @@ namespace Colortrack
 
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
-		_rec.y += _speed1.y * GetFrameTime();
+		_rec.y += _speed.y * GetFrameTime();
 		if (_activeMovement == true)
 		{
-			if (_rec.x > 0 && _rec.x < 640 || _rec.x + _rec.height > 0 && _rec.x + _rec.height < 640)
+			if (_rec.x > 0 && _rec.x < GetScreenWidth() || _rec.x + _rec.height > 0 && _rec.x + _rec.height < GetScreenWidth())
 			{
-				_rec.x += _speed1.x * GetFrameTime();
+				_rec.x += _speed.x * GetFrameTime();
 			}
 			if (_rec.x + _rec.width >= GetScreenWidth())
 			{
-				_speed1.x *= -1.0f;
+				_speed.x *= -1.0f;
 			}
 			if (_rec.x <= 0)
 			{
-				_speed1.x *= -1.0f;
+				_speed.x *= -1.0f;
 			}
 		}
 	}
