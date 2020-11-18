@@ -15,6 +15,7 @@ using namespace std;
 namespace Colortrack
 {
 	static int flag = 1;
+	bool popUp = false;
 	Gameplay::Gameplay()
 	{
 		Init();
@@ -172,6 +173,7 @@ namespace Colortrack
 
 	void Gameplay::CollisionsGame()
 	{
+		_time += GetFrameTime();
 		if (CheckCollisionRecs(player->GetPlayerRec(), rectangleEnemy->GetRectangleEnemyRec()))
 		{
 			if (player->playerColors != rectangleEnemy->rectangleEnemyColors)
@@ -182,7 +184,9 @@ namespace Colortrack
 			{
 				_points += 100;
 				flag = 0;
+				popUp = true;
 			}
+			_time = 0.0f;
 		}
 		else if (CheckCollisionRecs(player->GetPlayerRec(), rectangleEnemy2->GetRectangleEnemyRec()))
 		{
@@ -194,7 +198,9 @@ namespace Colortrack
 			{
 				_points += 100;
 				flag = 0;
+				popUp = true;
 			}
+			_time = 0.0f;
 		}
 		else if (CheckCollisionCircleRec(circleEnemy->GetPosition(), circleEnemy->GetRadius(), player->GetPlayerRec()))
 		{
@@ -206,7 +212,9 @@ namespace Colortrack
 			{
 				_points += 100;
 				flag = 0;
+				popUp = true;
 			}
+			_time = 0.0f;
 		}
 		else
 		{
@@ -369,6 +377,18 @@ namespace Colortrack
 		}
 	}
 
+	void Gameplay::PopUp()
+	{
+		if (popUp)
+		{
+			if (_time != 0.0f)
+				if(_time < 2.0f)
+					DrawText("+100!", player->GetX(), player->GetY() - 25, 25, WHITE);
+			if (_time > 2.0f)
+				popUp = false;
+		}
+	}
+
 	void Gameplay::Update()
 	{
 		if (_pause == false) 
@@ -385,6 +405,7 @@ namespace Colortrack
 			CheckPlayerAlive();
 			SetPause();
 			PowerUp();
+			PopUp();
 			if (rectangleEnemy->GetOutOfScreen() == true && rectangleEnemy2->GetOutOfScreen() == true)
 			{
 				if (!rectangleEnemy->GetChangedShape() && !rectangleEnemy2->GetChangedShape())

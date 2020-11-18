@@ -31,6 +31,7 @@ namespace Colortrack
 		void SetPause();
 		int GetPoints();
 		void PowerUp();
+		void PopUp();
 		void Update();
 		void Draw();
 		void Unload();
