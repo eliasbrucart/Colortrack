@@ -29,8 +29,9 @@ namespace Colortrack
 		void CheckPlayerAlive();
 		void GenerateShapes();
 		void SetPause();
-		void Update();
 		int GetPoints();
+		void PowerUp();
+		void Update();
 		void Draw();
 		void Unload();
 	};

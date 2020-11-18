@@ -46,13 +46,14 @@ namespace Colortrack
 
 	void Gameplay::Init()
 	{
+		SetTargetFPS(60);
 		player = NULL;
 		rectangleEnemy = NULL;
 		rectangleEnemy2 = NULL;
 		circleEnemy = NULL;
 		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, 150.0f, {150.0f, 150.0f});
-		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, 150.0f, { 150.0f, 150.0f });
+		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, {150.0f, 150.0f});
+		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, { 150.0f, 150.0f });
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
 		_time = 0.0f;
 		_points = 0;
@@ -66,8 +67,6 @@ namespace Colortrack
 			SetEnemiesColors();
 			SetPlayerColors();
 		}
-
-		SetTargetFPS(60);
 	}
 
 	void Gameplay::SetEnemiesColors()
@@ -305,12 +304,13 @@ namespace Colortrack
 			rectangleEnemy->SetHeight(300.0f);
 			rectangleEnemy->SetChangedShape(true);
 			rectangleEnemy->SetActiveMovement(false);
-			rectangleEnemy2->SetY(-400.0f);
 			rectangleEnemy2->SetX(440.0f);
+			rectangleEnemy2->SetY(-400.0f);
 			rectangleEnemy2->SetWidth(200.0f);
 			rectangleEnemy2->SetHeight(300.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			rectangleEnemy2->SetActiveMovement(false);
+			break;
 		case 7:
 			rectangleEnemy->SetX(50.0f);
 			rectangleEnemy->SetY(-200.0f);
@@ -338,6 +338,37 @@ namespace Colortrack
 		}
 	}
 
+	int Gameplay::GetPoints()
+	{
+		return _points;
+	}
+
+	void Gameplay::PowerUp()
+	{
+		if (_points == 1000)
+		{
+			rectangleEnemy->SetSpeedY(170.0f);
+			rectangleEnemy2->SetSpeedY(170.0f);
+		}
+		if (_points == 2000)
+		{
+			rectangleEnemy->SetSpeedY(190.0f);
+			rectangleEnemy2->SetSpeedY(190.0f);
+
+		}
+		if (_points == 3000)
+		{
+			rectangleEnemy->SetSpeedY(210.0f);
+			rectangleEnemy2->SetSpeedY(210.0f);
+			player->SetSpeed(350.0f);
+		}
+		if (_points == 3500)
+		{
+			rectangleEnemy->SetSpeedY(230.0f);
+			rectangleEnemy2->SetSpeedY(230.0f);
+		}
+	}
+
 	void Gameplay::Update()
 	{
 		if (_pause == false) 
@@ -353,6 +384,7 @@ namespace Colortrack
 			CollisionsGame();
 			CheckPlayerAlive();
 			SetPause();
+			PowerUp();
 			if (rectangleEnemy->GetOutOfScreen() == true && rectangleEnemy2->GetOutOfScreen() == true)
 			{
 				if (!rectangleEnemy->GetChangedShape() && !rectangleEnemy2->GetChangedShape())
@@ -375,11 +407,6 @@ namespace Colortrack
 				_pause = false;
 			}
 		}
-	}
-
-	int Gameplay::GetPoints()
-	{
-		return _points;
 	}
 
 	void Gameplay::Draw()
