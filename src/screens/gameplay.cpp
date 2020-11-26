@@ -57,6 +57,10 @@ namespace Colortrack
 		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, {150.0f, 150.0f});
 		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, { 150.0f, 150.0f });
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
+		pauseRec.x = 620.0f;
+		pauseRec.y = 2.0f;
+		pauseRec.width = 20.0f;
+		pauseRec.height = 20.0f;
 		_time = 0.0f;
 		_points = 0;
 		_pause = false;
@@ -376,6 +380,11 @@ namespace Colortrack
 		{
 			_pause = true;
 		}
+		if (CheckCollisionPointRec(mouse, pauseRec))
+		{
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+				_pause = true;
+		}
 	}
 
 	int Gameplay::GetPoints()
@@ -425,6 +434,7 @@ namespace Colortrack
 	{
 		if (_pause == false) 
 		{
+			mouse = GetMousePosition();
 			player->SetInputs();
 			player->CollisionWindow();
 			rectangleEnemy->MoveRectangleEnemy();
@@ -456,7 +466,7 @@ namespace Colortrack
 		} else 
 		{
 			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
-			if(IsKeyPressed(KEY_P))
+			if(IsKeyPressed(KEY_P) || IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 			{
 				_pause = false;
 			}
@@ -465,6 +475,7 @@ namespace Colortrack
 
 	void Gameplay::Draw()
 	{
+		DrawRectangleRec(pauseRec, WHITE);
 		DrawRectangleRec(player->GetPlayerRec(), player->GetColor());
 		if (rectangleEnemy->GetRotationEnemy())
 		{

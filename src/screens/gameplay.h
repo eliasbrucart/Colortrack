@@ -13,12 +13,13 @@ namespace Colortrack
 		Player* player;
 		RectangleEnemy* rectangleEnemy;
 		RectangleEnemy* rectangleEnemy2;
-		//RectangleEnemy* rectangleEnemy3;
 		CircleEnemy* circleEnemy;
 		float _time;
 		int _points;
 		bool _pause;
 		float _rotation;
+		Vector2 mouse;
+		Rectangle pauseRec;
 	public:
 		Gameplay();
 		~Gameplay();
