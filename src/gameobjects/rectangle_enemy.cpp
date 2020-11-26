@@ -166,7 +166,7 @@ namespace Colortrack
 				_changedShape = false;
 			}
 		}
-		else if (_rec.y + _rec.height >= GetScreenHeight())
+		else if (_rec.y >= GetScreenHeight())
 		{
 			_rec.y = -200.0f;
 			_changedShape = false;
@@ -206,6 +206,21 @@ namespace Colortrack
 	bool RectangleEnemy::GetActiveMovement()
 	{
 		return _activeMovement;
+	}
+
+	void RectangleEnemy::SetRotationEnemy(bool rotateEnemy)
+	{
+		_rotateEnemy = rotateEnemy;
+	}
+
+	bool RectangleEnemy::GetRotationEnemy()
+	{
+		return _rotateEnemy;
+	}
+
+	void RectangleEnemy::RotateEnemy() 
+	{
+
 	}
 
 	void RectangleEnemy::SetRectangleEnemyColors(Colors color)

@@ -1,5 +1,6 @@
 #include<iostream>
 #include "raylib.h"
+#include "easings.h"
 
 #include "gameplay.h"
 #include "game_loop.h"
@@ -59,6 +60,7 @@ namespace Colortrack
 		_time = 0.0f;
 		_points = 0;
 		_pause = false;
+		_rotation = 0.0f;
 
 		SetEnemiesColors();
 		SetPlayerColors();
@@ -232,7 +234,7 @@ namespace Colortrack
 
 	void Gameplay::GenerateShapes()
 	{
-		int randomShape = GetRandomValue(1, 7);
+		int randomShape = GetRandomValue(1, 8);
 		switch (randomShape)
 		{
 		case 1:
@@ -242,12 +244,14 @@ namespace Colortrack
 			rectangleEnemy->SetHeight(30.0f);
 			rectangleEnemy->SetChangedShape(true);
 			rectangleEnemy->SetActiveMovement(false);
+			rectangleEnemy->SetRotationEnemy(false);
 			rectangleEnemy2->SetWidth(320.0f);
 			rectangleEnemy2->SetX(321.0f);
 			rectangleEnemy2->SetY(-200.0f);
 			rectangleEnemy2->SetHeight(30.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			rectangleEnemy2->SetActiveMovement(false);
+			rectangleEnemy2->SetRotationEnemy(false);
 			break;
 		case 2:
 			rectangleEnemy->SetX(0.0f);
@@ -256,12 +260,14 @@ namespace Colortrack
 			rectangleEnemy->SetHeight(20.0f);
 			rectangleEnemy->SetChangedShape(true);
 			rectangleEnemy->SetActiveMovement(false);
+			rectangleEnemy->SetRotationEnemy(false);
 			rectangleEnemy2->SetX(151.0f);
 			rectangleEnemy2->SetY(-200.0f);
 			rectangleEnemy2->SetWidth(490.0f);
 			rectangleEnemy2->SetHeight(20.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			rectangleEnemy2->SetActiveMovement(false);
+			rectangleEnemy2->SetRotationEnemy(false);
 			break;
 		case 3:
 			rectangleEnemy->SetX(0.0f);
@@ -270,12 +276,14 @@ namespace Colortrack
 			rectangleEnemy->SetHeight(50.0f);
 			rectangleEnemy->SetChangedShape(true);
 			rectangleEnemy->SetActiveMovement(false);
+			rectangleEnemy->SetRotationEnemy(false);
 			rectangleEnemy2->SetX(201.0f);
 			rectangleEnemy2->SetY(-200.0f);
 			rectangleEnemy2->SetWidth(440.0f);
 			rectangleEnemy2->SetHeight(50.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			rectangleEnemy2->SetActiveMovement(false);
+			rectangleEnemy2->SetRotationEnemy(false);
 			break;
 		case 4:
 			rectangleEnemy->SetX(0.0f);
@@ -284,12 +292,14 @@ namespace Colortrack
 			rectangleEnemy->SetHeight(70.0f);
 			rectangleEnemy->SetChangedShape(true);
 			rectangleEnemy->SetActiveMovement(false);
+			rectangleEnemy->SetRotationEnemy(false);
 			rectangleEnemy2->SetX(501.0f);
 			rectangleEnemy2->SetY(-200.0f);
 			rectangleEnemy2->SetWidth(140.0f);
 			rectangleEnemy2->SetHeight(70.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			rectangleEnemy2->SetActiveMovement(false);
+			rectangleEnemy2->SetRotationEnemy(false);
 			break;
 		case 5:
 			rectangleEnemy->SetX(0.0f);
@@ -298,12 +308,14 @@ namespace Colortrack
 			rectangleEnemy->SetHeight(45.0f);
 			rectangleEnemy->SetChangedShape(true);
 			rectangleEnemy->SetActiveMovement(false);
+			rectangleEnemy->SetRotationEnemy(false);
 			rectangleEnemy2->SetX(91.0f);
 			rectangleEnemy2->SetY(-200.0f);
 			rectangleEnemy2->SetWidth(550.0f);
 			rectangleEnemy2->SetHeight(45.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			rectangleEnemy2->SetActiveMovement(false);
+			rectangleEnemy2->SetRotationEnemy(false);
 			break;
 		case 6:
 			rectangleEnemy->SetX(0.0f);
@@ -312,12 +324,14 @@ namespace Colortrack
 			rectangleEnemy->SetHeight(300.0f);
 			rectangleEnemy->SetChangedShape(true);
 			rectangleEnemy->SetActiveMovement(false);
+			rectangleEnemy->SetRotationEnemy(false);
 			rectangleEnemy2->SetX(440.0f);
 			rectangleEnemy2->SetY(-400.0f);
 			rectangleEnemy2->SetWidth(200.0f);
 			rectangleEnemy2->SetHeight(300.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			rectangleEnemy2->SetActiveMovement(false);
+			rectangleEnemy2->SetRotationEnemy(false);
 			break;
 		case 7:
 			rectangleEnemy->SetX(50.0f);
@@ -326,12 +340,30 @@ namespace Colortrack
 			rectangleEnemy->SetHeight(50.0f);
 			rectangleEnemy->SetChangedShape(true);
 			rectangleEnemy->SetActiveMovement(true);
+			rectangleEnemy->SetRotationEnemy(false);
 			rectangleEnemy2->SetX(100.0f);
 			rectangleEnemy2->SetY(-100.0f);
 			rectangleEnemy2->SetWidth(200.0f);
 			rectangleEnemy2->SetHeight(50.0f);
 			rectangleEnemy2->SetChangedShape(true);
 			rectangleEnemy2->SetActiveMovement(true);
+			rectangleEnemy2->SetRotationEnemy(false);
+			break;
+		case 8:
+			rectangleEnemy->SetX(50.0f);
+			rectangleEnemy->SetY(-200.0f);
+			rectangleEnemy->SetWidth(200.0f);
+			rectangleEnemy->SetHeight(50.0f);
+			rectangleEnemy->SetChangedShape(true);
+			rectangleEnemy->SetActiveMovement(true);
+			rectangleEnemy->SetRotationEnemy(true);
+			rectangleEnemy2->SetX(100.0f);
+			rectangleEnemy2->SetY(-100.0f);
+			rectangleEnemy2->SetWidth(200.0f);
+			rectangleEnemy2->SetHeight(50.0f);
+			rectangleEnemy2->SetChangedShape(true);
+			rectangleEnemy2->SetActiveMovement(true);
+			rectangleEnemy2->SetRotationEnemy(true);
 			break;
 		default:
 			break;
@@ -406,6 +438,7 @@ namespace Colortrack
 			SetPause();
 			PowerUp();
 			PopUp();
+			_rotation++;
 			if (rectangleEnemy->GetOutOfScreen() == true && rectangleEnemy2->GetOutOfScreen() == true)
 			{
 				if (!rectangleEnemy->GetChangedShape() && !rectangleEnemy2->GetChangedShape())
@@ -433,8 +466,16 @@ namespace Colortrack
 	void Gameplay::Draw()
 	{
 		DrawRectangleRec(player->GetPlayerRec(), player->GetColor());
-		DrawRectangleRec(rectangleEnemy->GetRectangleEnemyRec(), rectangleEnemy->GetColor());
-		DrawRectangleRec(rectangleEnemy2->GetRectangleEnemyRec(), rectangleEnemy2->GetColor());
+		if (rectangleEnemy->GetRotationEnemy())
+		{
+			DrawRectanglePro(rectangleEnemy->GetRectangleEnemyRec(), { rectangleEnemy->GetWidth()/6, rectangleEnemy->GetHeight() }, _rotation, rectangleEnemy->GetColor());
+			DrawRectanglePro(rectangleEnemy2->GetRectangleEnemyRec(), { rectangleEnemy2->GetWidth()/6, rectangleEnemy2->GetHeight() }, _rotation, rectangleEnemy2->GetColor());
+		}
+		else 
+		{
+			DrawRectangleRec(rectangleEnemy->GetRectangleEnemyRec(), rectangleEnemy->GetColor());
+			DrawRectangleRec(rectangleEnemy2->GetRectangleEnemyRec(), rectangleEnemy2->GetColor());
+		}
 		DrawCircle(static_cast<int>(circleEnemy->GetX()), static_cast<int>(circleEnemy->GetY()), circleEnemy->GetRadius(), circleEnemy->GetColor());
 		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
 		if (player->IsDead())
