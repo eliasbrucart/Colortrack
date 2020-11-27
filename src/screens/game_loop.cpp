@@ -48,7 +48,7 @@ namespace Colortrack
 	void GameLoop::Loop()
 	{
 		InitWindow(640, 480, "Colortrack");
-		while (!WindowShouldClose())
+		while (!WindowShouldClose() && state != GameState::close)
 		{
 			//Updates
 			if (state == GameState::mainmenu)

@@ -7,11 +7,9 @@
 
 namespace Colortrack
 {
-	static Vector2 mouse;
-
-	static int pointsEarnedPosX = GetScreenWidth() / 4;
-	static int pointsEarnedPosY = GetScreenHeight() / 2.5;
-	static int pointsFontSize = 20;
+	int pointsEarnedPosX = GetScreenWidth() / 4;
+	int pointsEarnedPosY = GetScreenHeight() / 2.5;
+	int pointsFontSize = 20;
 	Credits::Credits(Gameplay* gameplay)
 	{
 		_mainMenu.x = GetScreenWidth() / 2 - 75;
@@ -27,9 +25,9 @@ namespace Colortrack
 
 	void Credits::Input()
 	{
-		mouse = GetMousePosition();
+		_mouse = GetMousePosition();
 
-		if (CheckCollisionPointRec(mouse, _mainMenu))
+		if (CheckCollisionPointRec(_mouse, _mainMenu))
 		{
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 			{

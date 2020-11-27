@@ -1,5 +1,6 @@
 #ifndef GAME_LOOP_H
 #define GAME_LOOP_H
+#include"screens.h"
 #include "menu.h"
 #include "tutorial.h"
 #include "gameplay.h"
@@ -9,10 +10,10 @@ namespace Colortrack
 {
 	class GameLoop {
 	private:
-		Menu* _menu;
-		Tutorial* _tutorial;
+		Screens* _menu;
+		Screens* _tutorial;
 		Gameplay* _gameplay;
-		Credits* _credits;
+		Screens* _credits;
 	public:
 		GameLoop();
 		~GameLoop();
@@ -27,7 +28,8 @@ namespace Colortrack
 		mainmenu,
 		tutorialscreen,
 		game,
-		creditsScreen
+		creditsScreen,
+		close
 	};
 
 	extern GameState state;

@@ -14,6 +14,7 @@ namespace Colortrack
 		Rectangle _mainMenu;
 		Rectangle _playAgain;
 		Rectangle _exitButton;
+		Vector2 _mouse;
 		Gameplay* _gameplay;
 	public:
 		Credits(Gameplay* gameplay);

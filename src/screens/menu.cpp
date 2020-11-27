@@ -57,6 +57,11 @@ namespace Colortrack
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				state = GameState::tutorialscreen;
 		}
+		if (CheckCollisionPointRec(_mouse, _exitButton))
+		{
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+				state = GameState::close;
+		}
 	}
 
 	void Menu::Draw()
