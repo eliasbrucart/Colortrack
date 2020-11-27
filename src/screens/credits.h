@@ -4,10 +4,11 @@
 #include"raylib.h"
 
 #include "gameplay.h"
+#include"screens.h"
 
 namespace Colortrack
 {
-	class Credits
+	class Credits: public Screens
 	{
 	private:
 		Rectangle _mainMenu;
@@ -17,8 +18,8 @@ namespace Colortrack
 	public:
 		Credits(Gameplay* gameplay);
 		~Credits();
-		void Input();
-		void Draw();
+		virtual void Input();
+		virtual void Draw();
 	};
 }
 

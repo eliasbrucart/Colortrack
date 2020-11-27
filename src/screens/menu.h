@@ -3,19 +3,22 @@
 
 #include "raylib.h"
 
+#include"screens.h"
+
 namespace Colortrack 
 {
-	class Menu
+	class Menu: public Screens
 	{
 	private:
 		Rectangle _playButton;
 		Rectangle _tutorialButton;
 		Rectangle _exitButton;
+		Vector2 _mouse;
 	public:
 		Menu();
 		~Menu();
-		void Draw();
-		void Input();
+		virtual void Input();
+		virtual void Draw();
 	};
 
 }

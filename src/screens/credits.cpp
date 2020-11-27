@@ -14,7 +14,7 @@ namespace Colortrack
 	static int pointsFontSize = 20;
 	Credits::Credits(Gameplay* gameplay)
 	{
-		_mainMenu.x = GetScreenWidth() / 2;
+		_mainMenu.x = GetScreenWidth() / 2 - 75;
 		_mainMenu.y = GetScreenHeight() / 3;
 		_mainMenu.width = 150;
 		_mainMenu.height = 50;

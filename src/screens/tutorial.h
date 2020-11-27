@@ -3,9 +3,11 @@
 
 #include"raylib.h"
 
+#include"screens.h"
+
 namespace Colortrack 
 {
-	class Tutorial
+	class Tutorial: public Screens
 	{
 	private:
 		Rectangle _backToMenu;
@@ -13,8 +15,8 @@ namespace Colortrack
 	public:
 		Tutorial();
 		~Tutorial();
-		void Input();
-		void Draw();
+		virtual void Input();
+		virtual void Draw();
 	};
 
 }
