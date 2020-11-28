@@ -14,6 +14,14 @@ namespace Colortrack
 		Rectangle _tutorialButton;
 		Rectangle _exitButton;
 		Vector2 _mouse;
+		enum buttonMenuHover {
+			play,
+			tutorial,
+			options,
+			exit,
+			noHover
+		};
+		buttonMenuHover _mouseHoverInButton;
 	public:
 		Menu();
 		~Menu();
