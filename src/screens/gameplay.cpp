@@ -54,13 +54,13 @@ namespace Colortrack
 		rectangleEnemy2 = NULL;
 		circleEnemy = NULL;
 		player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, {150.0f, 150.0f});
-		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, { 150.0f, 150.0f });
+		rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, {150.0f, 150.0f}, false);
+		rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, { 150.0f, 150.0f }, false);
 		circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN);
-		pauseRec.x = 620.0f;
-		pauseRec.y = 2.0f;
-		pauseRec.width = 20.0f;
-		pauseRec.height = 20.0f;
+		_pauseRec.x = 610.0f;
+		_pauseRec.y = 2.0f;
+		_pauseRec.width = 30.0f;
+		_pauseRec.height = 30.0f;
 		_time = 0.0f;
 		_points = 0;
 		_pause = false;
@@ -354,19 +354,19 @@ namespace Colortrack
 			rectangleEnemy2->SetRotationEnemy(false);
 			break;
 		case 8:
-			rectangleEnemy->SetX(50.0f);
+			rectangleEnemy->SetX(100.0f);
 			rectangleEnemy->SetY(-200.0f);
 			rectangleEnemy->SetWidth(200.0f);
 			rectangleEnemy->SetHeight(50.0f);
 			rectangleEnemy->SetChangedShape(true);
-			rectangleEnemy->SetActiveMovement(true);
+			rectangleEnemy->SetActiveMovement(false);
 			rectangleEnemy->SetRotationEnemy(true);
-			rectangleEnemy2->SetX(100.0f);
-			rectangleEnemy2->SetY(-100.0f);
+			rectangleEnemy2->SetX(400.0f);
+			rectangleEnemy2->SetY(-200.0f);
 			rectangleEnemy2->SetWidth(200.0f);
 			rectangleEnemy2->SetHeight(50.0f);
 			rectangleEnemy2->SetChangedShape(true);
-			rectangleEnemy2->SetActiveMovement(true);
+			rectangleEnemy2->SetActiveMovement(false);
 			rectangleEnemy2->SetRotationEnemy(true);
 			break;
 		default:
@@ -378,12 +378,12 @@ namespace Colortrack
 	{
 		if(IsKeyPressed(KEY_P)) 
 		{
-			_pause = true;
+			_pause = !_pause;
 		}
-		if (CheckCollisionPointRec(mouse, pauseRec))
+		if (CheckCollisionPointRec(mouse, _pauseRec))
 		{
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-				_pause = true;
+				_pause = !_pause;
 		}
 	}
 
@@ -465,24 +465,20 @@ namespace Colortrack
 			}
 		} else 
 		{
-			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
 			if(IsKeyPressed(KEY_P) || IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-			{
-				_pause = false;
-			}
+				_pause = !_pause;
 		}
 	}
 
 	void Gameplay::Draw()
 	{
-		DrawRectangleRec(pauseRec, WHITE);
 		DrawRectangleRec(player->GetPlayerRec(), player->GetColor());
-		if (rectangleEnemy->GetRotationEnemy())
+		if (rectangleEnemy->GetRotationEnemy() && rectangleEnemy2->GetRotationEnemy())
 		{
-			DrawRectanglePro(rectangleEnemy->GetRectangleEnemyRec(), { rectangleEnemy->GetWidth()/6, rectangleEnemy->GetHeight() }, _rotation, rectangleEnemy->GetColor());
-			DrawRectanglePro(rectangleEnemy2->GetRectangleEnemyRec(), { rectangleEnemy2->GetWidth()/6, rectangleEnemy2->GetHeight() }, _rotation, rectangleEnemy2->GetColor());
+			DrawRectanglePro(rectangleEnemy->GetRectangleEnemyRec(), {rectangleEnemy->GetX() + rectangleEnemy->GetWidth()/2, rectangleEnemy->GetHeight()/2 }, _rotation, rectangleEnemy->GetColor());
+			DrawRectanglePro(rectangleEnemy2->GetRectangleEnemyRec(), {rectangleEnemy2->GetX() + rectangleEnemy2->GetWidth()/2, rectangleEnemy2->GetHeight()/2 }, _rotation, rectangleEnemy2->GetColor());
 		}
-		else 
+		else
 		{
 			DrawRectangleRec(rectangleEnemy->GetRectangleEnemyRec(), rectangleEnemy->GetColor());
 			DrawRectangleRec(rectangleEnemy2->GetRectangleEnemyRec(), rectangleEnemy2->GetColor());
@@ -493,11 +489,15 @@ namespace Colortrack
 		{
 			DrawText("You Lose!", GetScreenWidth() / 2 - 50, GetScreenHeight() / 2, 50, WHITE);
 		}
+		if(_pause == true)
+			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
+		DrawRectangleRec(_pauseRec, WHITE);
 	}
 
 	void Gameplay::Unload() 
 	{
 		_time = 0.0f;
 		_points = 0;
+		_rotation = 0;
 	}
 }

@@ -19,7 +19,7 @@ namespace Colortrack
 		bool _pause;
 		float _rotation;
 		Vector2 mouse;
-		Rectangle pauseRec;
+		Rectangle _pauseRec;
 	public:
 		Gameplay();
 		~Gameplay();
