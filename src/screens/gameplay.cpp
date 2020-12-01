@@ -63,6 +63,7 @@ namespace Colortrack
 		_pauseRec.height = 30.0f;
 		_timePopUp = 0.0f;
 		_timer = 240;
+		_timeDeath = 240;
 		_points = 0;
 		_pause = false;
 		_rotation = 0.0f;
@@ -232,7 +233,18 @@ namespace Colortrack
 	void Gameplay::CheckPlayerAlive()
 	{
 		if (_player->IsDead())
-			state = GameState::creditsScreen;
+		{
+			_rectangleEnemy->SetSpeedY(0.0f);
+			_rectangleEnemy->SetSpeedX(0.0f);
+			_rectangleEnemy2->SetSpeedY(0.0f);
+			_rectangleEnemy2->SetSpeedX(0.0f);
+			_circleEnemy->SetSpeedY(0.0f);
+			_circleEnemy->SetSpeedX(0.0f);
+			_player->SetSpeed(0.0f);
+			_timeDeath--;
+			if(_timeDeath <= 0)
+				state = GameState::creditsScreen;
+		}
 	}
 
 	void Gameplay::GenerateShapes()
@@ -476,7 +488,7 @@ namespace Colortrack
 
 	void Gameplay::Update()
 	{
-		_timer --;
+		_timer--;
 		if (_timer <= 0)
 		{
 			if (_pause == false)
@@ -537,7 +549,7 @@ namespace Colortrack
 		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
 		if (_player->IsDead())
 		{
-			DrawText("You Lose!", GetScreenWidth() / 2 - 50, GetScreenHeight() / 2, 50, WHITE);
+			DrawText("You Lose!", GetScreenWidth() / 2 - 120, GetScreenHeight() / 2, 50, WHITE);
 		}
 		if(_pause == true)
 			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);

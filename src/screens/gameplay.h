@@ -16,6 +16,7 @@ namespace Colortrack
 		CircleEnemy* _circleEnemy;
 		float _timePopUp;
 		int _timer;
+		int _timeDeath;
 		int _points;
 		bool _pause;
 		float _rotation;
