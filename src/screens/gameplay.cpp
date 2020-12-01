@@ -61,6 +61,10 @@ namespace Colortrack
 		_pauseRec.y = 2.0f;
 		_pauseRec.width = 30.0f;
 		_pauseRec.height = 30.0f;
+		_backToMenuRec.x = 280.0f;
+		_backToMenuRec.y = 450.0f;
+		_backToMenuRec.width = 70.0f;
+		_backToMenuRec.height = 30.0f;
 		_timePopUp = 0.0f;
 		_timer = 240;
 		_timeDeath = 240;
@@ -486,6 +490,15 @@ namespace Colortrack
 			_rotation = 0;
 	}
 
+	void Gameplay::BackToMenuInput()
+	{
+		if (CheckCollisionPointRec(_mouse, _backToMenuRec))
+		{
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+				state = GameState::mainmenu;
+		}
+	}
+
 	void Gameplay::Update()
 	{
 		_timer--;
@@ -508,6 +521,7 @@ namespace Colortrack
 				IncreaseEnemySpeed();
 				PopUp();
 				ActivateRotationEnemy();
+				BackToMenuInput();
 				if (_rectangleEnemy->GetOutOfScreen() == true && _rectangleEnemy2->GetOutOfScreen() == true)
 				{
 					if (!_rectangleEnemy->GetChangedShape() && !_rectangleEnemy2->GetChangedShape())
@@ -554,6 +568,7 @@ namespace Colortrack
 		if(_pause == true)
 			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
 		DrawRectangleRec(_pauseRec, WHITE);
+		DrawRectangleRec(_backToMenuRec, WHITE);
 		if (_timer >= 0.0f) 
 		{
 			DrawText(TextFormat("Start in: %i", _timer/60), GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 50, WHITE);

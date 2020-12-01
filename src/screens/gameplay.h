@@ -22,6 +22,7 @@ namespace Colortrack
 		float _rotation;
 		Vector2 _mouse;
 		Rectangle _pauseRec;
+		Rectangle _backToMenuRec;
 	public:
 		Gameplay();
 		~Gameplay();
@@ -38,6 +39,7 @@ namespace Colortrack
 		void IncreaseEnemySpeed();
 		void PopUp();
 		void ActivateRotationEnemy();
+		void BackToMenuInput();
 		void Update();
 		void Draw();
 		void Unload();
