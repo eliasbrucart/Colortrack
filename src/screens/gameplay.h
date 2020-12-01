@@ -14,7 +14,8 @@ namespace Colortrack
 		RectangleEnemy* _rectangleEnemy;
 		RectangleEnemy* _rectangleEnemy2;
 		CircleEnemy* _circleEnemy;
-		float _time;
+		float _timePopUp;
+		int _timer;
 		int _points;
 		bool _pause;
 		float _rotation;
