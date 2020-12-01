@@ -10,15 +10,15 @@ namespace Colortrack
 	class Gameplay
 	{
 	private:
-		Player* player;
-		RectangleEnemy* rectangleEnemy;
-		RectangleEnemy* rectangleEnemy2;
-		CircleEnemy* circleEnemy;
+		Player* _player;
+		RectangleEnemy* _rectangleEnemy;
+		RectangleEnemy* _rectangleEnemy2;
+		CircleEnemy* _circleEnemy;
 		float _time;
 		int _points;
 		bool _pause;
 		float _rotation;
-		Vector2 mouse;
+		Vector2 _mouse;
 		Rectangle _pauseRec;
 	public:
 		Gameplay();
@@ -33,8 +33,9 @@ namespace Colortrack
 		void GenerateShapes();
 		void SetPause();
 		int GetPoints();
-		void PowerUp();
+		void IncreaseEnemySpeed();
 		void PopUp();
+		void ActivateRotationEnemy();
 		void Update();
 		void Draw();
 		void Unload();
