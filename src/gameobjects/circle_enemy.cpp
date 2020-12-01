@@ -1,5 +1,7 @@
 #include "circle_enemy.h"
 
+#include"screens/game_loop.h"
+
 namespace Colortrack
 {
 	CircleEnemy::CircleEnemy()
@@ -10,12 +12,14 @@ namespace Colortrack
 		_color = WHITE;
 	}
 
-	CircleEnemy::CircleEnemy(float x, float y, float radius, Color color)
+	CircleEnemy::CircleEnemy(float x, float y, float radius, Color color, bool activeMovement, Vector2 speed)
 	{
 		_x = x;
 		_y = y;
 		_radius = radius;
 		_color = color;
+		_speed.x = speed.x;
+		_speed.y = speed.y;
 	}
 
 	CircleEnemy::~CircleEnemy()
@@ -74,9 +78,48 @@ namespace Colortrack
 		return circleEnemyColors;
 	}
 
+	void CircleEnemy::SetSpeedX(float speedX)
+	{
+		_speed.x = speedX;
+	}
+
+	float CircleEnemy::GetSpeedX()
+	{
+		return _speed.x;
+	}
+
+	void CircleEnemy::SetSpeedY(float speedY)
+	{
+		_speed.y = speedY;
+	}
+
+	float CircleEnemy::GetSpeedY()
+	{
+		return _speed.y;
+	}
+
+	void CircleEnemy::SetActiveMovement(bool activeMovement)
+	{
+		_activeMovement = activeMovement;
+	}
+
+	bool CircleEnemy::GetActiveMovement()
+	{
+		return _activeMovement;
+	}
+
 	void CircleEnemy::MoveCircleEnemy()
 	{
-		_y += 100.0f * GetFrameTime();
+		float negativeSpeed = -1.0f;
+		_y += _speed.y * GetFrameTime();
+		if (_activeMovement == true)
+		{
+			_x += _speed.x * GetFrameTime();
+			if (_x + _radius >= GetScreenWidth())
+				_speed.x *= negativeSpeed;
+			if (_x - _radius <= minScreenWidth)
+				_speed.x *= negativeSpeed;
+		}
 	}
 
 	void CircleEnemy::InitCircleEnemy()
@@ -88,7 +131,7 @@ namespace Colortrack
 	{
 		if (_y + _radius >= GetScreenHeight())
 		{
-			_y = 0.0f;
+			_y = -200.0f;
 		}
 	}
 
