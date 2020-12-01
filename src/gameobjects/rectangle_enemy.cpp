@@ -2,6 +2,8 @@
 
 #include "raylib.h"
 
+#include"screens/game_loop.h"
+
 #include<iostream>
 using namespace std;
 
@@ -139,20 +141,21 @@ namespace Colortrack
 
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
+		float negativeSpeed = -1.0f;
 		_rec.y += _speed.y * GetFrameTime();
 		if (_activeMovement == true)
 		{
-			if (_rec.x > 0 && _rec.x < GetScreenWidth() || _rec.x + _rec.height > 0 && _rec.x + _rec.height < GetScreenWidth())
+			if (_rec.x > minScreenWidth && _rec.x < GetScreenWidth() || _rec.x + _rec.height > 0 && _rec.x + _rec.height < GetScreenWidth())
 			{
 				_rec.x += _speed.x * GetFrameTime();
 			}
 			if (_rec.x + _rec.width >= GetScreenWidth())
 			{
-				_speed.x *= -1.0f;
+				_speed.x *= negativeSpeed;
 			}
-			if (_rec.x <= 0)
+			if (_rec.x <= minScreenWidth)
 			{
-				_speed.x *= -1.0f;
+				_speed.x *= negativeSpeed;
 			}
 		}
 	}
@@ -172,12 +175,12 @@ namespace Colortrack
 			_rec.y = -200.0f;
 			_changedShape = false;
 		}
-		else if (_rec.y < 0.0f || _rec.y > GetScreenHeight())
+		else if (_rec.y < minScreenWidth || _rec.y > GetScreenHeight())
 		{
 			_outOfScreen = true;
 			cout << "Esta afuera" << endl;
 		}
-		else if(_rec.y + _rec.height >= 0.0f && _rec.y <= GetScreenHeight())
+		else if(_rec.y + _rec.height >= minScreenHeight && _rec.y <= GetScreenHeight())
 		{
 			_outOfScreen = false;
 			cout << "Esta adentro" << endl;
@@ -187,12 +190,12 @@ namespace Colortrack
 			_rec.x = -200.0f;
 			_changedShape = false;
 		}
-		else if (_rec.x < 0.0f || _rec.x > GetScreenWidth())
+		else if (_rec.x < minScreenWidth || _rec.x > GetScreenWidth())
 		{
 			_outOfScreen = true;
 			cout << "Esta afuera" << endl;
 		}
-		else if (_rec.x >= 0.0f && _rec.x <= GetScreenWidth())
+		else if (_rec.x >= minScreenWidth && _rec.x <= GetScreenWidth())
 		{
 			_outOfScreen = false;
 			cout << "Esta adentro" << endl;
