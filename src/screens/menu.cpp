@@ -4,18 +4,18 @@
 
 namespace Colortrack
 {
-	float xPlayButton = 300.0f;
-	float yPlayButton = 100.0f;
+	float xPlayButton = 270.0f;
+	float yPlayButton = 150.0f;
 	float widthPlayButton = 100.0f;
 	float heightPlayButton = 50.0f;
 
-	float xTutorialButton = 300.0f;
-	float yTutorialButton = 200.0f;
+	float xTutorialButton = 270.0f;
+	float yTutorialButton = 250.0f;
 	float widthTutorialButton = 100.0f;
 	float heightTutorialButton = 50.0f;
 
-	float xExitButton = 300.0f;
-	float yExitButton = 300.0f;
+	float xExitButton = 270.0f;
+	float yExitButton = 350.0f;
 	float widthExitButton = 100.0f;
 	float heightExitButton = 50.0f;
 
