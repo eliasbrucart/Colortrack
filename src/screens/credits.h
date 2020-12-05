@@ -3,7 +3,6 @@
 
 #include"raylib.h"
 
-#include "gameplay.h"
 #include"screens.h"
 
 namespace Colortrack
@@ -11,20 +10,15 @@ namespace Colortrack
 	class Credits: public Screens
 	{
 	private:
-		Rectangle _playAgain;
-		Rectangle _mainMenu;
-		Rectangle _exitButton;
+		Rectangle _backToMenu;
 		Vector2 _mouse;
-		Gameplay* _gameplay;
 		enum buttonCreditsHover {
-			playAgain,
 			mainMenu,
-			exitButton,
 			noHover
 		};
 		buttonCreditsHover _mouseHoverInButton;
 	public:
-		Credits(Gameplay* gameplay);
+		Credits();
 		~Credits();
 		virtual void Input();
 		virtual void Draw();

@@ -5,6 +5,7 @@
 #include "tutorial.h"
 #include "gameplay.h"
 #include "credits.h"
+#include "game_over.h"
 
 namespace Colortrack 
 {
@@ -13,6 +14,7 @@ namespace Colortrack
 		Screens* _menu;
 		Screens* _tutorial;
 		Gameplay* _gameplay;
+		Screens* _gameOver;
 		Screens* _credits;
 	public:
 		GameLoop();
@@ -29,6 +31,7 @@ namespace Colortrack
 		tutorialscreen,
 		game,
 		creditsScreen,
+		gameOverScreen,
 		close
 	};
 

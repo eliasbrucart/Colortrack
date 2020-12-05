@@ -17,6 +17,7 @@ namespace Colortrack
 		_tutorial = NULL;
 		_gameplay = NULL;
 		_credits = NULL;
+		_gameOver = NULL;
 	}
 
 	GameLoop::~GameLoop() 
@@ -41,6 +42,11 @@ namespace Colortrack
 			delete _credits;
 			_credits = NULL;
 		}
+		if (_gameOver != NULL)
+		{
+			delete _gameOver;
+			_gameOver = NULL;
+		}
 
 		CloseWindow();
 	}
@@ -53,17 +59,25 @@ namespace Colortrack
 			//Updates
 			if (state == GameState::mainmenu)
 			{
-				if (_tutorial != NULL) {
+				if (_tutorial != NULL) 
+				{
 					delete _tutorial;
 					_tutorial = NULL;
 				}
-				if (_gameplay != NULL) {
+				if (_gameplay != NULL) 
+				{
 					delete _gameplay;
 					_gameplay = NULL;
 				}
-				if (_credits != NULL) {
+				if (_credits != NULL) 
+				{
 					delete _credits;
 					_credits = NULL;
+				}
+				if (_gameOver != NULL) 
+				{
+					delete _gameOver;
+					_gameOver = NULL;
 				}
 				if (_menu == NULL)
 					_menu = new Menu();
@@ -72,15 +86,18 @@ namespace Colortrack
 			}
 			if (state == GameState::tutorialscreen)
 			{
-				if (_menu != NULL) {
+				if (_menu != NULL) 
+				{
 					delete _menu;
 					_menu = NULL;
 				}
-				if (_gameplay != NULL) {
+				if (_gameplay != NULL) 
+				{
 					delete _gameplay;
 					_gameplay = NULL;
 				}
-				if (_credits != NULL) {
+				if (_credits != NULL) 
+				{
 					delete _credits;
 					_credits = NULL;
 				}
@@ -91,17 +108,25 @@ namespace Colortrack
 			}
 			if (state == GameState::game)
 			{
-				if (_tutorial != NULL) {
+				if (_tutorial != NULL) 
+				{
 					delete _tutorial;
 					_tutorial = NULL;
 				}
-				if (_menu != NULL) {
+				if (_menu != NULL) 
+				{
 					delete _menu;
 					_menu = NULL;
 				}
-				if (_credits != NULL) {
+				if (_credits != NULL) 
+				{
 					delete _credits;
 					_credits = NULL;
+				}
+				if (_gameOver != NULL) 
+				{
+					delete _gameOver;
+					_gameOver = NULL;
 				}
 				if (_gameplay == NULL)
 					_gameplay = new Gameplay();
@@ -110,18 +135,42 @@ namespace Colortrack
 			}
 			if (state == GameState::creditsScreen)
 			{
-				if (_tutorial != NULL) {
+				if (_tutorial != NULL)
+				{
 					delete _tutorial;
 					_tutorial = NULL;
 				}
-				if (_credits != NULL) {
+				if (_gameplay != NULL)
+				{
+					delete _gameplay;
+					_gameplay = NULL;
+				}
+				if (_credits != NULL)
+				{
+					delete _gameOver;
+					_gameOver = NULL;
+				}
+				if (_credits == NULL)
+					_credits = new Credits();
+				if (_credits != NULL)
+					_credits->Input();
+			}
+			if (state == GameState::gameOverScreen)
+			{
+				if (_tutorial != NULL) 
+				{
+					delete _tutorial;
+					_tutorial = NULL;
+				}
+				if (_credits != NULL) 
+				{
 					delete _credits;
 					_credits = NULL;
 				}
-				if (_credits == NULL)
-					_credits = new Credits(_gameplay);
-				if(_credits != NULL)
-					_credits->Input();
+				if (_gameOver == NULL)
+					_gameOver = new GameOver(_gameplay);
+				if(_gameOver != NULL)
+					_gameOver->Input();
 			}
 
 			//Drawings
@@ -141,6 +190,11 @@ namespace Colortrack
 			{
 				if(_gameplay != NULL)
 					_gameplay->Draw();
+			}
+			if (state == GameState::gameOverScreen)
+			{
+				if (_gameOver != NULL)
+					_gameOver->Draw();
 			}
 			if (state == GameState::creditsScreen)
 			{
