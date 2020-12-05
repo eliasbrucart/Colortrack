@@ -12,12 +12,13 @@ namespace Colortrack
 	private:
 		Rectangle _playButton;
 		Rectangle _tutorialButton;
+		Rectangle _creditsButton;
 		Rectangle _exitButton;
 		Vector2 _mouse;
 		enum buttonMenuHover {
 			play,
 			tutorial,
-			options,
+			credits,
 			exit,
 			noHover
 		};

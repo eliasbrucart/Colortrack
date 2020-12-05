@@ -62,7 +62,7 @@ namespace Colortrack
 		_pauseRec.width = 30.0f;
 		_pauseRec.height = 30.0f;
 		_backToMenuRec.x = 280.0f;
-		_backToMenuRec.y = 450.0f;
+		_backToMenuRec.y = 0.0f;
 		_backToMenuRec.width = 70.0f;
 		_backToMenuRec.height = 30.0f;
 		_timePopUp = 0.0f;
@@ -187,8 +187,8 @@ namespace Colortrack
 		{
 			if (_rectangleEnemy->GetColors() == _rectangleEnemy2->GetColors() && _rectangleEnemy->GetColors() == _circleEnemy->GetColors() && _rectangleEnemy2->GetColors() == _circleEnemy->GetColors())
 				return true;
-			return false;
 		}
+		return false;
 	}
 
 	bool Gameplay::CheckEnemiesPlayerColors()
@@ -197,8 +197,8 @@ namespace Colortrack
 		{
 			if (_player->GetColors() != _rectangleEnemy->GetColors() && _player->GetColors() != _rectangleEnemy2->GetColors() && _player->GetColors() != _circleEnemy->GetColors())
 				return true;
-			return false;
 		}
+		return false;
 	}
 
 	void Gameplay::CollisionsGame()
@@ -279,7 +279,7 @@ namespace Colortrack
 				_player->SetSpeed(0.0f);
 				_timeDeath--;
 				if (_timeDeath <= 0)
-					state = GameState::creditsScreen;
+					state = GameState::gameOverScreen;
 			}
 		}
 	}
@@ -617,7 +617,6 @@ namespace Colortrack
 					_pause = !_pause;
 			}
 		}
-		
 	}
 
 	void Gameplay::Draw()
@@ -639,7 +638,7 @@ namespace Colortrack
 			DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
 			if (_player->IsDead())
 			{
-				DrawText("You Lose!", GetScreenWidth() / 2 - 120, GetScreenHeight() / 2, 50, WHITE);
+				DrawText("Game Over!", GetScreenWidth() / 2 - 120, GetScreenHeight() / 2, 50, WHITE);
 			}
 			if (_pause == true)
 				DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);

@@ -5,17 +5,22 @@
 namespace Colortrack
 {
 	float xPlayButton = 270.0f;
-	float yPlayButton = 150.0f;
+	float yPlayButton = 190.0f;
 	float widthPlayButton = 100.0f;
 	float heightPlayButton = 50.0f;
 
 	float xTutorialButton = 270.0f;
-	float yTutorialButton = 250.0f;
+	float yTutorialButton = 270.0f;
 	float widthTutorialButton = 100.0f;
 	float heightTutorialButton = 50.0f;
 
+	float xCreditsButton = 270.0f;
+	float yCreditsButton = 350.0f;
+	float widthCreditsButton = 100.0f;
+	float heightCreditsButton = 50.0f;
+
 	float xExitButton = 270.0f;
-	float yExitButton = 350.0f;
+	float yExitButton = 430.0f;
 	float widthExitButton = 100.0f;
 	float heightExitButton = 50.0f;
 
@@ -30,6 +35,11 @@ namespace Colortrack
 		_tutorialButton.y = yTutorialButton;
 		_tutorialButton.width = widthTutorialButton;
 		_tutorialButton.height = heightTutorialButton;
+
+		_creditsButton.x = xCreditsButton;
+		_creditsButton.y = yCreditsButton;
+		_creditsButton.width = widthCreditsButton;
+		_creditsButton.height = heightCreditsButton;
 
 		_exitButton.x = xExitButton;
 		_exitButton.y = yExitButton;
@@ -58,6 +68,12 @@ namespace Colortrack
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				state = GameState::tutorialscreen;
 		}
+		else if (CheckCollisionPointRec(_mouse, _creditsButton))
+		{
+			_mouseHoverInButton = credits;
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+				state = GameState::creditsScreen;
+		}
 		else if (CheckCollisionPointRec(_mouse, _exitButton))
 		{
 			_mouseHoverInButton = exit;
@@ -70,19 +86,23 @@ namespace Colortrack
 
 	void Menu::Draw()
 	{
-		DrawRectangle(_playButton.x, _playButton.y, _playButton.width, _playButton.height, GREEN);
-		DrawRectangle(_tutorialButton.x, _tutorialButton.y, _tutorialButton.width, _tutorialButton.height, YELLOW);
-		DrawRectangle(_exitButton.x, _exitButton.y, _exitButton.width, _exitButton.height, RED);
+		DrawRectangleRec(_playButton, GREEN);
+		DrawRectangleRec(_tutorialButton, YELLOW);
+		DrawRectangleRec(_creditsButton, PURPLE);
+		DrawRectangleRec(_exitButton, RED);
 
 		switch (_mouseHoverInButton) {
 		case play:
-			DrawRectangle(_playButton.x, _playButton.y, _playButton.width, _playButton.height, LIME);
+			DrawRectangleRec(_playButton, LIME);
 			break;
 		case tutorial:
-			DrawRectangle(_tutorialButton.x, _tutorialButton.y, _tutorialButton.width, _tutorialButton.height, GOLD);
+			DrawRectangleRec(_tutorialButton, GOLD);
+			break;
+		case credits:
+			DrawRectangleRec(_creditsButton, VIOLET);
 			break;
 		case exit:
-			DrawRectangle(_exitButton.x, _exitButton.y, _exitButton.width, _exitButton.height, PINK);
+			DrawRectangleRec(_exitButton, PINK);
 			break;
 		case noHover:
 			break;
