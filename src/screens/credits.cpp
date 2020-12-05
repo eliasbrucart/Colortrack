@@ -13,17 +13,17 @@ namespace Colortrack
 
 	float playAgainX = 270.0f;
 	float playAgainY = 150.0f;
-	float playAgainWidth = 150.0f;
+	float playAgainWidth = 100.0f;
 	float playAgainHeight = 50.0f;
 
 	float mainMenuX = 270.0f;
 	float mainMenuY = 250.0f;
-	float mainMenuWidth = 150.0f;
+	float mainMenuWidth = 100.0f;
 	float mainMenuHeight = 50.0f;
 
 	float exitButtonX = 270.0f;
 	float exitButtonY = 350.0f;
-	float exitButtonWidth = 150.0f;
+	float exitButtonWidth = 100.0f;
 	float exitButtonHeight = 50.0f;
 	Credits::Credits(Gameplay* gameplay)
 	{
