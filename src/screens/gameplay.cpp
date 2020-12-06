@@ -54,9 +54,9 @@ namespace Colortrack
 		_rectangleEnemy2 = NULL;
 		_circleEnemy = NULL;
 		_player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		_rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, {150.0f, 150.0f}, false);
+		_rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, { 150.0f, 150.0f }, false);
 		_rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, { 150.0f, 150.0f }, false);
-		_circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN, false, {200.0f, 150.0f});
+		_circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN, false, { 200.0f, 150.0f });
 		_pauseRec.x = 610.0f;
 		_pauseRec.y = 2.0f;
 		_pauseRec.width = 30.0f;
@@ -181,7 +181,7 @@ namespace Colortrack
 		}
 	}
 
-	bool Gameplay::CheckEnemiesColors() 
+	bool Gameplay::CheckEnemiesColors()
 	{
 		if (_rectangleEnemy != NULL && _rectangleEnemy2 != NULL && _circleEnemy != NULL)
 		{
@@ -308,8 +308,10 @@ namespace Colortrack
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
 				_rectangleEnemy2->SetActiveCollision(false);
-				_circleEnemy->SetActiveMovement(false);
 				_circleEnemy->SetRadius(20.0f);
+				_circleEnemy->SetX(300.0f);
+				_circleEnemy->SetY(-220);
+				_circleEnemy->SetActiveMovement(false);
 				break;
 			case 2:
 				_rectangleEnemy->SetX(0.0f);
@@ -328,8 +330,9 @@ namespace Colortrack
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
 				_rectangleEnemy2->SetActiveCollision(false);
-				_circleEnemy->SetActiveMovement(false);
+				_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetRadius(20.0f);
+				_circleEnemy->SetActiveMovement(false);
 				break;
 			case 3:
 				_rectangleEnemy->SetX(0.0f);
@@ -349,7 +352,7 @@ namespace Colortrack
 				_rectangleEnemy2->SetRotationEnemy(false);
 				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetX(300.0f);
-				_circleEnemy->SetY(-300.0f);
+				_circleEnemy->SetY(-220.0f);
 				_circleEnemy->SetActiveMovement(true);
 				break;
 			case 4:
@@ -370,7 +373,7 @@ namespace Colortrack
 				_rectangleEnemy2->SetRotationEnemy(false);
 				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetX(300.0f);
-				_circleEnemy->SetY(-300.0f);
+				_circleEnemy->SetY(-220.0f);
 				_circleEnemy->SetRadius(50.0f);
 				_circleEnemy->SetActiveMovement(true);
 				break;
@@ -392,7 +395,7 @@ namespace Colortrack
 				_rectangleEnemy2->SetRotationEnemy(false);
 				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetX(300.0f);
-				_circleEnemy->SetY(-300.0f);
+				_circleEnemy->SetY(-220.0f);
 				_circleEnemy->SetRadius(40.0f);
 				_circleEnemy->SetActiveMovement(true);
 				break;
@@ -413,6 +416,7 @@ namespace Colortrack
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
 				_rectangleEnemy2->SetActiveCollision(false);
+				_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetActiveMovement(false);
 				break;
 			case 7:
@@ -448,8 +452,8 @@ namespace Colortrack
 				_rectangleEnemy2->SetWidth(200.0f);
 				_rectangleEnemy2->SetHeight(50.0f);
 				_rectangleEnemy2->SetChangedShape(true);
-				_rectangleEnemy2->SetActiveMovement(false);
-				_rectangleEnemy2->SetRotationEnemy(true);
+				_rectangleEnemy2->SetActiveMovement(true);
+				_rectangleEnemy2->SetRotationEnemy(false);
 				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetActiveMovement(false);
 				break;
@@ -477,9 +481,9 @@ namespace Colortrack
 		}
 	}
 
-	void Gameplay::SetPause() 
+	void Gameplay::SetPause()
 	{
-		if(IsKeyPressed(KEY_P)) 
+		if (IsKeyPressed(KEY_P))
 		{
 			_pause = !_pause;
 		}
@@ -539,12 +543,12 @@ namespace Colortrack
 				if (_timePopUp > 2.0f)
 					popUp = false;
 			}
-		}	
+		}
 	}
 
 	void Gameplay::ActivateRotationEnemy()
 	{
-		if (_rectangleEnemy->GetRotationEnemy() && _rectangleEnemy2->GetRotationEnemy())
+		if (_rectangleEnemy->GetRotationEnemy())
 			_rotation++;
 		else
 			_rotation = 0;
@@ -621,37 +625,29 @@ namespace Colortrack
 
 	void Gameplay::Draw()
 	{
-		if (_timer <= 0)
+		DrawRectangleRec(_player->GetPlayerRec(), _player->GetColor());
+		if (_rectangleEnemy->GetRotationEnemy())
+			DrawRectanglePro(_rectangleEnemy->GetRectangleEnemyRec(), { _rectangleEnemy->GetX() + _rectangleEnemy->GetWidth() / 2, _rectangleEnemy->GetHeight() / 2 }, _rotation, _rectangleEnemy->GetColor());
+		else 
+			DrawRectangleRec(_rectangleEnemy->GetRectangleEnemyRec(), _rectangleEnemy->GetColor());
+		DrawRectangleRec(_rectangleEnemy2->GetRectangleEnemyRec(), _rectangleEnemy2->GetColor());
+		DrawCircle(static_cast<int>(_circleEnemy->GetX()), static_cast<int>(_circleEnemy->GetY()), _circleEnemy->GetRadius(), _circleEnemy->GetColor());
+		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
+		if (_player->IsDead())
 		{
-			DrawRectangleRec(_player->GetPlayerRec(), _player->GetColor());
-			if (_rectangleEnemy->GetRotationEnemy() && _rectangleEnemy2->GetRotationEnemy())
-			{
-				DrawRectanglePro(_rectangleEnemy->GetRectangleEnemyRec(), { _rectangleEnemy->GetX() + _rectangleEnemy->GetWidth() / 2, _rectangleEnemy->GetHeight() / 2 }, _rotation, _rectangleEnemy->GetColor());
-				DrawRectanglePro(_rectangleEnemy2->GetRectangleEnemyRec(), { _rectangleEnemy2->GetX() + _rectangleEnemy2->GetWidth() / 2, _rectangleEnemy2->GetHeight() / 2 }, _rotation, _rectangleEnemy2->GetColor());
-			}
-			else
-			{
-				DrawRectangleRec(_rectangleEnemy->GetRectangleEnemyRec(), _rectangleEnemy->GetColor());
-				DrawRectangleRec(_rectangleEnemy2->GetRectangleEnemyRec(), _rectangleEnemy2->GetColor());
-			}
-			DrawCircle(static_cast<int>(_circleEnemy->GetX()), static_cast<int>(_circleEnemy->GetY()), _circleEnemy->GetRadius(), _circleEnemy->GetColor());
-			DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
-			if (_player->IsDead())
-			{
-				DrawText("Game Over!", GetScreenWidth() / 2 - 120, GetScreenHeight() / 2, 50, WHITE);
-			}
-			if (_pause == true)
-				DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
-			DrawRectangleRec(_pauseRec, WHITE);
-			DrawRectangleRec(_backToMenuRec, WHITE);
+			DrawText("Game Over!", GetScreenWidth() / 2 - 120, GetScreenHeight() / 2, 50, WHITE);
 		}
-		if (_timer >= 0.0f) 
+		if (_pause == true)
+			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
+		DrawRectangleRec(_pauseRec, WHITE);
+		DrawRectangleRec(_backToMenuRec, WHITE);
+		if (_timer >= 0)
 		{
-			DrawText(TextFormat("Start in: %i", _timer/60), GetScreenWidth() / 2 - 120, GetScreenHeight() / 2 - 30, 50, WHITE);
+			DrawText(TextFormat("Start in: %i", _timer / 60), GetScreenWidth() / 2 - 120, GetScreenHeight() / 2 - 30, 50, WHITE);
 		}
 	}
 
-	void Gameplay::Unload() 
+	void Gameplay::Unload()
 	{
 		_timePopUp = 0.0f;
 		_points = 0;
