@@ -12,7 +12,7 @@ namespace Colortrack
 		_color = WHITE;
 	}
 
-	CircleEnemy::CircleEnemy(float x, float y, float radius, Color color, bool activeMovement, Vector2 speed)
+	CircleEnemy::CircleEnemy(float x, float y, float radius, Color color, bool activeMovement, Vector2 speed, bool activeMovementInX, bool activeMovementInY)
 	{
 		_x = x;
 		_y = y;
@@ -20,6 +20,8 @@ namespace Colortrack
 		_color = color;
 		_speed.x = speed.x;
 		_speed.y = speed.y;
+		_activeMovementInX = activeMovementInX;
+		_activeMovementInY = activeMovementInY;
 	}
 
 	CircleEnemy::~CircleEnemy()
@@ -98,21 +100,32 @@ namespace Colortrack
 		return _speed.y;
 	}
 
-	void CircleEnemy::SetActiveMovement(bool activeMovement)
+	void CircleEnemy::SetActiveMovementInX(bool activeMovementInX)
 	{
-		_activeMovement = activeMovement;
+		_activeMovementInX = activeMovementInX;
 	}
 
-	bool CircleEnemy::GetActiveMovement()
+	bool CircleEnemy::GetActiveMovementInX()
 	{
-		return _activeMovement;
+		return _activeMovementInX;
+	}
+
+	void CircleEnemy::SetActiveMovementInY(bool activeMovementInY)
+	{
+		_activeMovementInY = activeMovementInY;
+	}
+
+	bool CircleEnemy::GetActiveMovementInY()
+	{
+		return _activeMovementInY;
 	}
 
 	void CircleEnemy::MoveCircleEnemy()
 	{
 		float negativeSpeed = -1.0f;
-		_y += _speed.y * GetFrameTime();
-		if (_activeMovement == true)
+		if (_activeMovementInY == true)
+			_y += _speed.y * GetFrameTime();
+		if (_activeMovementInX == true)
 		{
 			_x += _speed.x * GetFrameTime();
 			if (_x + _radius >= GetScreenWidth())
@@ -120,11 +133,6 @@ namespace Colortrack
 			if (_x - _radius <= minScreenWidth)
 				_speed.x *= negativeSpeed;
 		}
-	}
-
-	void CircleEnemy::InitCircleEnemy()
-	{
-
 	}
 
 	void CircleEnemy::CircleEnemyOutOfScreen()

@@ -14,10 +14,11 @@ namespace Colortrack
 		float _radius;
 		Color _color;
 		Vector2 _speed;
-		bool _activeMovement;
+		bool _activeMovementInX;
+		bool _activeMovementInY;
 	public:
 		CircleEnemy();
-		CircleEnemy(float x, float y, float radius, Color color, bool activeMovement, Vector2 speed);
+		CircleEnemy(float x, float y, float radius, Color color, bool activeMovement, Vector2 speed, bool activeMovementInX, bool activeMovementInY);
 		~CircleEnemy();
 		void SetX(float x);
 		float GetX();
@@ -33,10 +34,11 @@ namespace Colortrack
 		float GetSpeedX();
 		void SetSpeedY(float speedY);
 		float GetSpeedY();
-		void SetActiveMovement(bool activeMovement);
-		bool GetActiveMovement();
+		void SetActiveMovementInX(bool activeMovementInx);
+		bool GetActiveMovementInX();
+		void SetActiveMovementInY(bool activeMovementInY);
+		bool GetActiveMovementInY();
 		void MoveCircleEnemy();
-		void InitCircleEnemy();
 		void CircleEnemyOutOfScreen();
 		Colors circleEnemyColors;
 		void SetCircleEnemyColors(Colors color);
