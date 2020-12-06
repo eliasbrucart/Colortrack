@@ -300,7 +300,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(false);
 				_rectangleEnemy->SetRotationEnemy(false);
-				_rectangleEnemy->SetActiveCollision(false);
 				_rectangleEnemy2->SetWidth(320.0f);
 				_rectangleEnemy2->SetX(321.0f);
 				_rectangleEnemy2->SetY(-200.0f);
@@ -308,7 +307,6 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetRadius(20.0f);
 				_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230);
@@ -323,7 +321,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(false);
 				_rectangleEnemy->SetRotationEnemy(false);
-				_rectangleEnemy->SetActiveCollision(false);
 				_rectangleEnemy2->SetX(151.0f);
 				_rectangleEnemy2->SetY(-200.0f);
 				_rectangleEnemy2->SetWidth(490.0f);
@@ -331,8 +328,6 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(false);
-				//_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230.0f);
 				_circleEnemy->SetActiveMovementInX(true);
 				_circleEnemy->SetActiveMovementInY(true);
@@ -345,7 +340,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(false);
 				_rectangleEnemy->SetRotationEnemy(false);
-				_rectangleEnemy->SetActiveCollision(false);
 				_rectangleEnemy2->SetX(201.0f);
 				_rectangleEnemy2->SetY(-200.0f);
 				_rectangleEnemy2->SetWidth(440.0f);
@@ -353,7 +347,6 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230.0f);
 				_circleEnemy->SetActiveMovementInX(true);
@@ -367,7 +360,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(false);
 				_rectangleEnemy->SetRotationEnemy(false);
-				_rectangleEnemy->SetActiveCollision(false);
 				_rectangleEnemy2->SetX(501.0f);
 				_rectangleEnemy2->SetY(-200.0f);
 				_rectangleEnemy2->SetWidth(140.0f);
@@ -375,8 +367,6 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(false);
-				//_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230.0f);
 				_circleEnemy->SetRadius(40.0f);
 				_circleEnemy->SetActiveMovementInX(true);
@@ -390,7 +380,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(false);
 				_rectangleEnemy->SetRotationEnemy(false);
-				_rectangleEnemy->SetActiveCollision(false);
 				_rectangleEnemy2->SetX(91.0f);
 				_rectangleEnemy2->SetY(-200.0f);
 				_rectangleEnemy2->SetWidth(550.0f);
@@ -398,10 +387,8 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230.0f);
-				//_circleEnemy->SetRadius(40.0f);
 				_circleEnemy->SetActiveMovementInX(true);
 				_circleEnemy->SetActiveMovementInY(true);
 				break;
@@ -413,7 +400,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(false);
 				_rectangleEnemy->SetRotationEnemy(false);
-				_rectangleEnemy->SetActiveCollision(false);
 				_rectangleEnemy2->SetX(440.0f);
 				_rectangleEnemy2->SetY(-400.0f);
 				_rectangleEnemy2->SetWidth(200.0f);
@@ -421,8 +407,6 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(false);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(false);
-				//_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230.0f);
 				_circleEnemy->SetRadius(20.0f);
 				_circleEnemy->SetActiveMovementInX(true);
@@ -436,7 +420,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(true);
 				_rectangleEnemy->SetRotationEnemy(false);
-				_rectangleEnemy->SetActiveCollision(false);
 				_rectangleEnemy2->SetX(100.0f);
 				_rectangleEnemy2->SetY(-100.0f);
 				_rectangleEnemy2->SetWidth(200.0f);
@@ -444,7 +427,6 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(true);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230.0f);
 				_circleEnemy->SetActiveMovementInX(true);
@@ -458,7 +440,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(false);
 				_rectangleEnemy->SetRotationEnemy(true);
-				_rectangleEnemy->SetActiveCollision(false);
 				_rectangleEnemy2->SetX(400.0f);
 				_rectangleEnemy2->SetY(-200.0f);
 				_rectangleEnemy2->SetWidth(200.0f);
@@ -466,7 +447,6 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(true);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(false);
 				_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230.0f);
 				_circleEnemy->SetActiveMovementInX(true);
@@ -480,7 +460,6 @@ namespace Colortrack
 				_rectangleEnemy->SetChangedShape(true);
 				_rectangleEnemy->SetActiveMovement(true);
 				_rectangleEnemy->SetRotationEnemy(false);
-				_rectangleEnemy->SetActiveCollision(true);
 				_rectangleEnemy2->SetX(400.0f);
 				_rectangleEnemy2->SetY(-200.0f);
 				_rectangleEnemy2->SetWidth(200.0f);
@@ -488,8 +467,6 @@ namespace Colortrack
 				_rectangleEnemy2->SetChangedShape(true);
 				_rectangleEnemy2->SetActiveMovement(true);
 				_rectangleEnemy2->SetRotationEnemy(false);
-				_rectangleEnemy2->SetActiveCollision(true);
-				//_circleEnemy->SetX(300.0f);
 				_circleEnemy->SetY(-230.0f);
 				_circleEnemy->SetRadius(20.0f);
 				_circleEnemy->SetActiveMovementInX(true);

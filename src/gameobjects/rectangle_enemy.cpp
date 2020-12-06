@@ -145,7 +145,7 @@ namespace Colortrack
 		_rec.y += _speed.y * GetFrameTime();
 		if (_activeMovement == true)
 		{
-			if (_rec.x > minScreenWidth && _rec.x < GetScreenWidth() || _rec.x + _rec.height > 0 && _rec.x + _rec.height < GetScreenWidth())
+			if (_rec.x > minScreenWidth && _rec.x < GetScreenWidth() || _rec.x + _rec.height > minScreenWidth && _rec.x + _rec.height < GetScreenWidth())
 			{
 				_rec.x += _speed.x * GetFrameTime();
 			}
@@ -220,11 +220,6 @@ namespace Colortrack
 	bool RectangleEnemy::GetRotationEnemy()
 	{
 		return _rotateEnemy;
-	}
-
-	void RectangleEnemy::RotateEnemy() 
-	{
-
 	}
 
 	void RectangleEnemy::SetRectangleEnemyColors(Colors color)

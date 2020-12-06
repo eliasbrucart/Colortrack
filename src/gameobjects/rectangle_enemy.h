@@ -12,7 +12,6 @@ namespace Colortrack
 		Rectangle _rec;
 		Vector2 _speed;
 		Color _color;
-		Transform _transform;
 		bool _outOfScreen;
 		bool _changedShape;
 		bool _activeMovement;
@@ -46,7 +45,6 @@ namespace Colortrack
 		bool GetActiveMovement();
 		void SetRotationEnemy(bool rotateEnemy);
 		bool GetRotationEnemy();
-		void RotateEnemy();
 		Colors rectangleEnemyColors;
 		void SetColor(Colors color);
 		void SetRectangleEnemyColors(Colors color);
