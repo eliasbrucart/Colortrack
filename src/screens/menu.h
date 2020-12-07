@@ -32,7 +32,6 @@ namespace Colortrack
 		Menu();
 		~Menu();
 		virtual void Input();
-		Texture2D GetMenuSprite();
 		virtual void Draw();
 	};
 

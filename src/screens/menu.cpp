@@ -89,11 +89,6 @@ namespace Colortrack
 			_mouseHoverInButton = noHover;
 	}
 
-	Texture2D Menu::GetMenuSprite()
-	{
-		return _menuSprite;
-	}
-
 	void Menu::Draw()
 	{
 		ClearBackground(BLACK);
@@ -102,10 +97,6 @@ namespace Colortrack
 		DrawTexture(_tutorialButtonSprite, buttonsInX, tutorialButtonY, WHITE);
 		DrawTexture(_creditsButtonSprite, buttonsInX, creditsButtonY, WHITE);
 		DrawTexture(_exitButtonSprite, buttonsInX, exitButtonY, WHITE);
-		//DrawRectangleRec(_playButton, GREEN);
-		//DrawRectangleRec(_tutorialButton, YELLOW);
-		//DrawRectangleRec(_creditsButton, PURPLE);
-		//DrawRectangleRec(_exitButton, RED);
 
 		switch (_mouseHoverInButton) {
 		case play:
@@ -123,6 +114,5 @@ namespace Colortrack
 		case noHover:
 			break;
 		}
-		//DrawTexture(_menuSprite, 0, 0, WHITE);
 	}
 }
