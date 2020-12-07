@@ -12,6 +12,8 @@ namespace Colortrack
 	private:
 		Rectangle _backToMenu;
 		Vector2 _mouse;
+		Texture2D _creditsSprite;
+		Texture2D _menuButtonSprite;
 		enum buttonCreditsHover {
 			mainMenu,
 			noHover
