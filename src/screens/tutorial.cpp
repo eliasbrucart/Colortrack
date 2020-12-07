@@ -6,8 +6,8 @@
 
 namespace Colortrack
 {
-	static const float backToMenuX = 270.0f;
-	static const float backToMenuY = 400.0f;
+	static const float backToMenuX = 2.0f;
+	static const float backToMenuY = 420.0f;
 	static const float backToMenuWidth = 100.0f;
 	static const float backToMenuHeight = 50.0f;
 
@@ -17,11 +17,15 @@ namespace Colortrack
 		_backToMenu.y = backToMenuY;
 		_backToMenu.width = backToMenuWidth;
 		_backToMenu.height = backToMenuHeight;
+
+		_tutorialSprite = LoadTexture("assets/textures/tutorialSprite.png");
+		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
 	}
 
 	Tutorial::~Tutorial()
 	{
-
+		UnloadTexture(_tutorialSprite);
+		UnloadTexture(_menuButtonSprite);
 	}
 
 	void Tutorial::Input()
@@ -39,11 +43,12 @@ namespace Colortrack
 
 	void Tutorial::Draw()
 	{
-		DrawRectangleRec(_backToMenu, WHITE);
+		DrawTexture(_tutorialSprite, 0, 0, WHITE);
+		DrawTexture(_menuButtonSprite, backToMenuX, backToMenuY, WHITE);
 		switch (_mouseHoverInButton)
 		{
 		case backToMenu:
-			DrawRectangleRec(_backToMenu, GRAY);
+			DrawTexture(_menuButtonSprite, backToMenuX, backToMenuY, LIME);
 			break;
 		case noHover:
 			break;
