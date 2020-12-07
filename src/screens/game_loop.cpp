@@ -135,6 +135,11 @@ namespace Colortrack
 			}
 			if (state == GameState::creditsScreen)
 			{
+				if (_menu != NULL)
+				{
+					delete _menu;
+					_menu = NULL;
+				}
 				if (_tutorial != NULL)
 				{
 					delete _tutorial;
@@ -157,6 +162,11 @@ namespace Colortrack
 			}
 			if (state == GameState::gameOverScreen)
 			{
+				if (_menu != NULL)
+				{
+					delete _menu;
+					_menu = NULL;
+				}
 				if (_tutorial != NULL) 
 				{
 					delete _tutorial;
