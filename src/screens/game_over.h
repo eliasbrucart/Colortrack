@@ -15,6 +15,10 @@ namespace Colortrack
 		Rectangle _exitButton;
 		Vector2 _mouse;
 		Gameplay* _gameplay;
+		Texture2D _gameOverSprite;
+		Texture2D _playButtonSprite;
+		Texture2D _menuButtonSprite;
+		Texture2D _exitButtonSprite;
 		enum buttonCreditsHover {
 			playAgain,
 			mainMenu,
