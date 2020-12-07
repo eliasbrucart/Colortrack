@@ -6,7 +6,7 @@
 
 namespace Colortrack
 {
-	static const float backToMenuX = 2.0f;
+	static const float backToMenuX = 15.0f;
 	static const float backToMenuY = 420.0f;
 	static const float backToMenuWidth = 100.0f;
 	static const float backToMenuHeight = 50.0f;

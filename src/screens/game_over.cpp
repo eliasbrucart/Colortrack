@@ -7,8 +7,8 @@
 
 namespace Colortrack 
 {
-	static const int pointsEarnedPosX = 2;
-	static const int pointsEarnedPosY = 1;
+	static const int pointsEarnedPosX = 140;
+	static const int pointsEarnedPosY = 120;
 	static const int pointsFontSize = 40;
 
 	static const float buttonsX = 270.0f;
