@@ -12,6 +12,11 @@ namespace Colortrack
 	private:
 		Rectangle _backToMenu;
 		Vector2 _mouse;
+		enum ButtonsHover {
+			backToMenu,
+			noHover
+		};
+		ButtonsHover _mouseHoverInButton;
 	public:
 		Tutorial();
 		~Tutorial();

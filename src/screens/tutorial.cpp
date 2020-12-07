@@ -6,12 +6,17 @@
 
 namespace Colortrack
 {
+	static const float backToMenuX = 270.0f;
+	static const float backToMenuY = 400.0f;
+	static const float backToMenuWidth = 100.0f;
+	static const float backToMenuHeight = 50.0f;
+
 	Tutorial::Tutorial()
 	{
-		_backToMenu.x = 300.0f;
-		_backToMenu.y = 400.0f;
-		_backToMenu.width = 100.0f;
-		_backToMenu.height = 50.0f;
+		_backToMenu.x = backToMenuX;
+		_backToMenu.y = backToMenuY;
+		_backToMenu.width = backToMenuWidth;
+		_backToMenu.height = backToMenuHeight;
 	}
 
 	Tutorial::~Tutorial()
@@ -24,13 +29,26 @@ namespace Colortrack
 		_mouse = GetMousePosition();
 		if (CheckCollisionPointRec(_mouse, _backToMenu))
 		{
+			_mouseHoverInButton = backToMenu;
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				state = GameState::mainmenu;
 		}
+		else
+			_mouseHoverInButton = noHover;
 	}
 
 	void Tutorial::Draw()
 	{
 		DrawRectangleRec(_backToMenu, WHITE);
+		switch (_mouseHoverInButton)
+		{
+		case backToMenu:
+			DrawRectangleRec(_backToMenu, GRAY);
+			break;
+		case noHover:
+			break;
+		default:
+			break;
+		}
 	}
 }
