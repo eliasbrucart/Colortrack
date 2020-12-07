@@ -45,11 +45,11 @@ namespace Colortrack
 			_circleEnemy = NULL;
 		}
 		UnloadTexture(_menuButtonSprite);
+		UnloadTexture(_pauseButtonSprite);
 	}
 
 	void Gameplay::Init()
 	{
-		SetTargetFPS(60);
 		_player = NULL;
 		_rectangleEnemy = NULL;
 		_rectangleEnemy2 = NULL;
@@ -58,10 +58,10 @@ namespace Colortrack
 		_rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, { 150.0f, 150.0f }, false);
 		_rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, { 150.0f, 150.0f }, false);
 		_circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN, false, { 200.0f, 150.0f }, false, false);
-		_pauseRec.x = 610.0f;
-		_pauseRec.y = 2.0f;
-		_pauseRec.width = 30.0f;
-		_pauseRec.height = 30.0f;
+		_pauseRec.x = 600.0f;
+		_pauseRec.y = 0.0f;
+		_pauseRec.width = 40.0f;
+		_pauseRec.height = 40.0f;
 		_backToMenuRec.x = 280.0f;
 		_backToMenuRec.y = 0.0f;
 		_backToMenuRec.width = 100.0f;
@@ -72,7 +72,9 @@ namespace Colortrack
 		_points = 0;
 		_pause = false;
 		_rotation = 0.0f;
+
 		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
+		_pauseButtonSprite = LoadTexture("assets/textures/pauseButtonSprite.png");
 
 		SetEnemiesColors();
 		SetPlayerColors();
@@ -82,6 +84,7 @@ namespace Colortrack
 			SetEnemiesColors();
 			SetPlayerColors();
 		}
+		SetTargetFPS(60);
 	}
 
 	void Gameplay::SetEnemiesColors()
@@ -167,7 +170,6 @@ namespace Colortrack
 	{
 		Colors rectangleEnemyColor = _rectangleEnemy->GetColors();
 		Colors rectangleEnemyColor2 = _rectangleEnemy2->GetColors();
-		//Colors circleEnemyColor = circleEnemy->GetColors();
 		int rand = GetRandomValue(1, 2);
 		if (_player != NULL)
 		{
@@ -481,15 +483,18 @@ namespace Colortrack
 
 	void Gameplay::SetPause()
 	{
-		if (IsKeyPressed(KEY_P))
+		/*if (IsKeyPressed(KEY_P))
 		{
 			_pause = !_pause;
-		}
+		}*/
 		if (CheckCollisionPointRec(_mouse, _pauseRec))
 		{
+			_mouseHoverInButton = pauseButtonHover;
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				_pause = !_pause;
 		}
+		else
+			_mouseHoverInButton = noHover;
 	}
 
 	int Gameplay::GetPoints()
@@ -556,7 +561,7 @@ namespace Colortrack
 	{
 		if (CheckCollisionPointRec(_mouse, _backToMenuRec))
 		{
-			_mouseHoverInButton = menu;
+			_mouseHoverInButton = menuButtonHover;
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				state = GameState::mainmenu;
 		}
@@ -638,12 +643,15 @@ namespace Colortrack
 		}
 		if (_pause == true)
 			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
-		DrawRectangleRec(_pauseRec, WHITE);
 		DrawTexture(_menuButtonSprite, _backToMenuRec.x, _backToMenuRec.y, WHITE);
-		switch (_mouseHoverInButton) 
+		DrawTexture(_pauseButtonSprite, _pauseRec.x, _pauseRec.y, WHITE);
+		switch (_mouseHoverInButton)
 		{
-		case menu:
+		case menuButtonHover:
 			DrawTexture(_menuButtonSprite, _backToMenuRec.x, _backToMenuRec.y, LIME);
+			break;
+		case pauseButtonHover:
+			DrawTexture(_pauseButtonSprite, _pauseRec.x, _pauseRec.y, GRAY);
 			break;
 		case noHover:
 			break;
