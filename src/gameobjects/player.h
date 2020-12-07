@@ -27,6 +27,8 @@ namespace Colortrack
 		float GetWidth();
 		void SetHeight(float height);
 		float GetHeight();
+		void SetSpeed(float speed);
+		float GetSpeed();
 		Color GetColor();
 		Colors GetColors();
 		void SetInputs();

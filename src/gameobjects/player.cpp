@@ -82,6 +82,16 @@ namespace Colortrack
 		return _rec.height;
 	}
 
+	void Player::SetSpeed(float speed)
+	{
+		_speed = speed;
+	}
+
+	float Player::GetSpeed()
+	{
+		return _speed;
+	}
+
 	void Player::SetColor(Colors color)
 	{
 		playerColors = color;

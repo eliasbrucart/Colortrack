@@ -1,5 +1,7 @@
 #include "menu.h"
 
+#include"raylib.h"
+
 #include "game_loop.h"
 
 namespace Colortrack
@@ -37,11 +39,22 @@ namespace Colortrack
 		_exitButton.y = exitButtonY;
 		_exitButton.width = buttonsWidth;
 		_exitButton.height = buttonsHeight;
+
+		_menuSprite = LoadTexture("assets/textures/menuSprite.png");
+		_playButtonSprite = LoadTexture("assets/textures/playButtonSprite.png");
+		_tutorialButtonSprite = LoadTexture("assets/textures/tutorialButtonSprite.png");
+		_creditsButtonSprite = LoadTexture("assets/textures/creditsButtonSprite.png");
+		_exitButtonSprite = LoadTexture("assets/textures/exitButtonSprite.png");
+
 	}
 
 	Menu::~Menu()
 	{
-
+		UnloadTexture(_menuSprite);
+		UnloadTexture(_playButtonSprite);
+		UnloadTexture(_tutorialButtonSprite);
+		UnloadTexture(_creditsButtonSprite);
+		UnloadTexture(_exitButtonSprite);
 	}
 
 	void Menu::Input()
@@ -76,28 +89,40 @@ namespace Colortrack
 			_mouseHoverInButton = noHover;
 	}
 
+	Texture2D Menu::GetMenuSprite()
+	{
+		return _menuSprite;
+	}
+
 	void Menu::Draw()
 	{
-		DrawRectangleRec(_playButton, GREEN);
-		DrawRectangleRec(_tutorialButton, YELLOW);
-		DrawRectangleRec(_creditsButton, PURPLE);
-		DrawRectangleRec(_exitButton, RED);
+		ClearBackground(BLACK);
+		DrawTexture(_menuSprite, 0, 0, WHITE);
+		DrawTexture(_playButtonSprite, buttonsInX, playButtonY, WHITE);
+		DrawTexture(_tutorialButtonSprite, buttonsInX, tutorialButtonY, WHITE);
+		DrawTexture(_creditsButtonSprite, buttonsInX, creditsButtonY, WHITE);
+		DrawTexture(_exitButtonSprite, buttonsInX, exitButtonY, WHITE);
+		//DrawRectangleRec(_playButton, GREEN);
+		//DrawRectangleRec(_tutorialButton, YELLOW);
+		//DrawRectangleRec(_creditsButton, PURPLE);
+		//DrawRectangleRec(_exitButton, RED);
 
 		switch (_mouseHoverInButton) {
 		case play:
-			DrawRectangleRec(_playButton, LIME);
+			DrawTexture(_playButtonSprite, buttonsInX, playButtonY, LIME);
 			break;
 		case tutorial:
-			DrawRectangleRec(_tutorialButton, GOLD);
+			DrawTexture(_tutorialButtonSprite, buttonsInX, tutorialButtonY, GOLD);
 			break;
 		case credits:
-			DrawRectangleRec(_creditsButton, VIOLET);
+			DrawTexture(_creditsButtonSprite, buttonsInX, creditsButtonY, VIOLET);
 			break;
 		case exit:
-			DrawRectangleRec(_exitButton, PINK);
+			DrawTexture(_exitButtonSprite, buttonsInX, exitButtonY, PINK);
 			break;
 		case noHover:
 			break;
 		}
+		//DrawTexture(_menuSprite, 0, 0, WHITE);
 	}
 }
