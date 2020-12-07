@@ -8,13 +8,13 @@ namespace Colortrack
 	static const float buttonsWidth = 100.0f;
 	static const float buttonsHeight = 50.0f;
 
-	static const float playButtonY = 190.0f;
+	static const float playButtonY = 160.0f;
 
-	static const float tutorialButtonY = 270.0f;
+	static const float tutorialButtonY = 240.0f;
 
-	static const float creditsButtonY = 350.0f;
+	static const float creditsButtonY = 320.0f;
 
-	static const float exitButtonY = 430.0f;
+	static const float exitButtonY = 400.0f;
 
 	Menu::Menu()
 	{
