@@ -44,6 +44,7 @@ namespace Colortrack
 			delete _circleEnemy;
 			_circleEnemy = NULL;
 		}
+		UnloadTexture(_menuButtonSprite);
 	}
 
 	void Gameplay::Init()
@@ -63,14 +64,15 @@ namespace Colortrack
 		_pauseRec.height = 30.0f;
 		_backToMenuRec.x = 280.0f;
 		_backToMenuRec.y = 0.0f;
-		_backToMenuRec.width = 70.0f;
-		_backToMenuRec.height = 30.0f;
+		_backToMenuRec.width = 100.0f;
+		_backToMenuRec.height = 50.0f;
 		_timePopUp = 0.0f;
 		_timer = 240;
 		_timeDeath = 240;
 		_points = 0;
 		_pause = false;
 		_rotation = 0.0f;
+		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
 
 		SetEnemiesColors();
 		SetPlayerColors();
@@ -554,9 +556,12 @@ namespace Colortrack
 	{
 		if (CheckCollisionPointRec(_mouse, _backToMenuRec))
 		{
+			_mouseHoverInButton = menu;
 			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 				state = GameState::mainmenu;
 		}
+		else
+			_mouseHoverInButton = noHover;
 	}
 
 	void Gameplay::Update()
@@ -634,7 +639,17 @@ namespace Colortrack
 		if (_pause == true)
 			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
 		DrawRectangleRec(_pauseRec, WHITE);
-		DrawRectangleRec(_backToMenuRec, WHITE);
+		DrawTexture(_menuButtonSprite, _backToMenuRec.x, _backToMenuRec.y, WHITE);
+		switch (_mouseHoverInButton) 
+		{
+		case menu:
+			DrawTexture(_menuButtonSprite, _backToMenuRec.x, _backToMenuRec.y, LIME);
+			break;
+		case noHover:
+			break;
+		default:
+			break;
+		}
 		if (_timer >= 0)
 		{
 			DrawText(TextFormat("Start in: %i", _timer / 60), GetScreenWidth() / 2 - 120, GetScreenHeight() / 2 - 30, 50, WHITE);

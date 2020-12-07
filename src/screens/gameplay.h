@@ -23,6 +23,13 @@ namespace Colortrack
 		Vector2 _mouse;
 		Rectangle _pauseRec;
 		Rectangle _backToMenuRec;
+		Texture2D _menuButtonSprite;
+		enum buttonMenuHover {
+			menu,
+			pause,
+			noHover
+		};
+		buttonMenuHover _mouseHoverInButton;
 	public:
 		Gameplay();
 		~Gameplay();
