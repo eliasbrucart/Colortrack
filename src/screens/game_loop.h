@@ -16,10 +16,12 @@ namespace Colortrack
 		Gameplay* _gameplay;
 		Screens* _gameOver;
 		Screens* _credits;
+		Music _bgMusic;
 	public:
 		GameLoop();
 		~GameLoop();
 		void Loop();
+		void Init();
 	};
 
 	extern int minScreenWidth;

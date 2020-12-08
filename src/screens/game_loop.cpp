@@ -47,15 +47,17 @@ namespace Colortrack
 			delete _gameOver;
 			_gameOver = NULL;
 		}
-
+		UnloadMusicStream(_bgMusic);
+		CloseAudioDevice();
 		CloseWindow();
 	}
 
 	void GameLoop::Loop()
 	{
-		InitWindow(640, 480, "Colortrack");
+		Init();
 		while (!WindowShouldClose() && state != GameState::close)
 		{
+			UpdateMusicStream(_bgMusic);
 			//Updates
 			if (state == GameState::mainmenu)
 			{
@@ -213,5 +215,15 @@ namespace Colortrack
 			}
 			EndDrawing();
 		}
+	}
+
+	void GameLoop::Init()
+	{
+		InitWindow(640, 480, "Colortrack");
+		InitAudioDevice();
+		_bgMusic = LoadMusicStream("assets/music/bgMusic.ogg");
+
+		PlayMusicStream(_bgMusic);
+		SetMusicVolume(_bgMusic, 0.5f);
 	}
 }
