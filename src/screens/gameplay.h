@@ -25,6 +25,7 @@ namespace Colortrack
 		Rectangle _backToMenuRec;
 		Texture2D _menuButtonSprite;
 		Texture2D _pauseButtonSprite;
+		Sound _pointEarned;
 		enum buttonsHover {
 			menuButtonHover,
 			pauseButtonHover,

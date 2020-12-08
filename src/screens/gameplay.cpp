@@ -46,6 +46,7 @@ namespace Colortrack
 		}
 		UnloadTexture(_menuButtonSprite);
 		UnloadTexture(_pauseButtonSprite);
+		UnloadSound(_pointEarned);
 	}
 
 	void Gameplay::Init()
@@ -75,6 +76,8 @@ namespace Colortrack
 
 		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
 		_pauseButtonSprite = LoadTexture("assets/textures/pauseButtonSprite.png");
+
+		_pointEarned = LoadSound("assets/sounds/points.wav");
 
 		SetEnemiesColors();
 		SetPlayerColors();
@@ -219,6 +222,7 @@ namespace Colortrack
 				else if (flag != 0)
 				{
 					_points += 100;
+					PlaySound(_pointEarned);
 					flag = 0;
 					popUp = true;
 				}
@@ -233,6 +237,7 @@ namespace Colortrack
 				else if (flag != 0)
 				{
 					_points += 100;
+					PlaySound(_pointEarned);
 					flag = 0;
 					popUp = true;
 				}
@@ -247,6 +252,7 @@ namespace Colortrack
 				else if (flag != 0)
 				{
 					_points += 100;
+					PlaySound(_pointEarned);
 					flag = 0;
 					popUp = true;
 				}
