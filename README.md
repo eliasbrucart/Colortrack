@@ -6,22 +6,32 @@
  Video game based on correctly following the color of your player
 
  # Some Screenshots of the videogame
+ 
+ <p>Menu</p>
 
 <p align="center">
 	<img src="res/screenshots/menu.png" alt="">
 </p>
 
+ <p>Tutorial</p>
+
 <p align="center">
 	<img src="res/screenshots/tutorial.png" alt="">
 </p>
+
+ <p>Credits</p>
 
 <p align="center">
 	<img src="res/screenshots/credits.png" alt="">
 </p>
 
+ <p>Gameplay</p>
+
 <p align="center">
 	<img src="res/screenshots/gameplay.png" alt="">
 </p>
+
+ <p>GameOver</p>
 
 <p align="center">
 	<img src="res/screenshots/gameOver.png" alt="">
