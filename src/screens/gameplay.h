@@ -26,6 +26,7 @@ namespace Colortrack
 		Texture2D _menuButtonSprite;
 		Texture2D _pauseButtonSprite;
 		Sound _pointEarned;
+		Sound _gameOver;
 		enum buttonsHover {
 			menuButtonHover,
 			pauseButtonHover,

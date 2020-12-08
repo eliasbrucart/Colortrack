@@ -47,6 +47,7 @@ namespace Colortrack
 		UnloadTexture(_menuButtonSprite);
 		UnloadTexture(_pauseButtonSprite);
 		UnloadSound(_pointEarned);
+		UnloadSound(_gameOver);
 	}
 
 	void Gameplay::Init()
@@ -78,6 +79,7 @@ namespace Colortrack
 		_pauseButtonSprite = LoadTexture("assets/textures/pauseButtonSprite.png");
 
 		_pointEarned = LoadSound("assets/sounds/points.wav");
+		_gameOver = LoadSound("assets/sounds/gameOver.wav");
 
 		SetEnemiesColors();
 		SetPlayerColors();
@@ -215,9 +217,11 @@ namespace Colortrack
 		{
 			if (CheckCollisionRecs(_player->GetPlayerRec(), _rectangleEnemy->GetRectangleEnemyRec()))
 			{
-				if (_player->playerColors != _rectangleEnemy->rectangleEnemyColors)
+				if (_player->playerColors != _rectangleEnemy->rectangleEnemyColors && flag != 0)
 				{
 					_player->SetLives(0);
+					PlaySound(_gameOver);
+					flag = 0;
 				}
 				else if (flag != 0)
 				{
@@ -230,9 +234,11 @@ namespace Colortrack
 			}
 			else if (CheckCollisionRecs(_player->GetPlayerRec(), _rectangleEnemy2->GetRectangleEnemyRec()))
 			{
-				if (_player->playerColors != _rectangleEnemy2->rectangleEnemyColors)
+				if (_player->playerColors != _rectangleEnemy2->rectangleEnemyColors && flag != 0)
 				{
 					_player->SetLives(0);
+					PlaySound(_gameOver);
+					flag = 0;
 				}
 				else if (flag != 0)
 				{
@@ -245,9 +251,11 @@ namespace Colortrack
 			}
 			else if (CheckCollisionCircleRec(_circleEnemy->GetPosition(), _circleEnemy->GetRadius(), _player->GetPlayerRec()))
 			{
-				if (_player->playerColors != _circleEnemy->circleEnemyColors)
+				if (_player->playerColors != _circleEnemy->circleEnemyColors && flag != 0)
 				{
 					_player->SetLives(0);
+					PlaySound(_gameOver);
+					flag = 0;
 				}
 				else if (flag != 0)
 				{
@@ -489,10 +497,10 @@ namespace Colortrack
 
 	void Gameplay::SetPause()
 	{
-		/*if (IsKeyPressed(KEY_P))
+		if (IsKeyPressed(KEY_P))
 		{
 			_pause = !_pause;
-		}*/
+		}
 		if (CheckCollisionPointRec(_mouse, _pauseRec))
 		{
 			_mouseHoverInButton = pauseButtonHover;
