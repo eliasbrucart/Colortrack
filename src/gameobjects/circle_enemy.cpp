@@ -129,9 +129,15 @@ namespace Colortrack
 		{
 			_x += _speed.x * GetFrameTime();
 			if (_x + _radius >= GetScreenWidth())
+			{
 				_speed.x *= negativeSpeed;
+				_x = GetScreenWidth() - _radius;
+			}
 			if (_x - _radius <= minScreenWidth)
+			{
 				_speed.x *= negativeSpeed;
+				_x = minScreenWidth + _radius;
+			}
 		}
 	}
 

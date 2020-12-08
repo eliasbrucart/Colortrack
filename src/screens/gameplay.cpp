@@ -46,6 +46,8 @@ namespace Colortrack
 		}
 		UnloadTexture(_menuButtonSprite);
 		UnloadTexture(_pauseButtonSprite);
+		UnloadTexture(_muteAudioSprite);
+		UnloadTexture(_unMuteAudioSprite);
 		UnloadSound(_pointEarned);
 		UnloadSound(_gameOver);
 	}
@@ -68,15 +70,22 @@ namespace Colortrack
 		_backToMenuRec.y = 0.0f;
 		_backToMenuRec.width = 100.0f;
 		_backToMenuRec.height = 50.0f;
+		_muteAudio.x = 500.0f;
+		_muteAudio.y = 0.0f;
+		_muteAudio.width = 40.0f;
+		_muteAudio.height = 40.0f;
 		_timePopUp = 0.0f;
 		_timer = 240;
 		_timeDeath = 240;
 		_points = 0;
 		_pause = false;
 		_rotation = 0.0f;
+		_muted = false;
 
 		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
 		_pauseButtonSprite = LoadTexture("assets/textures/pauseButtonSprite.png");
+		_muteAudioSprite = LoadTexture("assets/textures/audioSprite1.png");
+		_unMuteAudioSprite = LoadTexture("assets/textures/audioSprite2.png");
 
 		_pointEarned = LoadSound("assets/sounds/points.wav");
 		_gameOver = LoadSound("assets/sounds/gameOver.wav");
@@ -583,6 +592,24 @@ namespace Colortrack
 			_mouseHoverInButton = noHover;
 	}
 
+	void Gameplay::MuteAudio()
+	{
+		if (CheckCollisionPointRec(_mouse, _muteAudio))
+		{
+			_mouseHoverInButton = muteButtonHover;
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) )
+			{
+				_muted = !_muted;
+				if (!_muted)
+					SetMasterVolume(0);
+				else
+					SetMasterVolume(1);
+			}
+		}
+		else
+			_mouseHoverInButton = noHover;
+	}
+
 	void Gameplay::Update()
 	{
 		_timer--;
@@ -618,6 +645,7 @@ namespace Colortrack
 				PopUp();
 				ActivateRotationEnemy();
 				BackToMenuInput();
+				MuteAudio();
 				if (_rectangleEnemy->GetOutOfScreen() == true && _rectangleEnemy2->GetOutOfScreen() == true)
 				{
 					if (!_rectangleEnemy->GetChangedShape() && !_rectangleEnemy2->GetChangedShape())
@@ -659,6 +687,10 @@ namespace Colortrack
 			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
 		DrawTexture(_menuButtonSprite, _backToMenuRec.x, _backToMenuRec.y, WHITE);
 		DrawTexture(_pauseButtonSprite, _pauseRec.x, _pauseRec.y, WHITE);
+		if(!_muted)
+			DrawTexture(_unMuteAudioSprite, _muteAudio.x, _muteAudio.y, WHITE);
+		else
+			DrawTexture(_muteAudioSprite, _muteAudio.x, _muteAudio.y, WHITE);
 		switch (_mouseHoverInButton)
 		{
 		case menuButtonHover:
@@ -666,6 +698,12 @@ namespace Colortrack
 			break;
 		case pauseButtonHover:
 			DrawTexture(_pauseButtonSprite, _pauseRec.x, _pauseRec.y, GRAY);
+			break;
+		case muteButtonHover:
+			if(!_muted)
+				DrawTexture(_unMuteAudioSprite, _muteAudio.x, _muteAudio.y, GRAY);
+			else
+				DrawTexture(_muteAudioSprite, _muteAudio.x, _muteAudio.y, GRAY);
 			break;
 		case noHover:
 			break;

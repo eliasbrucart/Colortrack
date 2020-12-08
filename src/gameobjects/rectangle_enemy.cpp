@@ -178,12 +178,10 @@ namespace Colortrack
 		else if (_rec.y < minScreenWidth || _rec.y > GetScreenHeight())
 		{
 			_outOfScreen = true;
-			cout << "Esta afuera" << endl;
 		}
 		else if(_rec.y + _rec.height >= minScreenHeight && _rec.y <= GetScreenHeight())
 		{
 			_outOfScreen = false;
-			cout << "Esta adentro" << endl;
 		}
 		else if(_rec.x + _rec.width >= GetScreenWidth())
 		{
@@ -193,12 +191,10 @@ namespace Colortrack
 		else if (_rec.x < minScreenWidth || _rec.x > GetScreenWidth())
 		{
 			_outOfScreen = true;
-			cout << "Esta afuera" << endl;
 		}
 		else if (_rec.x >= minScreenWidth && _rec.x <= GetScreenWidth())
 		{
 			_outOfScreen = false;
-			cout << "Esta adentro" << endl;
 		}
 	}
 

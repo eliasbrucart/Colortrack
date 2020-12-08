@@ -20,16 +20,21 @@ namespace Colortrack
 		int _points;
 		bool _pause;
 		float _rotation;
+		bool _muted;
 		Vector2 _mouse;
 		Rectangle _pauseRec;
 		Rectangle _backToMenuRec;
+		Rectangle _muteAudio;
 		Texture2D _menuButtonSprite;
 		Texture2D _pauseButtonSprite;
+		Texture2D _muteAudioSprite;
+		Texture2D _unMuteAudioSprite;
 		Sound _pointEarned;
 		Sound _gameOver;
 		enum buttonsHover {
 			menuButtonHover,
 			pauseButtonHover,
+			muteButtonHover,
 			noHover
 		};
 		buttonsHover _mouseHoverInButton;
@@ -50,6 +55,7 @@ namespace Colortrack
 		void PopUp();
 		void ActivateRotationEnemy();
 		void BackToMenuInput();
+		void MuteAudio();
 		void Update();
 		void Draw();
 		void Unload();
