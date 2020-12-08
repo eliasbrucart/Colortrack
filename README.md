@@ -38,7 +38,7 @@ Go as far as you can! Avoid enemy figures of different colors and collide with f
 	<img src="res/screenshots/gameOver.png" alt="">
 </p>
 
-<h1>Credits</h1>
+# Credits
 
 <p>Game developed by:</p>
 <p>Elias Brucart</p>

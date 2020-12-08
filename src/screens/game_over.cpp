@@ -39,10 +39,10 @@ namespace Colortrack
 		_exitButton.height = buttonsHeight;
 		_gameplay = gameplay;
 
-		_gameOverSprite = LoadTexture("assets/textures/gameOverSprite.png");
-		_playButtonSprite = LoadTexture("assets/textures/playButtonSprite.png");
-		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
-		_exitButtonSprite = LoadTexture("assets/textures/exitButtonSprite.png");
+		_gameOverSprite = LoadTexture("res/assets/textures/gameOverSprite.png");
+		_playButtonSprite = LoadTexture("res/assets/textures/playButtonSprite.png");
+		_menuButtonSprite = LoadTexture("res/assets/textures/menuButtonSprite.png");
+		_exitButtonSprite = LoadTexture("res/assets/textures/exitButtonSprite.png");
 	}
 
 	GameOver::~GameOver()

@@ -58,7 +58,6 @@ namespace Colortrack
 		while (!WindowShouldClose() && state != GameState::close)
 		{
 			UpdateMusicStream(_bgMusic);
-			//Updates
 			if (state == GameState::mainmenu)
 			{
 				if (_tutorial != NULL) 
@@ -185,7 +184,6 @@ namespace Colortrack
 					_gameOver->Input();
 			}
 
-			//Drawings
 			BeginDrawing();
 			ClearBackground(BLACK);
 			if (state == GameState::mainmenu)
@@ -221,7 +219,7 @@ namespace Colortrack
 	{
 		InitWindow(640, 480, "Colortrack");
 		InitAudioDevice();
-		_bgMusic = LoadMusicStream("assets/music/bgMusic.ogg");
+		_bgMusic = LoadMusicStream("res/assets/music/bgMusic.ogg");
 
 		PlayMusicStream(_bgMusic);
 		SetMusicVolume(_bgMusic, 0.5f);

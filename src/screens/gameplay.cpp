@@ -82,13 +82,13 @@ namespace Colortrack
 		_rotation = 0.0f;
 		_muted = false;
 
-		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
-		_pauseButtonSprite = LoadTexture("assets/textures/pauseButtonSprite.png");
-		_muteAudioSprite = LoadTexture("assets/textures/audioSprite1.png");
-		_unMuteAudioSprite = LoadTexture("assets/textures/audioSprite2.png");
+		_menuButtonSprite = LoadTexture("res/assets/textures/menuButtonSprite.png");
+		_pauseButtonSprite = LoadTexture("res/assets/textures/pauseButtonSprite.png");
+		_muteAudioSprite = LoadTexture("res/assets/textures/audioSprite1.png");
+		_unMuteAudioSprite = LoadTexture("res/assets/textures/audioSprite2.png");
 
-		_pointEarned = LoadSound("assets/sounds/points.wav");
-		_gameOver = LoadSound("assets/sounds/gameOver.wav");
+		_pointEarned = LoadSound("res/assets/sounds/points.wav");
+		_gameOver = LoadSound("res/assets/sounds/gameOver.wav");
 
 		SetEnemiesColors();
 		SetPlayerColors();

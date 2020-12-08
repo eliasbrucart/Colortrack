@@ -17,8 +17,8 @@ namespace Colortrack
 		_backToMenu.width = backToMenuWidth;
 		_backToMenu.height = backToMenuHeight;
 
-		_creditsSprite = LoadTexture("assets/textures/creditsSprite.png");
-		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
+		_creditsSprite = LoadTexture("res/assets/textures/creditsSprite.png");
+		_menuButtonSprite = LoadTexture("res/assets/textures/menuButtonSprite.png");
 	}
 
 	Credits::~Credits()

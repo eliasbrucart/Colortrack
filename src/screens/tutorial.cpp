@@ -18,8 +18,8 @@ namespace Colortrack
 		_backToMenu.width = backToMenuWidth;
 		_backToMenu.height = backToMenuHeight;
 
-		_tutorialSprite = LoadTexture("assets/textures/tutorialSprite.png");
-		_menuButtonSprite = LoadTexture("assets/textures/menuButtonSprite.png");
+		_tutorialSprite = LoadTexture("res/assets/textures/tutorialSprite.png");
+		_menuButtonSprite = LoadTexture("res/assets/textures/menuButtonSprite.png");
 	}
 
 	Tutorial::~Tutorial()

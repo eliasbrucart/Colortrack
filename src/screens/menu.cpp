@@ -40,11 +40,11 @@ namespace Colortrack
 		_exitButton.width = buttonsWidth;
 		_exitButton.height = buttonsHeight;
 
-		_menuSprite = LoadTexture("assets/textures/menuSprite.png");
-		_playButtonSprite = LoadTexture("assets/textures/playButtonSprite.png");
-		_tutorialButtonSprite = LoadTexture("assets/textures/tutorialButtonSprite.png");
-		_creditsButtonSprite = LoadTexture("assets/textures/creditsButtonSprite.png");
-		_exitButtonSprite = LoadTexture("assets/textures/exitButtonSprite.png");
+		_menuSprite = LoadTexture("res/assets/textures/menuSprite.png");
+		_playButtonSprite = LoadTexture("res/assets/textures/playButtonSprite.png");
+		_tutorialButtonSprite = LoadTexture("res/assets/textures/tutorialButtonSprite.png");
+		_creditsButtonSprite = LoadTexture("res/assets/textures/creditsButtonSprite.png");
+		_exitButtonSprite = LoadTexture("res/assets/textures/exitButtonSprite.png");
 
 	}
 
