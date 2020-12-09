@@ -12,7 +12,7 @@ namespace Colortrack
 		_color = WHITE;
 	}
 
-	CircleEnemy::CircleEnemy(float x, float y, float radius, Color color, bool activeMovement, Vector2 speed, bool activeMovementInX, bool activeMovementInY)
+	CircleEnemy::CircleEnemy(float x, float y, float radius, Color color, Vector2 speed, bool activeMovementInX, bool activeMovementInY)
 	{
 		_x = x;
 		_y = y;

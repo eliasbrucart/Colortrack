@@ -21,7 +21,7 @@ namespace Colortrack
 		rectangleEnemyColors = Colors::colorGreen;
 	}
 
-	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, Vector2 speed, bool rotateEnemy)
+	RectangleEnemy::RectangleEnemy(float x, float y, float width, float height, Vector2 speed, Color color, bool outOfScreen, bool changedShape, bool activeMovement, bool rotateEnemy)
 	{
 		_rec.x = x;
 		_rec.y = y;
@@ -29,8 +29,12 @@ namespace Colortrack
 		_rec.height = height;
 		_speed.x = speed.x;
 		_speed.y = speed.y;
-		rectangleEnemyColors = Colors::colorGreen;
+		_color = color;
+		_outOfScreen = outOfScreen;
+		_changedShape = changedShape;
+		_activeMovement = activeMovement;
 		_rotateEnemy = rotateEnemy;
+		rectangleEnemyColors = Colors::colorGreen;
 	}
 
 	RectangleEnemy::~RectangleEnemy()

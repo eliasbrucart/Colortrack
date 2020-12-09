@@ -18,7 +18,7 @@ namespace Colortrack
 		bool _rotateEnemy;
 	public:
 		RectangleEnemy();
-		RectangleEnemy(float x, float y, float width, float height, Vector2 speed, bool rotateEnemy);
+		RectangleEnemy(float x, float y, float width, float height, Vector2 speed, Color color, bool outOfScreen, bool changedShape, bool activeMovement, bool rotateEnemy);
 		~RectangleEnemy();
 		void MoveRectangleEnemy();
 		void SetX(float x);

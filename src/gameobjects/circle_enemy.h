@@ -18,7 +18,7 @@ namespace Colortrack
 		bool _activeMovementInY;
 	public:
 		CircleEnemy();
-		CircleEnemy(float x, float y, float radius, Color color, bool activeMovement, Vector2 speed, bool activeMovementInX, bool activeMovementInY);
+		CircleEnemy(float x, float y, float radius, Color color, Vector2 speed, bool activeMovementInX, bool activeMovementInY);
 		~CircleEnemy();
 		void SetX(float x);
 		float GetX();

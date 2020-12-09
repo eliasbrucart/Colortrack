@@ -20,7 +20,7 @@ namespace Colortrack
 		playerColors = Colors::colorGreen;
 	}
 
-	Player::Player(float x, float y, float width, float height, float speed, int lives, bool dead)
+	Player::Player(float x, float y, float width, float height, float speed, int lives, bool dead, Color color)
 	{
 		_rec.x = x;
 		_rec.y = y;
@@ -29,6 +29,7 @@ namespace Colortrack
 		_speed = speed;
 		_lives = lives;
 		_dead = dead;
+		_color = color;
 		playerColors = Colors::colorGreen;
 	}
 
@@ -119,14 +120,6 @@ namespace Colortrack
 			_rec.x += _speed * GetFrameTime();
 		}
 	}
-
-	/*void Player::InitRectanglePlayer()
-	{
-		rec.x = _x;
-		rec.y = _y;
-		rec.width = _width;
-		rec.height = rec.height;
-	}*/
 
 	void Player::SetLives(int lives)
 	{

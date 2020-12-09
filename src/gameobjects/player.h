@@ -16,7 +16,7 @@ namespace Colortrack
 		Color _color;
 	public:
 		Player();
-		Player(float x, float y, float width, float height, float speed, int lives, bool dead);
+		Player(float x, float y, float width, float height, float speed, int lives, bool dead, Color color);
 		~Player();
 		void SetX(float x);
 		float GetX();

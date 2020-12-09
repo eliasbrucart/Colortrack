@@ -40,10 +40,15 @@ Go as far as you can! Avoid enemy figures of different colors and collide with f
 
 # Credits
 
-<p>Game developed by:</p>
+<p style="font-weight: bold">Game developed by:</p>
 <p>Elias Brucart</p>
 
 <p>Elias Brucart Email: <a href="mailto:eliasbrucart@hargames.com.ar">eliasbrucart@hargames.com.ar</a></p>
+
+<p style="font-weight: bold">Art & Assets Design</p>
+<p>Dario Brucart</p>
+
+<p>Dario Brucart Email: <a href="mailto:dabrucart@yahoo.com.ar">eliasbrucart@hargames.com.ar</a></p>
 
 # Developing
 <p>Game version: 1.0</p>

@@ -17,6 +17,43 @@ namespace Colortrack
 {
 	static int flag = 1;
 	bool popUp = false;
+
+	static const float playerX = 320.0f;
+	static const float playerY = 340.0f;
+	static const float playerWidth = 20.0f;
+	static const float playerHeight = 20.0f;
+	static const float playerSpeed = 300.0f;
+	static const int playerLives = 1;
+
+	static const float rectangleWidth = 320.0f;
+	static const float rectangleHeight = 50.0f;
+
+	static const float rectangle1X = 320.0f;
+	static const float rectangleY = -100.0f;
+
+	static const float rectangle2X = 0.0f;
+	static const float rectangle2Width = 319.5f;
+
+	static const float circleX = 300.0f;
+	static const float circleY = -100.0f;
+	static const float circleRadius = 20.0f;
+
+	static const int pointsX = 2;
+	static const int pointsY = 2;
+	static const int pointsFontSize = 20;
+
+	static const int gameOverTextX = 220;
+	static const int gameOverTextY = 240;
+	static const int gameOverTextFontSize = 50;
+
+	static const int pauseTextX = 220;
+	static const int pauseTextY = 240;
+	static const int pauseTextFontSize = 70;
+
+	static const int startTextX = 200;
+	static const int startTextY = 210;
+	static const int startTextFontSize = 50;
+
 	Gameplay::Gameplay()
 	{
 		Init();
@@ -58,10 +95,10 @@ namespace Colortrack
 		_rectangleEnemy = NULL;
 		_rectangleEnemy2 = NULL;
 		_circleEnemy = NULL;
-		_player = new Player(320.0f, 340.0f, 20.0f, 20.0f, 300.0f, 1, false);
-		_rectangleEnemy = new RectangleEnemy(0.0f, -100.0f, static_cast<float>(GetScreenWidth() / 2), 50.0f, { 150.0f, 150.0f }, false);
-		_rectangleEnemy2 = new RectangleEnemy(static_cast<float>(GetScreenWidth() / 2), -100.0f, static_cast<float>(GetScreenWidth() / 2) - 0.5f, 50.0f, { 150.0f, 150.0f }, false);
-		_circleEnemy = new CircleEnemy(300.0f, -100.0f, 20.0f, GREEN, false, { 200.0f, 150.0f }, false, false);
+		_player = new Player(playerX, playerY, playerWidth, playerHeight, playerSpeed, playerLives, false, GREEN);
+		_rectangleEnemy = new RectangleEnemy(rectangle1X, rectangleY, rectangleWidth, rectangleHeight, { 150.0f, 150.0f }, GREEN, false, false, false, false);
+		_rectangleEnemy2 = new RectangleEnemy(rectangle2X, rectangleY, rectangle2Width, rectangleHeight, { 150.0f, 150.0f }, GREEN, false, false,false, false);
+		_circleEnemy = new CircleEnemy(circleX, circleY, circleRadius, GREEN, { 200.0f, 150.0f }, false, false);
 		_pauseRec.x = 600.0f;
 		_pauseRec.y = 0.0f;
 		_pauseRec.width = 40.0f;
@@ -559,13 +596,16 @@ namespace Colortrack
 
 	void Gameplay::PopUp()
 	{
+		float textPopUpX = _player->GetX();
+		float textPopUpY = _player->GetY() - 25;
+		int textPopUpFontSize = 25;
 		if (_player != NULL)
 		{
 			if (popUp)
 			{
 				if (_timePopUp != 0.0f)
 					if (_timePopUp < 2.0f)
-						DrawText("+100!", _player->GetX(), _player->GetY() - 25, 25, WHITE);
+						DrawText("+100!", static_cast<int>(textPopUpX), static_cast<int>(textPopUpY), textPopUpFontSize, WHITE);
 				if (_timePopUp > 2.0f)
 					popUp = false;
 			}
@@ -671,39 +711,39 @@ namespace Colortrack
 
 	void Gameplay::Draw()
 	{
+		float rectangleOriginX = _rectangleEnemy->GetX() + _rectangleEnemy->GetWidth() / 2;
+		float rectangleOriginY = _rectangleEnemy->GetHeight() / 2;
 		DrawRectangleRec(_player->GetPlayerRec(), _player->GetColor());
 		if (_rectangleEnemy->GetRotationEnemy())
-			DrawRectanglePro(_rectangleEnemy->GetRectangleEnemyRec(), { _rectangleEnemy->GetX() + _rectangleEnemy->GetWidth() / 2, _rectangleEnemy->GetHeight() / 2 }, _rotation, _rectangleEnemy->GetColor());
+			DrawRectanglePro(_rectangleEnemy->GetRectangleEnemyRec(), { rectangleOriginX, rectangleOriginY }, _rotation, _rectangleEnemy->GetColor());
 		else 
 			DrawRectangleRec(_rectangleEnemy->GetRectangleEnemyRec(), _rectangleEnemy->GetColor());
 		DrawRectangleRec(_rectangleEnemy2->GetRectangleEnemyRec(), _rectangleEnemy2->GetColor());
 		DrawCircle(static_cast<int>(_circleEnemy->GetX()), static_cast<int>(_circleEnemy->GetY()), _circleEnemy->GetRadius(), _circleEnemy->GetColor());
-		DrawText(TextFormat("Points: %i", _points), 2, 2, 20, WHITE);
+		DrawText(TextFormat("Points: %i", _points), pointsX, pointsY, pointsFontSize, WHITE);
 		if (_player->IsDead())
-		{
-			DrawText("Game Over!", GetScreenWidth() / 2 - 120, GetScreenHeight() / 2, 50, WHITE);
-		}
+			DrawText("Game Over!", gameOverTextX, gameOverTextY, gameOverTextFontSize, WHITE);
 		if (_pause == true)
-			DrawText("PAUSE", GetScreenWidth() / 2 - 100, GetScreenHeight() / 2, 70, WHITE);
-		DrawTexture(_menuButtonSprite, _backToMenuRec.x, _backToMenuRec.y, WHITE);
-		DrawTexture(_pauseButtonSprite, _pauseRec.x, _pauseRec.y, WHITE);
+			DrawText("PAUSE", pauseTextX, pauseTextY, pauseTextFontSize, WHITE);
+		DrawTexture(_menuButtonSprite, static_cast<int>(_backToMenuRec.x), static_cast<int>(_backToMenuRec.y), WHITE);
+		DrawTexture(_pauseButtonSprite, static_cast<int>(_pauseRec.x), static_cast<int>(_pauseRec.y), WHITE);
 		if(!_muted)
-			DrawTexture(_unMuteAudioSprite, _muteAudio.x, _muteAudio.y, WHITE);
+			DrawTexture(_unMuteAudioSprite, static_cast<int>(_muteAudio.x), static_cast<int>(_muteAudio.y), WHITE);
 		else
-			DrawTexture(_muteAudioSprite, _muteAudio.x, _muteAudio.y, WHITE);
+			DrawTexture(_muteAudioSprite, static_cast<int>(_muteAudio.x), static_cast<int>(_muteAudio.y), WHITE);
 		switch (_mouseHoverInButton)
 		{
 		case menuButtonHover:
-			DrawTexture(_menuButtonSprite, _backToMenuRec.x, _backToMenuRec.y, LIME);
+			DrawTexture(_menuButtonSprite, static_cast<int>(_backToMenuRec.x), static_cast<int>(_backToMenuRec.y), LIME);
 			break;
 		case pauseButtonHover:
-			DrawTexture(_pauseButtonSprite, _pauseRec.x, _pauseRec.y, GRAY);
+			DrawTexture(_pauseButtonSprite, static_cast<int>(_pauseRec.x), static_cast<int>(_pauseRec.y), GRAY);
 			break;
 		case muteButtonHover:
 			if(!_muted)
-				DrawTexture(_unMuteAudioSprite, _muteAudio.x, _muteAudio.y, GRAY);
+				DrawTexture(_unMuteAudioSprite, static_cast<int>(_muteAudio.x), static_cast<int>(_muteAudio.y), GRAY);
 			else
-				DrawTexture(_muteAudioSprite, _muteAudio.x, _muteAudio.y, GRAY);
+				DrawTexture(_muteAudioSprite, static_cast<int>(_muteAudio.x), static_cast<int>(_muteAudio.y), GRAY);
 			break;
 		case noHover:
 			break;
@@ -712,7 +752,7 @@ namespace Colortrack
 		}
 		if (_timer >= 0)
 		{
-			DrawText(TextFormat("Start in: %i", _timer / 60), GetScreenWidth() / 2 - 120, GetScreenHeight() / 2 - 30, 50, WHITE);
+			DrawText(TextFormat("Start in: %i", _timer / 60), startTextX, startTextY, startTextFontSize, WHITE);
 		}
 	}
 
