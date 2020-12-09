@@ -56,6 +56,7 @@ namespace Colortrack
 		void ActivateRotationEnemy();
 		void BackToMenuInput();
 		void MuteAudio();
+		void CheckColorValidation();
 		void Update();
 		void Draw();
 		void Unload();

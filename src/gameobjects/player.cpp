@@ -145,13 +145,9 @@ namespace Colortrack
 	void Player::CollisionWindow()
 	{
 		if (_rec.x <= minScreenWidth)
-		{
 			_rec.x = static_cast<float>(minScreenWidth);
-		}
 		if (_rec.x + _rec.width >= GetScreenWidth())
-		{
 			_rec.x = static_cast<float>(GetScreenWidth()) - _rec.width;
-		}
 	}
 
 	void Player::SetPlayerColors(Colors color)

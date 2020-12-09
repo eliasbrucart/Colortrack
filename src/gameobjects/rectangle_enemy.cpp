@@ -9,6 +9,8 @@ using namespace std;
 
 namespace Colortrack
 {
+	static const float negativeSpeed = -1.0f;
+	static const float setRectangleUp = -200.0f;
 	RectangleEnemy::RectangleEnemy()
 	{
 		_rec.x = 100.0f;
@@ -145,7 +147,8 @@ namespace Colortrack
 
 	void RectangleEnemy::MoveRectangleEnemy()
 	{
-		float negativeSpeed = -1.0f;
+		float setPreviusPosition = static_cast<float>(GetScreenWidth()) - _rec.x + _rec.width + 40.0f;
+		float setPreviusPosition2 = static_cast<float>(minScreenWidth) + _rec.x;
 		_rec.y += _speed.y * GetFrameTime();
 		if (_activeMovement == true)
 		{
@@ -156,10 +159,12 @@ namespace Colortrack
 			if (_rec.x + _rec.width >= GetScreenWidth())
 			{
 				_speed.x *= negativeSpeed;
+				_rec.x = setPreviusPosition;
 			}
 			if (_rec.x <= minScreenWidth)
 			{
 				_speed.x *= negativeSpeed;
+				_rec.x = setPreviusPosition2;
 			}
 		}
 	}
@@ -170,13 +175,13 @@ namespace Colortrack
 		{
 			if (_rec.y >= GetScreenHeight())
 			{
-				_rec.y = -200.0f;
+				_rec.y = setRectangleUp;
 				_changedShape = false;
 			}
 		}
 		else if (_rec.y >= GetScreenHeight())
 		{
-			_rec.y = -200.0f;
+			_rec.y = setRectangleUp;
 			_changedShape = false;
 		}
 		else if (_rec.y < minScreenWidth || _rec.y > GetScreenHeight())
@@ -189,7 +194,7 @@ namespace Colortrack
 		}
 		else if(_rec.x + _rec.width >= GetScreenWidth())
 		{
-			_rec.x = -200.0f;
+			_rec.x = setRectangleUp;
 			_changedShape = false;
 		}
 		else if (_rec.x < minScreenWidth || _rec.x > GetScreenWidth())

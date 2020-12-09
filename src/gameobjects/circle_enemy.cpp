@@ -4,6 +4,8 @@
 
 namespace Colortrack
 {
+	static const float negativeSpeed = -1.0f;
+	static const float setCircleUp = -200.0f;
 	CircleEnemy::CircleEnemy()
 	{
 		_x = 1.0f;
@@ -122,7 +124,8 @@ namespace Colortrack
 
 	void CircleEnemy::MoveCircleEnemy()
 	{
-		float negativeSpeed = -1.0f;
+		float setPreviusPosition = static_cast<float>(GetScreenWidth()) - _radius;;
+		float setPreviusPosition2 = static_cast<float>(minScreenWidth) + _radius;
 		if (_activeMovementInY == true)
 			_y += _speed.y * GetFrameTime();
 		if (_activeMovementInX == true)
@@ -131,12 +134,12 @@ namespace Colortrack
 			if (_x + _radius >= GetScreenWidth())
 			{
 				_speed.x *= negativeSpeed;
-				_x = GetScreenWidth() - _radius;
+				_x = setPreviusPosition;
 			}
 			if (_x - _radius <= minScreenWidth)
 			{
 				_speed.x *= negativeSpeed;
-				_x = minScreenWidth + _radius;
+				_x = setPreviusPosition2;
 			}
 		}
 	}
@@ -144,9 +147,7 @@ namespace Colortrack
 	void CircleEnemy::CircleEnemyOutOfScreen()
 	{
 		if (_y + _radius >= GetScreenHeight())
-		{
-			_y = -200.0f;
-		}
+			_y = setCircleUp;
 	}
 
 	void CircleEnemy::SetCircleEnemyColors(Colors color) 

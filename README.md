@@ -55,3 +55,6 @@ Go as far as you can! Avoid enemy figures of different colors and collide with f
 <p>Colortrack will follow a development line. In the future the video game will be more developed and it will be even more fun!</p>
 <p>Product developed for HardGames | website: <a href="http://hardgames.com.ar/" target="_blank">www.hardgames.com.ar</a>
 Soon it will be available on the official website</p>
+
+# Links
+<p>This video game is also available on itch.io: <a href="https://eliasbrucart.itch.io/colortrack">https://eliasbrucart.itch.io/colortrack</a></p>

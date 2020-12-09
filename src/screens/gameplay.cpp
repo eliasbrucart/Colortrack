@@ -81,13 +81,13 @@ namespace Colortrack
 			delete _circleEnemy;
 			_circleEnemy = NULL;
 		}
-		Unload();
 		UnloadTexture(_menuButtonSprite);
 		UnloadTexture(_pauseButtonSprite);
 		UnloadTexture(_muteAudioSprite);
 		UnloadTexture(_unMuteAudioSprite);
 		UnloadSound(_pointEarned);
 		UnloadSound(_gameOver);
+		Unload();
 	}
 
 	void Gameplay::Init()
@@ -97,8 +97,8 @@ namespace Colortrack
 		_rectangleEnemy2 = NULL;
 		_circleEnemy = NULL;
 		_player = new Player(playerX, playerY, playerWidth, playerHeight, playerSpeed, playerLives, false, GREEN);
-		_rectangleEnemy = new RectangleEnemy(rectangle1X, rectangleY, rectangleWidth, rectangleHeight, { 150.0f, 150.0f }, GREEN, false, false, false, false);
-		_rectangleEnemy2 = new RectangleEnemy(rectangle2X, rectangleY, rectangle2Width, rectangleHeight, { 150.0f, 150.0f }, GREEN, false, false,false, false);
+		_rectangleEnemy = new RectangleEnemy(rectangle1X, rectangleY, rectangleWidth, rectangleHeight, { 150.0f, 150.0f }, GREEN, true, true, false, false);
+		_rectangleEnemy2 = new RectangleEnemy(rectangle2X, rectangleY, rectangle2Width, rectangleHeight, { 150.0f, 150.0f }, GREEN, true, true,false, false);
 		_circleEnemy = new CircleEnemy(circleX, circleY, circleRadius, GREEN, { 200.0f, 150.0f }, false, false);
 		_pauseRec.x = 600.0f;
 		_pauseRec.y = 0.0f;
@@ -131,11 +131,8 @@ namespace Colortrack
 		SetEnemiesColors();
 		SetPlayerColors();
 
-		if (CheckEnemiesColors() && CheckEnemiesPlayerColors())
-		{
-			SetEnemiesColors();
-			SetPlayerColors();
-		}
+		CheckColorValidation();
+
 		SetTargetFPS(60);
 	}
 
@@ -657,6 +654,15 @@ namespace Colortrack
 			_mouseHoverInButton = noHover;
 	}
 
+	void Gameplay::CheckColorValidation()
+	{
+		if (CheckEnemiesColors() && CheckEnemiesPlayerColors())
+		{
+			SetEnemiesColors();
+			SetPlayerColors();
+		}
+	}
+
 	void Gameplay::Update()
 	{
 		_timer--;
@@ -700,11 +706,7 @@ namespace Colortrack
 						GenerateShapes();
 						SetEnemiesColors();
 						SetPlayerColors();
-						if (CheckEnemiesColors() && CheckEnemiesPlayerColors())
-						{
-							SetEnemiesColors();
-							SetPlayerColors();
-						}
+						CheckColorValidation();
 					}
 				}
 			}
