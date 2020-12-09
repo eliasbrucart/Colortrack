@@ -1,13 +1,16 @@
 #ifndef COLORS_H
 #define COLORS_H
 
-enum Colors
+namespace Colortrack 
 {
-	colorGreen,
-	colorRed,
-	colorYellow,
-	colorBlue,
-	colorOrange
-};
+	enum Colors
+	{
+		colorGreen,
+		colorRed,
+		colorYellow,
+		colorBlue,
+		colorOrange
+	};
+}
 
 #endif

@@ -81,6 +81,7 @@ namespace Colortrack
 			delete _circleEnemy;
 			_circleEnemy = NULL;
 		}
+		Unload();
 		UnloadTexture(_menuButtonSprite);
 		UnloadTexture(_pauseButtonSprite);
 		UnloadTexture(_muteAudioSprite);
@@ -590,6 +591,12 @@ namespace Colortrack
 				_rectangleEnemy->SetSpeedY(230.0f);
 				_rectangleEnemy2->SetSpeedY(230.0f);
 				_circleEnemy->SetSpeedY(230.0f);
+			}
+			if (_points == 4500)
+			{
+				_rectangleEnemy->SetSpeedY(250.0f);
+				_rectangleEnemy2->SetSpeedY(250.0f);
+				_circleEnemy->SetSpeedY(250.0f);
 			}
 		}
 	}

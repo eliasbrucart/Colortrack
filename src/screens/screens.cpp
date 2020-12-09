@@ -1,11 +1,14 @@
 #include"screens.h"
 
-void Screens::Input()
+namespace Colortrack
 {
+	void Screens::Input()
+	{
 
-}
+	}
 
-void Screens::Draw()
-{
+	void Screens::Draw()
+	{
 
+	}
 }

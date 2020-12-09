@@ -93,23 +93,23 @@ namespace Colortrack
 	{
 		ClearBackground(BLACK);
 		DrawTexture(_menuSprite, 0, 0, WHITE);
-		DrawTexture(_playButtonSprite, buttonsInX, playButtonY, WHITE);
-		DrawTexture(_tutorialButtonSprite, buttonsInX, tutorialButtonY, WHITE);
-		DrawTexture(_creditsButtonSprite, buttonsInX, creditsButtonY, WHITE);
-		DrawTexture(_exitButtonSprite, buttonsInX, exitButtonY, WHITE);
+		DrawTexture(_playButtonSprite, static_cast<int>(buttonsInX), static_cast<int>(playButtonY), WHITE);
+		DrawTexture(_tutorialButtonSprite, static_cast<int>(buttonsInX), static_cast<int>(tutorialButtonY), WHITE);
+		DrawTexture(_creditsButtonSprite, static_cast<int>(buttonsInX), static_cast<int>(creditsButtonY), WHITE);
+		DrawTexture(_exitButtonSprite, static_cast<int>(buttonsInX), static_cast<int>(exitButtonY), WHITE);
 
 		switch (_mouseHoverInButton) {
 		case play:
-			DrawTexture(_playButtonSprite, buttonsInX, playButtonY, LIME);
+			DrawTexture(_playButtonSprite, static_cast<int>(buttonsInX), static_cast<int>(playButtonY), LIME);
 			break;
 		case tutorial:
-			DrawTexture(_tutorialButtonSprite, buttonsInX, tutorialButtonY, GOLD);
+			DrawTexture(_tutorialButtonSprite, static_cast<int>(buttonsInX), static_cast<int>(tutorialButtonY), GOLD);
 			break;
 		case credits:
-			DrawTexture(_creditsButtonSprite, buttonsInX, creditsButtonY, VIOLET);
+			DrawTexture(_creditsButtonSprite, static_cast<int>(buttonsInX), static_cast<int>(creditsButtonY), VIOLET);
 			break;
 		case exit:
-			DrawTexture(_exitButtonSprite, buttonsInX, exitButtonY, PINK);
+			DrawTexture(_exitButtonSprite, static_cast<int>(buttonsInX), static_cast<int>(exitButtonY), PINK);
 			break;
 		case noHover:
 			break;

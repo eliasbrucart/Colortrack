@@ -48,10 +48,10 @@ Go as far as you can! Avoid enemy figures of different colors and collide with f
 <p style="font-weight: bold">Art & Assets Design</p>
 <p>Dario Brucart</p>
 
-<p>Dario Brucart Email: <a href="mailto:dabrucart@yahoo.com.ar">eliasbrucart@hargames.com.ar</a></p>
+<p>Dario Brucart Email: <a href="mailto:dabrucart@yahoo.com.ar">dabrucart@yahoo.com.ar</a></p>
 
 # Developing
 <p>Game version: 1.0</p>
 <p>Colortrack will follow a development line. In the future the video game will be more developed and it will be even more fun!</p>
-<p>Product developed for HardGames | website: www.hardgames.com.ar
+<p>Product developed for HardGames | website: <a href="http://hardgames.com.ar/" target="_blank">www.hardgames.com.ar</a>
 Soon it will be available on the official website</p>

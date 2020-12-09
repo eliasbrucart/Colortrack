@@ -91,20 +91,20 @@ namespace Colortrack
 		DrawTexture(_gameOverSprite, 0, 0, WHITE);
 		DrawText(TextFormat("Points Earned: %i", _gameplay->GetPoints()), pointsEarnedPosX, pointsEarnedPosY, pointsFontSize, BLACK);
 
-		DrawTexture(_playButtonSprite, buttonsX, playAgainY, WHITE);
-		DrawTexture(_menuButtonSprite, buttonsX, mainMenuY, WHITE);
-		DrawTexture(_exitButtonSprite, buttonsX, exitButtonY, WHITE);
+		DrawTexture(_playButtonSprite, static_cast<int>(buttonsX), static_cast<int>(playAgainY), WHITE);
+		DrawTexture(_menuButtonSprite, static_cast<int>(buttonsX), static_cast<int>(mainMenuY), WHITE);
+		DrawTexture(_exitButtonSprite, static_cast<int>(buttonsX), static_cast<int>(exitButtonY), WHITE);
 
 		switch (_mouseHoverInButton)
 		{
 		case playAgain:
-			DrawTexture(_playButtonSprite, buttonsX, playAgainY, LIME);
+			DrawTexture(_playButtonSprite, static_cast<int>(buttonsX), static_cast<int>(playAgainY), LIME);
 			break;
 		case mainMenu:
-			DrawTexture(_menuButtonSprite, buttonsX, mainMenuY, LIME);
+			DrawTexture(_menuButtonSprite, static_cast<int>(buttonsX), static_cast<int>(mainMenuY), LIME);
 			break;
 		case exitButton:
-			DrawTexture(_exitButtonSprite, buttonsX, exitButtonY, PINK);
+			DrawTexture(_exitButtonSprite, static_cast<int>(buttonsX), static_cast<int>(exitButtonY), PINK);
 			break;
 		case noHover:
 			break;

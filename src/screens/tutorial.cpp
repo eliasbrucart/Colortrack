@@ -44,11 +44,11 @@ namespace Colortrack
 	void Tutorial::Draw()
 	{
 		DrawTexture(_tutorialSprite, 0, 0, WHITE);
-		DrawTexture(_menuButtonSprite, backToMenuX, backToMenuY, WHITE);
+		DrawTexture(_menuButtonSprite, static_cast<int>(backToMenuX), static_cast<int>(backToMenuY), WHITE);
 		switch (_mouseHoverInButton)
 		{
 		case backToMenu:
-			DrawTexture(_menuButtonSprite, backToMenuX, backToMenuY, LIME);
+			DrawTexture(_menuButtonSprite, static_cast<int>(backToMenuX), static_cast<int>(backToMenuY), LIME);
 			break;
 		case noHover:
 			break;
